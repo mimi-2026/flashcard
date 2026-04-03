@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>単語一覧 | English Flashcards</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f3; padding: 2rem 1rem; }
+  h1 { font-size: 20px; font-weight: 500; color: #111; text-align: center; margin-bottom: 0.5rem; }
+  .subtitle { font-size: 14px; color: #aaa; text-align: center; margin-bottom: 2rem; }
+  .search-wrap { max-width: 480px; margin: 0 auto 1.5rem; }
+  .search-wrap input { width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; outline: none; background: #fff; }
+  .search-wrap input:focus { border-color: #999; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .card { background: #fff; border: 1px solid #e8e8e6; border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 6px; }
+  .card-header { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .word { font-size: 22px; font-weight: 500; color: #111; }
+  .pos { font-size: 12px; color: #aaa; }
+  .phonetic { font-size: 13px; color: #888; margin-left: auto; }
+  .meaning-jp { font-size: 16px; font-weight: 500; color: #111; }
+  .meaning-en { font-size: 13px; color: #888; }
+  .example-en { font-size: 13px; color: #444; margin-top: 6px; line-height: 1.6; border-left: 2px solid #eee; padding-left: 10px; }
+  .example-en strong { font-weight: 600; text-decoration: underline; text-decoration-color: #ccc; }
+  .example-jp { font-size: 12px; color: #aaa; padding-left: 12px; line-height: 1.6; }
+  .count { font-size: 13px; color: #bbb; text-align: center; margin-bottom: 1rem; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<h1>単語一覧</h1>
+<p class="subtitle">全130単語</p>
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="単語を検索..." oninput="filterCards()">
+</div>
+<div class="count" id="count">130単語を表示中</div>
+<div class="grid" id="grid">
+
+    <div class="card">
+      <div class="card-header">
+        <span class="word">advance</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ədˈvæns/</span>
+      </div>
+      <div class="meaning-jp">前進する、進める</div>
+      <div class="meaning-en">to move forward or make progress</div>
+      <div class="example-en">The team <strong>advance</strong> toward the goal quickly.</div>
+      <div class="example-jp">チームはゴールに向かって素早く前進した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">ask</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/æsk/</span>
+      </div>
+      <div class="meaning-jp">尋ねる、頼む</div>
+      <div class="meaning-en">to say something as a question or request</div>
+      <div class="example-en">She <strong>asked</strong> the coach for advice.</div>
+      <div class="example-jp">彼女はコーチにアドバイスを求めた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">attack</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/əˈtæk/</span>
+      </div>
+      <div class="meaning-jp">攻撃する</div>
+      <div class="meaning-en">to take aggressive action against</div>
+      <div class="example-en">The striker <strong>attack</strong> the defense with speed.</div>
+      <div class="example-jp">ストライカーはスピードでディフェンスを攻撃した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">begin</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/bɪˈɡɪn/</span>
+      </div>
+      <div class="meaning-jp">始める、始まる</div>
+      <div class="meaning-en">to start doing or happening</div>
+      <div class="example-en">The match will <strong>begin</strong> at three o'clock.</div>
+      <div class="example-jp">試合は3時に始まる。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">block</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/blɒk/</span>
+      </div>
+      <div class="meaning-jp">ブロックする、遮る</div>
+      <div class="meaning-en">to stop something from passing or succeeding</div>
+      <div class="example-en">He managed to <strong>block</strong> the powerful shot.</div>
+      <div class="example-jp">彼は強烈なシュートをブロックすることに成功した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">bring</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/brɪŋ/</span>
+      </div>
+      <div class="meaning-jp">持ってくる</div>
+      <div class="meaning-en">to carry or take something to a place</div>
+      <div class="example-en">Please <strong>bring</strong> your boots to practice.</div>
+      <div class="example-jp">練習にスパイクを持ってきてください。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">buy</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/baɪ/</span>
+      </div>
+      <div class="meaning-jp">買う</div>
+      <div class="meaning-en">to get something by paying money</div>
+      <div class="example-en">He wants to <strong>buy</strong> new football boots.</div>
+      <div class="example-jp">彼は新しいサッカースパイクを買いたい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">call</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kɔːl/</span>
+      </div>
+      <div class="meaning-jp">呼ぶ、叫ぶ</div>
+      <div class="meaning-en">to shout or say something loudly</div>
+      <div class="example-en">The captain <strong>call</strong> out to his teammates.</div>
+      <div class="example-jp">キャプテンはチームメイトに大声で呼びかけた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">carry</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈkæri/</span>
+      </div>
+      <div class="meaning-jp">運ぶ、持ち運ぶ</div>
+      <div class="meaning-en">to hold and take somewhere</div>
+      <div class="example-en">She <strong>carry</strong> the ball past two defenders.</div>
+      <div class="example-jp">彼女はボールを持って2人のディフェンダーを抜いた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">catch</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kætʃ/</span>
+      </div>
+      <div class="meaning-jp">捕まえる</div>
+      <div class="meaning-en">to grab and hold something moving</div>
+      <div class="example-en">The goalkeeper <strong>catch</strong> the ball safely.</div>
+      <div class="example-jp">ゴールキーパーは安全にボールをキャッチした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">celebrate</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈseləbreɪt/</span>
+      </div>
+      <div class="meaning-jp">祝う、喜ぶ</div>
+      <div class="meaning-en">to do something enjoyable for a special occasion</div>
+      <div class="example-en">The players <strong>celebrate</strong> after scoring a goal.</div>
+      <div class="example-jp">選手たちはゴールを決めた後に喜んだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">challenge</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈtʃælɪndʒ/</span>
+      </div>
+      <div class="meaning-jp">挑む、チャレンジする</div>
+      <div class="meaning-en">to compete with or question someone</div>
+      <div class="example-en">She <strong>challenge</strong> the defender for the ball.</div>
+      <div class="example-jp">彼女はディフェンダーにボールを挑んだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">change</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/tʃeɪndʒ/</span>
+      </div>
+      <div class="meaning-jp">変える、変わる</div>
+      <div class="meaning-en">to become or make different</div>
+      <div class="example-en">The coach <strong>change</strong> the team's formation.</div>
+      <div class="example-jp">コーチはチームのフォーメーションを変えた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">check</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/tʃek/</span>
+      </div>
+      <div class="meaning-jp">確認する、チェックする</div>
+      <div class="meaning-en">to examine or verify something</div>
+      <div class="example-en">Always <strong>check</strong> your equipment before a match.</div>
+      <div class="example-jp">試合前に必ず用具を確認しなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">chip</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/tʃɪp/</span>
+      </div>
+      <div class="meaning-jp">浮き球で蹴る、チップする</div>
+      <div class="meaning-en">to kick the ball with a light lifting motion</div>
+      <div class="example-en">She <strong>chip</strong> the ball over the goalkeeper.</div>
+      <div class="example-jp">彼女はゴールキーパーの上にチップキックをした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">clean</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kliːn/</span>
+      </div>
+      <div class="meaning-jp">きれいにする</div>
+      <div class="meaning-en">to remove dirt from something</div>
+      <div class="example-en">He <strong>clean</strong> his boots after every match.</div>
+      <div class="example-jp">彼は試合のたびにスパイクをきれいにした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">clear</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/klɪər/</span>
+      </div>
+      <div class="meaning-jp">クリアする、取り除く</div>
+      <div class="meaning-en">to kick the ball away from danger</div>
+      <div class="example-en">The defender <strong>clear</strong> the ball from the goal line.</div>
+      <div class="example-jp">ディフェンダーはゴールラインからボールをクリアした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">close</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kləʊz/</span>
+      </div>
+      <div class="meaning-jp">閉じる、近づく</div>
+      <div class="meaning-en">to shut or move near to something</div>
+      <div class="example-en">She <strong>close</strong> down the opponent quickly.</div>
+      <div class="example-jp">彼女は素早く相手に寄せた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">control</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kənˈtrəʊl/</span>
+      </div>
+      <div class="meaning-jp">コントロールする</div>
+      <div class="meaning-en">to direct or manage something</div>
+      <div class="example-en">He <strong>control</strong> the ball with his chest.</div>
+      <div class="example-jp">彼は胸でボールをコントロールした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">cook</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kʊk/</span>
+      </div>
+      <div class="meaning-jp">料理する</div>
+      <div class="meaning-en">to prepare food by heating</div>
+      <div class="example-en">She <strong>cook</strong> pasta for the team dinner.</div>
+      <div class="example-jp">彼女はチームディナーのためにパスタを作った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">cross</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/krɒs/</span>
+      </div>
+      <div class="meaning-jp">クロスを上げる、渡る</div>
+      <div class="meaning-en">to kick the ball from the side into the centre</div>
+      <div class="example-en">He <strong>cross</strong> the ball into the penalty area.</div>
+      <div class="example-jp">彼はペナルティエリアにクロスを上げた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">cry</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kraɪ/</span>
+      </div>
+      <div class="meaning-jp">泣く、叫ぶ</div>
+      <div class="meaning-en">to shed tears or shout out</div>
+      <div class="example-en">She <strong>cry</strong> with joy after winning the cup.</div>
+      <div class="example-jp">彼女はカップ優勝の喜びで泣いた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">cut</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kʌt/</span>
+      </div>
+      <div class="meaning-jp">切る、カットする</div>
+      <div class="meaning-en">to move sharply in a new direction</div>
+      <div class="example-en">He <strong>cut</strong> inside and shoot at goal.</div>
+      <div class="example-jp">彼はカットインしてシュートを打った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">dance</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/dɑːns/</span>
+      </div>
+      <div class="meaning-jp">踊る</div>
+      <div class="meaning-en">to move rhythmically to music</div>
+      <div class="example-en">The fans <strong>dance</strong> when their team scored.</div>
+      <div class="example-jp">チームが得点するとファンたちは踊った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">decide</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/dɪˈsaɪd/</span>
+      </div>
+      <div class="meaning-jp">決める、決断する</div>
+      <div class="meaning-en">to make a choice or come to a conclusion</div>
+      <div class="example-en">She <strong>decide</strong> to shoot instead of pass.</div>
+      <div class="example-jp">彼女はパスではなくシュートを選んだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">defend</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/dɪˈfend/</span>
+      </div>
+      <div class="meaning-jp">守る、ディフェンスする</div>
+      <div class="meaning-en">to protect against attack</div>
+      <div class="example-en">They <strong>defend</strong> well and kept a clean sheet.</div>
+      <div class="example-jp">彼らはよく守り、クリーンシートを保った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">draw</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/drɔː/</span>
+      </div>
+      <div class="meaning-jp">引き分ける、引く</div>
+      <div class="meaning-en">to finish a game with equal scores</div>
+      <div class="example-en">Both teams <strong>draw</strong> one all.</div>
+      <div class="example-jp">両チームは1対1で引き分けた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">dribble</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈdrɪbl/</span>
+      </div>
+      <div class="meaning-jp">ドリブルする</div>
+      <div class="meaning-en">to move the ball forward with small kicks</div>
+      <div class="example-en">She <strong>dribble</strong> past three defenders.</div>
+      <div class="example-jp">彼女は3人のディフェンダーをドリブルで抜いた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">drink</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/drɪŋk/</span>
+      </div>
+      <div class="meaning-jp">飲む</div>
+      <div class="meaning-en">to take liquid into the mouth and swallow</div>
+      <div class="example-en">Players <strong>drink</strong> water during the break.</div>
+      <div class="example-jp">選手たちはハーフタイムに水を飲む。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">drive</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/draɪv/</span>
+      </div>
+      <div class="meaning-jp">強く蹴る、ドライブする</div>
+      <div class="meaning-en">to hit or kick powerfully</div>
+      <div class="example-en">He <strong>drive</strong> the ball into the top corner.</div>
+      <div class="example-jp">彼はボールをコーナーに力強く蹴り込んだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">eat</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/iːt/</span>
+      </div>
+      <div class="meaning-jp">食べる</div>
+      <div class="meaning-en">to put food in your mouth and swallow it</div>
+      <div class="example-en">Athletes <strong>eat</strong> well before a big match.</div>
+      <div class="example-jp">選手たちは大きな試合の前によく食べる。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">enjoy</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ɪnˈdʒɔɪ/</span>
+      </div>
+      <div class="meaning-jp">楽しむ</div>
+      <div class="meaning-en">to get pleasure from something</div>
+      <div class="example-en">She <strong>enjoy</strong> playing football with her friends.</div>
+      <div class="example-jp">彼女は友達とサッカーをするのを楽しんでいる。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">explain</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ɪkˈspleɪn/</span>
+      </div>
+      <div class="meaning-jp">説明する</div>
+      <div class="meaning-en">to make something clear or easy to understand</div>
+      <div class="example-en">The coach <strong>explain</strong> the new tactics clearly.</div>
+      <div class="example-jp">コーチは新しい戦術をわかりやすく説明した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">feel</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/fiːl/</span>
+      </div>
+      <div class="meaning-jp">感じる</div>
+      <div class="meaning-en">to experience an emotion or physical sensation</div>
+      <div class="example-en">She <strong>feel</strong> nervous before the final.</div>
+      <div class="example-jp">彼女は決勝前に緊張を感じた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">find</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/faɪnd/</span>
+      </div>
+      <div class="meaning-jp">見つける</div>
+      <div class="meaning-en">to discover or locate something</div>
+      <div class="example-en">He <strong>find</strong> space behind the defence.</div>
+      <div class="example-jp">彼はディフェンスの裏にスペースを見つけた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">finish</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈfɪnɪʃ/</span>
+      </div>
+      <div class="meaning-jp">終える、決める</div>
+      <div class="meaning-en">to complete or score at the end of a move</div>
+      <div class="example-en">She <strong>finish</strong> the move with a great goal.</div>
+      <div class="example-jp">彼女は素晴らしいゴールで攻撃を決めた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">fix</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/fɪks/</span>
+      </div>
+      <div class="meaning-jp">直す、修正する</div>
+      <div class="meaning-en">to repair or correct something</div>
+      <div class="example-en">The coach <strong>fix</strong> the problem at half time.</div>
+      <div class="example-jp">コーチはハーフタイムに問題を修正した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">foul</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/faʊl/</span>
+      </div>
+      <div class="meaning-jp">ファウルする</div>
+      <div class="meaning-en">to commit an illegal action in a game</div>
+      <div class="example-en">He <strong>foul</strong> the striker in the box.</div>
+      <div class="example-jp">彼はボックス内でストライカーにファウルした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">forget</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/fəˈɡet/</span>
+      </div>
+      <div class="meaning-jp">忘れる</div>
+      <div class="meaning-en">to fail to remember something</div>
+      <div class="example-en">Don't <strong>forget</strong> to warm up before the game.</div>
+      <div class="example-jp">試合前にウォームアップするのを忘れないで。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">get</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ɡet/</span>
+      </div>
+      <div class="meaning-jp">得る、手に入れる</div>
+      <div class="meaning-en">to obtain or receive something</div>
+      <div class="example-en">She <strong>get</strong> the ball and run forward.</div>
+      <div class="example-jp">彼女はボールを受け取って前に走った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">give</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ɡɪv/</span>
+      </div>
+      <div class="meaning-jp">渡す、与える</div>
+      <div class="meaning-en">to hand something to someone</div>
+      <div class="example-en">He <strong>give</strong> a perfect pass to his teammate.</div>
+      <div class="example-jp">彼はチームメイトに完璧なパスを出した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">go</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ɡəʊ/</span>
+      </div>
+      <div class="meaning-jp">行く、進む</div>
+      <div class="meaning-en">to move or travel somewhere</div>
+      <div class="example-en"><strong>Go</strong> forward and support the attack!</div>
+      <div class="example-jp">前に出て攻撃をサポートしろ！</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">happen</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈhæpən/</span>
+      </div>
+      <div class="meaning-jp">起こる、生じる</div>
+      <div class="meaning-en">to occur or take place</div>
+      <div class="example-en">A lot <strong>happen</strong> in the last five minutes.</div>
+      <div class="example-jp">最後の5分間にたくさんのことが起きた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">have</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/hæv/</span>
+      </div>
+      <div class="meaning-jp">持つ、ある</div>
+      <div class="meaning-en">to own or possess something</div>
+      <div class="example-en">We <strong>have</strong> a great team this season.</div>
+      <div class="example-jp">今シーズン、私たちは素晴らしいチームを持っている。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">head</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/hed/</span>
+      </div>
+      <div class="meaning-jp">ヘディングする</div>
+      <div class="meaning-en">to hit the ball with your head</div>
+      <div class="example-en">He <strong>head</strong> the ball into the net.</div>
+      <div class="example-jp">彼はボールをヘディングしてネットに入れた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">hear</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/hɪər/</span>
+      </div>
+      <div class="meaning-jp">聞こえる</div>
+      <div class="meaning-en">to perceive sound with your ears</div>
+      <div class="example-en">She <strong>hear</strong> the referee's whistle and stop.</div>
+      <div class="example-jp">彼女は審判の笛が聞こえて止まった。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">help</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/help/</span>
+      </div>
+      <div class="meaning-jp">助ける、手伝う</div>
+      <div class="meaning-en">to make it easier for someone</div>
+      <div class="example-en">Good teamwork <strong>help</strong> everyone play better.</div>
+      <div class="example-jp">良いチームワークは全員のプレーを向上させる。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">hope</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/həʊp/</span>
+      </div>
+      <div class="meaning-jp">願う、期待する</div>
+      <div class="meaning-en">to want something to happen</div>
+      <div class="example-en">We <strong>hope</strong> to win the tournament.</div>
+      <div class="example-jp">私たちはトーナメントで優勝することを願っている。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">invite</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ɪnˈvaɪt/</span>
+      </div>
+      <div class="meaning-jp">招待する</div>
+      <div class="meaning-en">to ask someone to come somewhere</div>
+      <div class="example-en">They <strong>invite</strong> new players to join the team.</div>
+      <div class="example-jp">彼らは新しい選手をチームに招待した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">join</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/dʒɔɪn/</span>
+      </div>
+      <div class="meaning-jp">参加する、加わる</div>
+      <div class="meaning-en">to become part of a group or activity</div>
+      <div class="example-en">She <strong>join</strong> the football club last year.</div>
+      <div class="example-jp">彼女は昨年サッカークラブに加入した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">keep</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kiːp/</span>
+      </div>
+      <div class="meaning-jp">保つ、キープする</div>
+      <div class="meaning-en">to continue having or holding something</div>
+      <div class="example-en"><strong>Keep</strong> the ball and wait for a chance.</div>
+      <div class="example-jp">ボールをキープしてチャンスを待て。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">kick</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/kɪk/</span>
+      </div>
+      <div class="meaning-jp">蹴る</div>
+      <div class="meaning-en">to strike something with your foot</div>
+      <div class="example-en">He <strong>kick</strong> the ball with his right foot.</div>
+      <div class="example-jp">彼は右足でボールを蹴った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">know</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/nəʊ/</span>
+      </div>
+      <div class="meaning-jp">知っている、わかる</div>
+      <div class="meaning-en">to have information in your mind</div>
+      <div class="example-en">She <strong>know</strong> all the rules of football.</div>
+      <div class="example-jp">彼女はサッカーのルールをすべて知っている。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">learn</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/lɜːn/</span>
+      </div>
+      <div class="meaning-jp">学ぶ、覚える</div>
+      <div class="meaning-en">to gain knowledge or a skill</div>
+      <div class="example-en">He <strong>learn</strong> new skills at every training session.</div>
+      <div class="example-jp">彼は毎回のトレーニングで新しいスキルを学ぶ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">leave</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/liːv/</span>
+      </div>
+      <div class="meaning-jp">去る、離れる</div>
+      <div class="meaning-en">to go away from a place</div>
+      <div class="example-en">The team <strong>leave</strong> for the away match tomorrow.</div>
+      <div class="example-jp">チームは明日アウェー試合のために出発する。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">like</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/laɪk/</span>
+      </div>
+      <div class="meaning-jp">好む、好きである</div>
+      <div class="meaning-en">to find something pleasant</div>
+      <div class="example-en">She <strong>like</strong> playing as a midfielder.</div>
+      <div class="example-jp">彼女はミッドフィルダーとしてプレーするのが好きだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">listen</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈlɪsən/</span>
+      </div>
+      <div class="meaning-jp">聞く、耳を傾ける</div>
+      <div class="meaning-en">to pay attention to sound</div>
+      <div class="example-en">Always <strong>listen</strong> to your coach's instructions.</div>
+      <div class="example-jp">常にコーチの指示に耳を傾けなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">live</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/lɪv/</span>
+      </div>
+      <div class="meaning-jp">住む、生きる</div>
+      <div class="meaning-en">to be alive or reside somewhere</div>
+      <div class="example-en">She <strong>live</strong> near the training ground.</div>
+      <div class="example-jp">彼女はトレーニンググラウンドの近くに住んでいる。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">look</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/lʊk/</span>
+      </div>
+      <div class="meaning-jp">見る、探す</div>
+      <div class="meaning-en">to direct your eyes somewhere</div>
+      <div class="example-en"><strong>Look</strong> up before you pass the ball.</div>
+      <div class="example-jp">パスを出す前に顔を上げて見なさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">lose</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/luːz/</span>
+      </div>
+      <div class="meaning-jp">負ける、失う</div>
+      <div class="meaning-en">to be defeated or fail to win</div>
+      <div class="example-en">They <strong>lose</strong> the match in the final minute.</div>
+      <div class="example-jp">彼らは最後の1分で試合に負けた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">love</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/lʌv/</span>
+      </div>
+      <div class="meaning-jp">愛する、大好きである</div>
+      <div class="meaning-en">to have a deep affection for something</div>
+      <div class="example-en">She <strong>love</strong> football more than anything.</div>
+      <div class="example-jp">彼女は何よりもサッカーが大好きだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">make</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/meɪk/</span>
+      </div>
+      <div class="meaning-jp">作る、生み出す</div>
+      <div class="meaning-en">to create or produce something</div>
+      <div class="example-en">He <strong>make</strong> a run into the box.</div>
+      <div class="example-jp">彼はボックスにランニングをした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">mark</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/mɑːk/</span>
+      </div>
+      <div class="meaning-jp">マークする</div>
+      <div class="meaning-en">to stay close to an opponent</div>
+      <div class="example-en">She <strong>mark</strong> the striker tightly all game.</div>
+      <div class="example-jp">彼女は試合中ずっとストライカーを厳しくマークした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">meet</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/miːt/</span>
+      </div>
+      <div class="meaning-jp">会う、出会う</div>
+      <div class="meaning-en">to come together with someone</div>
+      <div class="example-en">The teams <strong>meet</strong> at the stadium entrance.</div>
+      <div class="example-jp">両チームはスタジアムの入口で会った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">miss</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/mɪs/</span>
+      </div>
+      <div class="meaning-jp">外す、見逃す</div>
+      <div class="meaning-en">to fail to hit or catch something</div>
+      <div class="example-en">He <strong>miss</strong> an easy chance in front of goal.</div>
+      <div class="example-jp">彼はゴール前で簡単なチャンスを外した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">move</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/muːv/</span>
+      </div>
+      <div class="meaning-jp">動く、移動する</div>
+      <div class="meaning-en">to change position or location</div>
+      <div class="example-en"><strong>Move</strong> into space to receive the ball.</div>
+      <div class="example-jp">ボールを受けるためにスペースに動きなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">need</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/niːd/</span>
+      </div>
+      <div class="meaning-jp">必要とする</div>
+      <div class="meaning-en">to require something</div>
+      <div class="example-en">We <strong>need</strong> to score one more goal.</div>
+      <div class="example-jp">私たちはもう1点取る必要がある。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">open</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈəʊpən/</span>
+      </div>
+      <div class="meaning-jp">開く、開放する</div>
+      <div class="meaning-en">to make available or accessible</div>
+      <div class="example-en">She <strong>open</strong> up space with her run.</div>
+      <div class="example-jp">彼女はランニングでスペースを作った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">order</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈɔːdər/</span>
+      </div>
+      <div class="meaning-jp">命令する、指示する</div>
+      <div class="meaning-en">to give an instruction or command</div>
+      <div class="example-en">The captain <strong>order</strong> his team to press higher.</div>
+      <div class="example-jp">キャプテンはチームに高い位置からプレスするよう指示した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">pass</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/pɑːs/</span>
+      </div>
+      <div class="meaning-jp">パスする</div>
+      <div class="meaning-en">to kick the ball to a teammate</div>
+      <div class="example-en">He <strong>pass</strong> the ball to the open winger.</div>
+      <div class="example-jp">彼はフリーのウィンガーにパスを出した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">play</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/pleɪ/</span>
+      </div>
+      <div class="meaning-jp">プレーする、遊ぶ</div>
+      <div class="meaning-en">to take part in a sport or game</div>
+      <div class="example-en">She <strong>play</strong> football every weekend.</div>
+      <div class="example-jp">彼女は毎週末サッカーをしている。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">practice</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈpræktɪs/</span>
+      </div>
+      <div class="meaning-jp">練習する</div>
+      <div class="meaning-en">to train repeatedly to improve</div>
+      <div class="example-en">He <strong>practice</strong> free kicks every day.</div>
+      <div class="example-jp">彼は毎日フリーキックを練習している。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">press</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/pres/</span>
+      </div>
+      <div class="meaning-jp">プレスする、押す</div>
+      <div class="meaning-en">to put pressure on an opponent</div>
+      <div class="example-en">The team <strong>press</strong> the defenders from the front.</div>
+      <div class="example-jp">チームは前からディフェンダーにプレスをかけた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">protect</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/prəˈtekt/</span>
+      </div>
+      <div class="meaning-jp">守る、保護する</div>
+      <div class="meaning-en">to keep safe from harm</div>
+      <div class="example-en">She <strong>protect</strong> the ball from the defender.</div>
+      <div class="example-jp">彼女はディフェンダーからボールを守った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">push</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/pʊʃ/</span>
+      </div>
+      <div class="meaning-jp">押す、前に進む</div>
+      <div class="meaning-en">to press or drive forward</div>
+      <div class="example-en">The team <strong>push</strong> forward in the second half.</div>
+      <div class="example-jp">チームは後半に前に押し上げた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">put</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/pʊt/</span>
+      </div>
+      <div class="meaning-jp">置く、入れる</div>
+      <div class="meaning-en">to place something somewhere</div>
+      <div class="example-en">She <strong>put</strong> the ball in the back of the net.</div>
+      <div class="example-jp">彼女はボールをネットに入れた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">qualify</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈkwɒlɪfaɪ/</span>
+      </div>
+      <div class="meaning-jp">予選を通過する</div>
+      <div class="meaning-en">to reach the required standard to enter</div>
+      <div class="example-en">They <strong>qualify</strong> for the final tournament.</div>
+      <div class="example-jp">彼らは決勝トーナメントに出場資格を得た。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">read</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/riːd/</span>
+      </div>
+      <div class="meaning-jp">読む、読み取る</div>
+      <div class="meaning-en">to understand or anticipate a situation</div>
+      <div class="example-en">She <strong>read</strong> the game better than anyone.</div>
+      <div class="example-jp">彼女は誰よりも試合を読む力がある。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">receive</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/rɪˈsiːv/</span>
+      </div>
+      <div class="meaning-jp">受け取る、受ける</div>
+      <div class="meaning-en">to get or accept something given</div>
+      <div class="example-en">He <strong>receive</strong> the pass and turn quickly.</div>
+      <div class="example-jp">彼はパスを受けてすばやく振り返った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">remember</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/rɪˈmembər/</span>
+      </div>
+      <div class="meaning-jp">覚えている、思い出す</div>
+      <div class="meaning-en">to bring something back to your mind</div>
+      <div class="example-en"><strong>Remember</strong> the coach's instructions during the game.</div>
+      <div class="example-jp">試合中はコーチの指示を覚えておきなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">ride</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/raɪd/</span>
+      </div>
+      <div class="meaning-jp">乗る、うまくかわす</div>
+      <div class="meaning-en">to sit on and control a moving object</div>
+      <div class="example-en">He <strong>ride</strong> the tackle and stay on his feet.</div>
+      <div class="example-jp">彼はタックルをうまくかわして踏ん張った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">run</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/rʌn/</span>
+      </div>
+      <div class="meaning-jp">走る</div>
+      <div class="meaning-en">to move fast on foot</div>
+      <div class="example-en">She <strong>run</strong> behind the defence to receive the ball.</div>
+      <div class="example-jp">彼女はボールを受けるためにディフェンスの裏に走った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">save</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/seɪv/</span>
+      </div>
+      <div class="meaning-jp">セーブする、救う</div>
+      <div class="meaning-en">to prevent a goal from being scored</div>
+      <div class="example-en">The goalkeeper <strong>save</strong> a brilliant shot.</div>
+      <div class="example-jp">ゴールキーパーは素晴らしいシュートをセーブした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">say</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/seɪ/</span>
+      </div>
+      <div class="meaning-jp">言う</div>
+      <div class="meaning-en">to express something in words</div>
+      <div class="example-en">The coach <strong>say</strong> well done after the match.</div>
+      <div class="example-jp">コーチは試合後によくやったと言った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">score</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/skɔːr/</span>
+      </div>
+      <div class="meaning-jp">ゴールを決める、得点する</div>
+      <div class="meaning-en">to gain a point or goal</div>
+      <div class="example-en">She <strong>score</strong> the winning goal in extra time.</div>
+      <div class="example-jp">彼女は延長戦で決勝ゴールを決めた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">see</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/siː/</span>
+      </div>
+      <div class="meaning-jp">見る、わかる</div>
+      <div class="meaning-en">to notice with your eyes</div>
+      <div class="example-en">He <strong>see</strong> his teammate's run and pass.</div>
+      <div class="example-jp">彼はチームメイトの走りを見てパスを出した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">sell</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/sel/</span>
+      </div>
+      <div class="meaning-jp">売る</div>
+      <div class="meaning-en">to give something in exchange for money</div>
+      <div class="example-en">The club <strong>sell</strong> their best player last summer.</div>
+      <div class="example-jp">クラブは昨夏、最高の選手を売った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">send</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/send/</span>
+      </div>
+      <div class="meaning-jp">送る、送り込む</div>
+      <div class="meaning-en">to cause something to go somewhere</div>
+      <div class="example-en">She <strong>send</strong> a long ball to the striker.</div>
+      <div class="example-jp">彼女はストライカーにロングボールを送った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">shoot</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ʃuːt/</span>
+      </div>
+      <div class="meaning-jp">シュートする</div>
+      <div class="meaning-en">to kick the ball at goal</div>
+      <div class="example-en">He <strong>shoot</strong> from outside the box and score.</div>
+      <div class="example-jp">彼はボックスの外からシュートを打ち得点した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">show</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ʃəʊ/</span>
+      </div>
+      <div class="meaning-jp">見せる、示す</div>
+      <div class="meaning-en">to let someone see something</div>
+      <div class="example-en">The coach <strong>show</strong> the players a video of the match.</div>
+      <div class="example-jp">コーチは選手たちに試合のビデオを見せた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">sing</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/sɪŋ/</span>
+      </div>
+      <div class="meaning-jp">歌う</div>
+      <div class="meaning-en">to make music with your voice</div>
+      <div class="example-en">The fans <strong>sing</strong> the club anthem together.</div>
+      <div class="example-jp">ファンたちはクラブの歌を一緒に歌った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">sit</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/sɪt/</span>
+      </div>
+      <div class="meaning-jp">座る</div>
+      <div class="meaning-en">to rest with your weight on your bottom</div>
+      <div class="example-en">The substitute <strong>sit</strong> on the bench and wait.</div>
+      <div class="example-jp">交代選手はベンチに座って待った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">sleep</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/sliːp/</span>
+      </div>
+      <div class="meaning-jp">眠る</div>
+      <div class="meaning-en">to rest with your eyes closed</div>
+      <div class="example-en">Athletes <strong>sleep</strong> early before a big match.</div>
+      <div class="example-jp">選手たちは大きな試合の前に早く眠る。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">slide</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/slaɪd/</span>
+      </div>
+      <div class="meaning-jp">スライディングする</div>
+      <div class="meaning-en">to move smoothly along a surface</div>
+      <div class="example-en">She <strong>slide</strong> tackle the ball away from the attacker.</div>
+      <div class="example-jp">彼女はスライディングタックルで攻撃者からボールを奪った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">speak</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/spiːk/</span>
+      </div>
+      <div class="meaning-jp">話す</div>
+      <div class="meaning-en">to say words or communicate verbally</div>
+      <div class="example-en">The captain <strong>speak</strong> to the team before kick-off.</div>
+      <div class="example-jp">キャプテンはキックオフ前にチームに話しかけた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">spend</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/spend/</span>
+      </div>
+      <div class="meaning-jp">費やす、過ごす</div>
+      <div class="meaning-en">to use time or money on something</div>
+      <div class="example-en">She <strong>spend</strong> hours practicing her dribbling.</div>
+      <div class="example-jp">彼女はドリブルの練習に何時間も費やした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">sprint</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/sprɪnt/</span>
+      </div>
+      <div class="meaning-jp">全力疾走する</div>
+      <div class="meaning-en">to run as fast as possible</div>
+      <div class="example-en">He <strong>sprint</strong> past the defenders to score.</div>
+      <div class="example-jp">彼はディフェンダーを全力で追い抜いて得点した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">start</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/stɑːt/</span>
+      </div>
+      <div class="meaning-jp">始める、スタートする</div>
+      <div class="meaning-en">to begin an activity</div>
+      <div class="example-en">The match <strong>start</strong> on time today.</div>
+      <div class="example-jp">試合は今日時間通りに始まった。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">stay</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/steɪ/</span>
+      </div>
+      <div class="meaning-jp">とどまる、残る</div>
+      <div class="meaning-en">to remain in a place</div>
+      <div class="example-en"><strong>Stay</strong> in position and don't chase the ball.</div>
+      <div class="example-jp">ポジションを守り、ボールを追いかけないで。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">steal</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/stiːl/</span>
+      </div>
+      <div class="meaning-jp">奪う、盗む</div>
+      <div class="meaning-en">to take something without permission</div>
+      <div class="example-en">She <strong>steal</strong> the ball from the midfielder.</div>
+      <div class="example-jp">彼女はミッドフィルダーからボールを奪った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">stop</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/stɒp/</span>
+      </div>
+      <div class="meaning-jp">止める、止まる</div>
+      <div class="meaning-en">to cease moving or doing something</div>
+      <div class="example-en">He <strong>stop</strong> the ball with his first touch.</div>
+      <div class="example-jp">彼はファーストタッチでボールを止めた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">strike</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/straɪk/</span>
+      </div>
+      <div class="meaning-jp">強く蹴る、打つ</div>
+      <div class="meaning-en">to hit something with force</div>
+      <div class="example-en">She <strong>strike</strong> the ball perfectly into the goal.</div>
+      <div class="example-jp">彼女はボールを完璧にゴールに蹴り込んだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">study</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈstʌdi/</span>
+      </div>
+      <div class="meaning-jp">勉強する、研究する</div>
+      <div class="meaning-en">to learn about a subject carefully</div>
+      <div class="example-en">He <strong>study</strong> the opponent's tactics before the match.</div>
+      <div class="example-jp">彼は試合前に相手の戦術を研究した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">substitute</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈsʌbstɪtjuːt/</span>
+      </div>
+      <div class="meaning-jp">交代する</div>
+      <div class="meaning-en">to replace one player with another</div>
+      <div class="example-en">The coach <strong>substitute</strong> the tired player at half time.</div>
+      <div class="example-jp">コーチはハーフタイムに疲れた選手を交代させた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">support</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/səˈpɔːt/</span>
+      </div>
+      <div class="meaning-jp">サポートする、応援する</div>
+      <div class="meaning-en">to help or encourage someone</div>
+      <div class="example-en">The fans <strong>support</strong> their team through everything.</div>
+      <div class="example-jp">ファンはどんな時もチームを応援する。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">swim</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/swɪm/</span>
+      </div>
+      <div class="meaning-jp">泳ぐ</div>
+      <div class="meaning-en">to move through water using your body</div>
+      <div class="example-en">Players <strong>swim</strong> as part of their recovery training.</div>
+      <div class="example-jp">選手たちは回復トレーニングの一環として泳ぐ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">tackle</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈtækl/</span>
+      </div>
+      <div class="meaning-jp">タックルする</div>
+      <div class="meaning-en">to challenge an opponent for the ball</div>
+      <div class="example-en">He <strong>tackle</strong> the attacker cleanly.</div>
+      <div class="example-jp">彼は攻撃者にきれいなタックルをした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">take</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/teɪk/</span>
+      </div>
+      <div class="meaning-jp">取る、奪う</div>
+      <div class="meaning-en">to get hold of something</div>
+      <div class="example-en">She <strong>take</strong> a corner kick perfectly.</div>
+      <div class="example-jp">彼女は完璧なコーナーキックを蹴った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">talk</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/tɔːk/</span>
+      </div>
+      <div class="meaning-jp">話す、コミュニケーションをとる</div>
+      <div class="meaning-en">to speak to someone</div>
+      <div class="example-en"><strong>Talk</strong> to your teammates during the game.</div>
+      <div class="example-jp">試合中はチームメイトと話しなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">teach</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/tiːtʃ/</span>
+      </div>
+      <div class="meaning-jp">教える</div>
+      <div class="meaning-en">to give knowledge or skill to someone</div>
+      <div class="example-en">The coach <strong>teach</strong> them a new passing drill.</div>
+      <div class="example-jp">コーチは新しいパス練習を教えた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">tell</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/tel/</span>
+      </div>
+      <div class="meaning-jp">伝える、言う</div>
+      <div class="meaning-en">to give information to someone</div>
+      <div class="example-en">She <strong>tell</strong> her teammate to move forward.</div>
+      <div class="example-jp">彼女はチームメイトに前に動くよう伝えた。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">think</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/θɪŋk/</span>
+      </div>
+      <div class="meaning-jp">考える、思う</div>
+      <div class="meaning-en">to use your mind to reason or decide</div>
+      <div class="example-en"><strong>Think</strong> before you pass or shoot.</div>
+      <div class="example-jp">パスやシュートの前に考えなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">train</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/treɪn/</span>
+      </div>
+      <div class="meaning-jp">練習する、トレーニングする</div>
+      <div class="meaning-en">to practise to improve performance</div>
+      <div class="example-en">They <strong>train</strong> hard three times a week.</div>
+      <div class="example-jp">彼らは週3回一生懸命トレーニングする。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">trap</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/træp/</span>
+      </div>
+      <div class="meaning-jp">トラップする、止める</div>
+      <div class="meaning-en">to bring the ball under control</div>
+      <div class="example-en">She <strong>trap</strong> the ball with her foot smoothly.</div>
+      <div class="example-jp">彼女は足でボールをスムーズにトラップした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">travel</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈtrævl/</span>
+      </div>
+      <div class="meaning-jp">移動する、旅行する</div>
+      <div class="meaning-en">to go from one place to another</div>
+      <div class="example-en">The team <strong>travel</strong> by bus to the away match.</div>
+      <div class="example-jp">チームはアウェー試合にバスで移動した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">try</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/traɪ/</span>
+      </div>
+      <div class="meaning-jp">試みる、頑張る</div>
+      <div class="meaning-en">to make an effort to do something</div>
+      <div class="example-en">Always <strong>try</strong> your best in every match.</div>
+      <div class="example-jp">毎試合、常に全力を尽くしなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">turn</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/tɜːn/</span>
+      </div>
+      <div class="meaning-jp">向きを変える、ターンする</div>
+      <div class="meaning-en">to change direction or rotate</div>
+      <div class="example-en">He <strong>turn</strong> quickly and shoot at goal.</div>
+      <div class="example-jp">彼はすばやく向きを変えてシュートした。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">understand</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˌʌndəˈstænd/</span>
+      </div>
+      <div class="meaning-jp">理解する</div>
+      <div class="meaning-en">to know the meaning of something</div>
+      <div class="example-en">She <strong>understand</strong> the coach's tactics well.</div>
+      <div class="example-jp">彼女はコーチの戦術をよく理解している。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">use</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/juːz/</span>
+      </div>
+      <div class="meaning-jp">使う</div>
+      <div class="meaning-en">to employ something for a purpose</div>
+      <div class="example-en"><strong>Use</strong> both feet when you practice.</div>
+      <div class="example-jp">練習するときは両足を使いなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">visit</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈvɪzɪt/</span>
+      </div>
+      <div class="meaning-jp">訪問する</div>
+      <div class="meaning-en">to go to see a place or person</div>
+      <div class="example-en">The team <strong>visit</strong> a local school after the match.</div>
+      <div class="example-jp">チームは試合後に地元の学校を訪問した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">volley</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈvɒli/</span>
+      </div>
+      <div class="meaning-jp">ボレーシュートをする</div>
+      <div class="meaning-en">to kick the ball before it touches the ground</div>
+      <div class="example-en">She <strong>volley</strong> the ball into the top corner.</div>
+      <div class="example-jp">彼女はボールをボレーシュートでコーナーに蹴り込んだ。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">wait</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/weɪt/</span>
+      </div>
+      <div class="meaning-jp">待つ</div>
+      <div class="meaning-en">to stay until something happens</div>
+      <div class="example-en"><strong>Wait</strong> for the right moment to shoot.</div>
+      <div class="example-jp">シュートする正しい瞬間を待ちなさい。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">walk</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/wɔːk/</span>
+      </div>
+      <div class="meaning-jp">歩く</div>
+      <div class="meaning-en">to move at a normal pace on foot</div>
+      <div class="example-en">Players <strong>walk</strong> off the pitch at full time.</div>
+      <div class="example-jp">選手たちは試合終了後にピッチから歩いて出た。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">want</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/wɒnt/</span>
+      </div>
+      <div class="meaning-jp">望む、したい</div>
+      <div class="meaning-en">to desire or wish for something</div>
+      <div class="example-en">Every player <strong>want</strong> to win the championship.</div>
+      <div class="example-jp">すべての選手が優勝を望んでいる。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">wash</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/wɒʃ/</span>
+      </div>
+      <div class="meaning-jp">洗う</div>
+      <div class="meaning-en">to clean with water</div>
+      <div class="example-en">He <strong>wash</strong> his kit after every training session.</div>
+      <div class="example-jp">彼はトレーニングのたびにユニフォームを洗う。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">watch</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/wɒtʃ/</span>
+      </div>
+      <div class="meaning-jp">見る、観戦する</div>
+      <div class="meaning-en">to look at something carefully</div>
+      <div class="example-en">She <strong>watch</strong> the match from the stands.</div>
+      <div class="example-jp">彼女はスタンドから試合を観戦した。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">win</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/wɪn/</span>
+      </div>
+      <div class="meaning-jp">勝つ</div>
+      <div class="meaning-en">to be first or best in a competition</div>
+      <div class="example-en">They <strong>win</strong> the match three goals to one.</div>
+      <div class="example-jp">彼らは3対1で試合に勝った。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">work</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/wɜːk/</span>
+      </div>
+      <div class="meaning-jp">働く、機能する</div>
+      <div class="meaning-en">to do an activity requiring effort</div>
+      <div class="example-en"><strong>Work</strong> hard and the results will come.</div>
+      <div class="example-jp">一生懸命働けば結果はついてくる。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">worry</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/ˈwʌri/</span>
+      </div>
+      <div class="meaning-jp">心配する</div>
+      <div class="meaning-en">to feel anxious or troubled</div>
+      <div class="example-en">Don't <strong>worry</strong> about mistakes — just keep going.</div>
+      <div class="example-jp">ミスを心配しないで — 続けることが大切。</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="word">write</span>
+        <span class="pos">動詞</span>
+        <span class="phonetic">/raɪt/</span>
+      </div>
+      <div class="meaning-jp">書く</div>
+      <div class="meaning-en">to form letters or words on a surface</div>
+      <div class="example-en">She <strong>write</strong> notes about each training session.</div>
+      <div class="example-jp">彼女は毎回のトレーニングについてメモを書く。</div>
+    </div>
+</div>
+<script>
+function filterCards() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+  let count = 0;
+  cards.forEach(c => {
+    const text = c.textContent.toLowerCase();
+    if (!q || text.includes(q)) { c.classList.remove("hidden"); count++; }
+    else c.classList.add("hidden");
+  });
+  document.getElementById("count").textContent = count + "単語を表示中";
+}
+</script>
+</body>
+</html>
