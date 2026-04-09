@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章並べ替え練習 | Football English</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f3; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; }
+.wrap { width: 100%; max-width: 520px; }
+.progress { display: flex; gap: 4px; margin-bottom: 1.5rem; }
+.pdot { flex: 1; height: 3px; border-radius: 2px; background: #ddd; transition: background 0.3s; }
+.pdot.done { background: #111; }
+.pdot.current { background: #888; }
+.badge { display: inline-block; font-size: 12px; padding: 3px 10px; border-radius: 99px; border: 1px solid #ddd; color: #888; margin-bottom: 8px; }
+.counter { font-size: 13px; color: #bbb; margin-bottom: 6px; }
+.jp { font-size: 17px; font-weight: 500; color: #111; margin-bottom: 1.25rem; line-height: 1.6; }
+.drop-zone { min-height: 52px; border: 1px solid #ddd; border-radius: 14px; padding: 10px 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 1.25rem; background: #f5f5f3; transition: border-color 0.2s, background 0.2s; }
+.drop-zone.correct { border-color: #6dbf8a; background: #f0faf4; }
+.drop-zone.incorrect { border-color: #f09595; background: #fff0f0; }
+.placeholder { font-size: 13px; color: #bbb; }
+.bank { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.25rem; min-height: 44px; }
+.chip { padding: 7px 14px; border: 1px solid #ddd; border-radius: 99px; background: #fff; font-size: 14px; color: #111; cursor: pointer; transition: background 0.12s, transform 0.08s; user-select: none; }
+.chip:hover { background: #f5f5f3; }
+.chip:active { transform: scale(0.96); }
+.chip.used { opacity: 0; pointer-events: none; }
+.chip.in-answer { border-color: #999; }
+.result { font-size: 14px; padding: 10px 14px; border-radius: 10px; margin-bottom: 1rem; display: none; line-height: 1.6; }
+.result.show { display: block; }
+.result.ok { color: #2d8653; background: #f0faf4; border: 1px solid #6dbf8a; }
+.result.ng { color: #c0392b; background: #fff0f0; border: 1px solid #f09595; }
+.result.hint { color: #555; background: #f5f5f3; border: 1px solid #ddd; }
+.hint-inner { display: flex; align-items: center; gap: 10px; }
+.speak-btn { background: none; border: 1px solid #ddd; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s; }
+.speak-btn:hover { background: #eee; }
+.speak-btn svg { width: 14px; height: 14px; fill: #888; }
+.btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { padding: 9px 18px; border: 1px solid #ddd; border-radius: 10px; background: transparent; color: #111; font-size: 14px; cursor: pointer; transition: background 0.15s; }
+.btn:hover { background: #f5f5f3; }
+.btn.primary { background: #111; color: #fff; border-color: #111; }
+.btn.primary:hover { opacity: 0.82; }
+.finish { text-align: center; padding: 4rem 1rem; background: #fff; border-radius: 16px; border: 1px solid #e8e8e6; }
+.finish-score { font-size: 40px; font-weight: 500; color: #111; margin-bottom: 6px; }
+.finish-label { font-size: 14px; color: #888; margin-bottom: 2rem; }
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+  <div class="progress" id="progress"></div>
+  <div class="badge" id="badge"></div>
+  <div class="counter" id="counter"></div>
+  <div class="jp" id="jp"></div>
+  <div class="drop-zone" id="dz"><span class="placeholder">単語をタップして並べよう</span></div>
+  <div class="bank" id="bank"></div>
+  <div class="result" id="result"></div>
+  <div class="btns">
+    <button class="btn primary" id="btn-main" onclick="check()">答え合わせ</button>
+    <button class="btn" onclick="reset()">リセット</button>
+    <button class="btn" onclick="showHint()">答えを見る</button>
+  </div>
+</div>
+
+<script>
+const ALL = [
+  {
+    pos: { jp:"僕は2年前に静岡に来ました。", ans:["I","came","to","Shizuoka","two","years","ago."] },
+    neg: { jp:"僕は2年前に静岡に来ませんでした。", ans:["I","did","not","come","to","Shizuoka","two","years","ago."] },
+    q1:  { jp:"あなたは2年前に静岡に来ましたか？", ans:["Did","you","come","to","Shizuoka","two","years","ago?"] },
+    q2:  { jp:"あなたはいつ静岡に来ましたか？", ans:["When","did","you","come","to","Shizuoka?"] },
+    extra: ["went","played","does","going","have"]
+  },
+  {
+    pos: { jp:"私は静岡に来て初めてうなぎを食べました。", ans:["I","ate","eel","for","the","first","time","after","I","came","to","Shizuoka."] },
+    neg: { jp:"私は静岡に来てもうなぎを食べませんでした。", ans:["I","did","not","eat","eel","after","I","came","to","Shizuoka."] },
+    q1:  { jp:"あなたは静岡に来てからうなぎを食べましたか？", ans:["Did","you","eat","eel","after","you","came","to","Shizuoka?"] },
+    q2:  { jp:"あなたは静岡に来て初めて何を食べましたか？", ans:["What","did","you","eat","for","the","first","time","after","you","came","to","Shizuoka?"] },
+    extra: ["drank","play","went","does","bought"]
+  },
+  {
+    pos: { jp:"僕の元チームメイトは2年前イングランドに行きました。", ans:["My","old","teammate","went","to","England","two","years","ago."] },
+    neg: { jp:"僕の元チームメイトは2年前イングランドに行きませんでした。", ans:["My","old","teammate","did","not","go","to","England","two","years","ago."] },
+    q1:  { jp:"あなたの元チームメイトはイングランドに行きましたか？", ans:["Did","your","old","teammate","go","to","England","two","years","ago?"] },
+    q2:  { jp:"あなたの元チームメイトは2年前どこへ行きましたか？", ans:["Where","did","your","old","teammate","go","two","years","ago?"] },
+    extra: ["came","goes","play","I","ate"]
+  },
+  {
+    pos: { jp:"僕は前回の試合で新しいシューズを使いました。", ans:["I","used","new","cleats","in","the","last","game."] },
+    neg: { jp:"僕は前回の試合で新しいシューズを使いませんでした。", ans:["I","did","not","use","new","cleats","in","the","last","game."] },
+    q1:  { jp:"あなたは前回の試合で新しいシューズを使いましたか？", ans:["Did","you","use","new","cleats","in","the","last","game?"] },
+    q2:  { jp:"あなたは前回の試合で何を使いましたか？", ans:["What","did","you","use","in","the","last","game?"] },
+    extra: ["uses","went","play","does","ate"]
+  },
+  {
+    pos: { jp:"僕たちは新しいユニフォームを試しました。", ans:["We","tried","the","new","kit","for","the","first","time."] },
+    neg: { jp:"僕たちは新しいユニフォームをまだ試していませんでした。", ans:["We","did","not","try","the","new","kit","for","the","first","time."] },
+    q1:  { jp:"あなたたちは新しいユニフォームを試しましたか？", ans:["Did","you","try","the","new","kit","for","the","first","time?"] },
+    q2:  { jp:"あなたたちは初めて何を試しましたか？", ans:["What","did","you","try","for","the","first","time?"] },
+    extra: ["tries","went","I","does","ate"]
+  },
+  {
+    pos: { jp:"今朝6時45分に起きました。", ans:["I","woke","up","at","6:45","this","morning."] },
+    neg: { jp:"今朝6時45分に起きませんでした。", ans:["I","did","not","wake","up","at","6:45","this","morning."] },
+    q1:  { jp:"あなたは今朝6時45分に起きましたか？", ans:["Did","you","wake","up","at","6:45","this","morning?"] },
+    q2:  { jp:"あなたは今朝何時に起きましたか？", ans:["What","time","did","you","wake","up","this","morning?"] },
+    extra: ["slept","play","went","does","ate"]
+  },
+  {
+    pos: { jp:"私は車でグラウンドに行きました。", ans:["I","drove","to","the","ground."] },
+    neg: { jp:"私は車でグラウンドに行きませんでした。", ans:["I","did","not","drive","to","the","ground."] },
+    q1:  { jp:"あなたは車でグラウンドに行きましたか？", ans:["Did","you","drive","to","the","ground?"] },
+    q2:  { jp:"あなたはどうやってグラウンドに行きましたか？", ans:["How","did","you","get","to","the","ground?"] },
+    extra: ["walked","play","does","ate","came"]
+  },
+  {
+    pos: { jp:"私は車の中でヒップホップを聴きました。", ans:["I","listened","to","hip-hop","in","the","car."] },
+    neg: { jp:"私は車の中でヒップホップを聴きませんでした。", ans:["I","did","not","listen","to","hip-hop","in","the","car."] },
+    q1:  { jp:"あなたは車の中でヒップホップを聴きましたか？", ans:["Did","you","listen","to","hip-hop","in","the","car?"] },
+    q2:  { jp:"あなたは車の中で何を聴きましたか？", ans:["What","did","you","listen","to","in","the","car?"] },
+    extra: ["heard","play","went","does","ate"]
+  },
+  {
+    pos: { jp:"今日はきつい練習があったので疲れています。", ans:["We","had","hard","training","today,","so","I","am","very","tired","now."] },
+    neg: { jp:"今日はきつい練習がなかったので疲れていません。", ans:["We","did","not","have","hard","training","today,","so","I","am","not","tired","now."] },
+    q1:  { jp:"あなたたちは今日きつい練習がありましたか？", ans:["Did","you","have","hard","training","today?"] },
+    q2:  { jp:"なぜあなたは今そんなに疲れているのですか？", ans:["Why","are","you","so","tired","now?"] },
+    extra: ["has","play","went","does","ate"]
+  },
+  {
+    pos: { jp:"試合は午後3時に始まりました。", ans:["The","match","began","at","3:00","PM."] },
+    neg: { jp:"試合は午後3時に始まりませんでした。", ans:["The","match","did","not","begin","at","3:00","PM."] },
+    q1:  { jp:"試合は午後3時に始まりましたか？", ans:["Did","the","match","begin","at","3:00","PM?"] },
+    q2:  { jp:"試合はいつ始まりましたか？", ans:["When","did","the","match","begin?"] },
+    extra: ["play","went","I","does","came"]
+  },
+  {
+    pos: { jp:"彼は大事な試合で2点取りました。", ans:["He","scored","two","goals","in","an","important","match."] },
+    neg: { jp:"彼は大事な試合で2点取れませんでした。", ans:["He","did","not","score","two","goals","in","an","important","match."] },
+    q1:  { jp:"彼は大事な試合で2点取りましたか？", ans:["Did","he","score","two","goals","in","an","important","match?"] },
+    q2:  { jp:"彼は大事な試合で何点取りましたか？", ans:["How","many","goals","did","he","score","in","the","important","match?"] },
+    extra: ["play","went","I","does","ate"]
+  },
+  {
+    pos: { jp:"私は試合の後とても疲れていました。", ans:["I","felt","very","tired","after","the","match."] },
+    neg: { jp:"私は試合の後あまり疲れていませんでした。", ans:["I","did","not","feel","very","tired","after","the","match."] },
+    q1:  { jp:"あなたは試合の後とても疲れていましたか？", ans:["Did","you","feel","very","tired","after","the","match?"] },
+    q2:  { jp:"あなたは試合の後どんな気持ちでしたか？", ans:["How","did","you","feel","after","the","match?"] },
+    extra: ["play","went","does","ate","came"]
+  },
+  {
+    pos: { jp:"私たちは練習の後、ロッカールームを掃除しました。", ans:["We","cleaned","the","locker","room","after","practice."] },
+    neg: { jp:"私たちは練習の後、ロッカールームを掃除しませんでした。", ans:["We","did","not","clean","the","locker","room","after","practice."] },
+    q1:  { jp:"あなたたちは練習の後、ロッカールームを掃除しましたか？", ans:["Did","you","clean","the","locker","room","after","practice?"] },
+    q2:  { jp:"あなたたちは練習の後、何を掃除しましたか？", ans:["What","did","you","clean","after","practice?"] },
+    extra: ["play","went","I","does","ate"]
+  },
+  {
+    pos: { jp:"私は昨日、新しいチームメイトに会いました。", ans:["I","met","a","new","teammate","yesterday."] },
+    neg: { jp:"私は昨日、新しいチームメイトに会いませんでした。", ans:["I","did","not","meet","a","new","teammate","yesterday."] },
+    q1:  { jp:"あなたは昨日、新しいチームメイトに会いましたか？", ans:["Did","you","meet","a","new","teammate","yesterday?"] },
+    q2:  { jp:"あなたは昨日、誰に会いましたか？", ans:["Who","did","you","meet","yesterday?"] },
+    extra: ["play","went","does","ate","came"]
+  },
+];
+
+const TYPES = ["pos","neg","q1","q2"];
+const LABELS = { pos:"肯定文", neg:"否定文", q1:"疑問文", q2:"疑問文" };
+const TOTAL = 15;
+
+function shuffle(a) {
+  a = [...a];
+  for (let i = a.length-1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function buildSession() {
+  const pool = [];
+  ALL.forEach((s, si) => TYPES.forEach(t => pool.push({ si, t })));
+  let picked = shuffle(pool).slice(0, TOTAL);
+  for (let i = 1; i < picked.length; i++) {
+    if (picked[i].si === picked[i-1].si) {
+      for (let j = i+1; j < picked.length; j++) {
+        if (picked[j].si !== picked[i-1].si) { [picked[i],picked[j]]=[picked[j],picked[i]]; break; }
+      }
+    }
+  }
+  return picked;
+}
+
+speechSynthesis.getVoices();
+speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
+function speak(text) {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = 0.85;
+  const vs = speechSynthesis.getVoices();
+  const v = vs.find(v => v.lang === "en-US" && v.name.includes("Google")) ||
+            vs.find(v => v.lang.startsWith("en-US")) ||
+            vs.find(v => v.lang.startsWith("en")) || null;
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+
+let session = buildSession();
+let cur = 0;
+let answered = [];
+let userAnswer = [];
+
+function getQ() {
+  const { si, t } = session[cur];
+  const s = ALL[si];
+  return { jp: s[t].jp, answer: s[t].ans, label: LABELS[t], extra: s.extra };
+}
+
+function renderProgress() {
+  document.getElementById("progress").innerHTML = session.map((_,i) =>
+    '<div class="pdot ' + (i<cur?"done":i===cur?"current":"") + '"></div>'
+  ).join("");
+}
+
+function renderQ() {
+  const q = getQ();
+  document.getElementById("badge").textContent = q.label;
+  document.getElementById("counter").textContent = (cur+1) + " / " + TOTAL;
+  document.getElementById("jp").textContent = q.jp;
+  document.getElementById("result").className = "result";
+  document.getElementById("dz").className = "drop-zone";
+  userAnswer = [];
+  renderDZ();
+  const allWords = shuffle([...q.answer, ...q.extra.slice(0,3)]);
+  document.getElementById("bank").innerHTML = allWords.map(function(w,i) {
+    return '<div class="chip" id="chip-'+i+'" data-word="'+w+'" onclick="addWord('+i+')">'+w+'</div>';
+  }).join("");
+  renderProgress();
+  const btn = document.getElementById("btn-main");
+  btn.textContent = "答え合わせ";
+  btn.onclick = check;
+}
+
+function renderDZ() {
+  document.getElementById("dz").innerHTML = userAnswer.length === 0
+    ? '<span class="placeholder">単語をタップして並べよう</span>'
+    : userAnswer.map(function(item,pos) {
+        return '<div class="chip in-answer" onclick="removeWord('+pos+')">'+item.word+'</div>';
+      }).join("");
+}
+
+function addWord(i) {
+  const chip = document.getElementById("chip-"+i);
+  if (!chip || chip.classList.contains("used")) return;
+  chip.classList.add("used");
+  userAnswer.push({ word: chip.dataset.word, idx: i });
+  renderDZ();
+}
+
+function removeWord(pos) {
+  const item = userAnswer[pos];
+  userAnswer.splice(pos, 1);
+  const chip = document.getElementById("chip-"+item.idx);
+  if (chip) chip.classList.remove("used");
+  renderDZ();
+}
+
+function check() {
+  const q = getQ();
+  const ua = userAnswer.map(function(a) { return a.word; }).join(" ");
+  const correct = q.answer.join(" ");
+  const resultEl = document.getElementById("result");
+  const dz = document.getElementById("dz");
+  const ok = ua === correct;
+  answered.push(ok);
+  if (ok) {
+    resultEl.className = "result ok show";
+    resultEl.textContent = "正解！";
+    dz.className = "drop-zone correct";
+  } else {
+    resultEl.className = "result ng show";
+    resultEl.textContent = "もう一度試してみよう";
+    dz.className = "drop-zone incorrect";
+  }
+  const btn = document.getElementById("btn-main");
+  btn.textContent = cur < TOTAL-1 ? "次の問題 →" : "結果を見る";
+  btn.onclick = next;
+}
+
+function next() {
+  cur++;
+  if (cur >= TOTAL) { showFinish(); return; }
+  renderQ();
+}
+
+function reset() {
+  userAnswer = [];
+  document.querySelectorAll(".chip").forEach(function(c) { c.classList.remove("used"); });
+  document.getElementById("result").className = "result";
+  document.getElementById("dz").className = "drop-zone";
+  renderDZ();
+  const btn = document.getElementById("btn-main");
+  btn.textContent = "答え合わせ";
+  btn.onclick = check;
+}
+
+function showHint() {
+  const q = getQ();
+  const text = q.answer.join(" ");
+  const resultEl = document.getElementById("result");
+  resultEl.className = "result hint show";
+  resultEl.innerHTML =
+    '<div class="hint-inner">' +
+      '<button class="speak-btn" onclick="speak(this.dataset.text)" data-text="' + text.replace(/"/g, '&quot;') + '">' +
+        '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>' +
+      '</button>' +
+      '<span>答え: ' + text + '</span>' +
+    '</div>';
+  speak(text);
+}
+
+function showFinish() {
+  const correct = answered.filter(Boolean).length;
+  document.getElementById("wrap").innerHTML =
+    '<div class="finish">' +
+      '<div class="finish-score">' + correct + ' / ' + TOTAL + '</div>' +
+      '<div class="finish-label">正解数</div>' +
+      '<button class="btn primary" onclick="restart()">もう一度やる</button>' +
+    '</div>';
+}
+
+function restart() {
+  session = buildSession(); cur = 0; answered = []; userAnswer = [];
+  document.getElementById("wrap").innerHTML =
+    '<div class="progress" id="progress"></div>' +
+    '<div class="badge" id="badge"></div>' +
+    '<div class="counter" id="counter"></div>' +
+    '<div class="jp" id="jp"></div>' +
+    '<div class="drop-zone" id="dz"><span class="placeholder">単語をタップして並べよう</span></div>' +
+    '<div class="bank" id="bank"></div>' +
+    '<div class="result" id="result"></div>' +
+    '<div class="btns">' +
+      '<button class="btn primary" id="btn-main" onclick="check()">答え合わせ</button>' +
+      '<button class="btn" onclick="reset()">リセット</button>' +
+      '<button class="btn" onclick="showHint()">答えを見る</button>' +
+    '</div>';
+  renderQ();
+}
+
+renderQ();
+</script>
+</body>
+</html>
