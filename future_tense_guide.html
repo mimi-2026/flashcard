@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Tense — 未来形の質問の仕方</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #faf9f6;
+    --accent: #e8533a;
+    --mid: #6b6b7a;
+    --rule: #e2e0d8;
+    --will-bg: #fff8f0;
+    --will-border: #f0a06a;
+    --going-bg: #f0f7ff;
+    --going-border: #7ab3e0;
+    --prog-bg: #f0faf5;
+    --prog-border: #6dbf8a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
+
+  .page { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+
+  /* header */
+  .header { border-bottom: 2px solid var(--ink); padding-bottom: 1.25rem; margin-bottom: 2.5rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .header-left h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 400; line-height: 1.1; color: var(--ink); }
+  .header-left p { font-size: 14px; color: var(--mid); margin-top: 6px; letter-spacing: 0.04em; }
+  .header-badge { background: var(--accent); color: #fff; font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 2px; letter-spacing: 0.06em; white-space: nowrap; }
+
+  /* intro */
+  .intro { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 2.5rem; }
+  .intro-card { border-radius: 6px; padding: 14px 16px; border: 1px solid; }
+  .intro-card.will  { background: var(--will-bg);  border-color: var(--will-border); }
+  .intro-card.going { background: var(--going-bg); border-color: var(--going-border); }
+  .intro-card.prog  { background: var(--prog-bg);  border-color: var(--prog-border); }
+  .intro-card .label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 5px; }
+  .intro-card .form  { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; font-family: monospace; }
+  .intro-card .note  { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+  /* section */
+  .section { margin-bottom: 2.5rem; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
+  .section-title::before { content: ""; display: block; width: 24px; height: 2px; background: var(--accent); flex-shrink: 0; }
+
+  /* pattern table */
+  .pattern-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+  .pattern-table th { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; color: var(--mid); text-align: left; padding: 6px 12px 6px 0; border-bottom: 1px solid var(--rule); }
+  .pattern-table td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; font-size: 14px; line-height: 1.6; }
+  .pattern-table td:first-child { font-weight: 500; font-size: 13px; color: var(--mid); white-space: nowrap; padding-right: 16px; }
+  .pattern-table td code { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--ink); font-style: italic; }
+  .pattern-table td .jp { font-size: 12px; color: var(--mid); margin-top: 2px; }
+  .highlight { color: var(--accent); font-weight: 500; }
+
+  /* question cards grid */
+  .q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .q-card { border-radius: 8px; padding: 16px; border: 1px solid var(--rule); background: #fff; }
+  .q-card .qtype { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; color: var(--mid); margin-bottom: 8px; }
+  .q-card .formula { font-family: monospace; font-size: 13px; background: var(--paper); border-radius: 4px; padding: 6px 10px; margin-bottom: 10px; color: var(--ink); line-height: 1.6; }
+  .q-card .formula .hl { color: var(--accent); font-weight: 700; }
+  .example-item { margin-bottom: 8px; }
+  .example-item .en { font-size: 14px; color: var(--ink); line-height: 1.5; }
+  .example-item .ja { font-size: 12px; color: var(--mid); margin-top: 1px; }
+
+  /* wh words */
+  .wh-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 1.5rem; }
+  .wh-chip { background: var(--ink); color: #fff; border-radius: 4px; padding: 8px 12px; text-align: center; }
+  .wh-chip .word { font-family: 'DM Serif Display', serif; font-size: 18px; font-style: italic; }
+  .wh-chip .meaning { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+
+  /* conversation */
+  .conv-block { background: #fff; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+  .conv-header { background: var(--ink); color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; padding: 6px 14px; }
+  .conv-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .conv-line { display: flex; gap: 10px; align-items: flex-start; }
+  .conv-line .speaker { font-size: 11px; font-weight: 500; color: var(--mid); min-width: 22px; margin-top: 2px; }
+  .conv-line .text { font-size: 14px; color: var(--ink); line-height: 1.5; }
+  .conv-line .text .ja { font-size: 12px; color: var(--mid); margin-top: 1px; }
+  .conv-line .text em { font-style: normal; color: var(--accent); font-weight: 500; }
+
+  /* footer */
+  .footer { border-top: 1px solid var(--rule); padding-top: 1rem; margin-top: 3rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--mid); }
+
+  @media (max-width: 600px) {
+    .intro { grid-template-columns: 1fr; }
+    .q-grid { grid-template-columns: 1fr; }
+    .wh-grid { grid-template-columns: repeat(2, 1fr); }
+    .page { padding: 1.5rem 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>未来形の<br>質問の仕方</h1>
+      <p>Football English — Future Tense Questions</p>
+    </div>
+    <div class="header-badge">UNIT 8</div>
+  </div>
+
+  <!-- 3形式の概要 -->
+  <div class="intro">
+    <div class="intro-card will">
+      <div class="label">WILL</div>
+      <div class="form">will + 動詞の原形</div>
+      <div class="note">その場で決めた予定、予測</div>
+    </div>
+    <div class="intro-card going">
+      <div class="label">BE GOING TO</div>
+      <div class="form">am/is/are going to + 動詞</div>
+      <div class="note">すでに決まっている予定・計画</div>
+    </div>
+    <div class="intro-card prog">
+      <div class="label">現在進行形</div>
+      <div class="form">am/is/are + 動詞ing</div>
+      <div class="note">確定している近い未来の予定</div>
+    </div>
+  </div>
+
+  <!-- Yes/No 質問 -->
+  <div class="section">
+    <div class="section-title">Yes / No 疑問文</div>
+    <table class="pattern-table">
+      <thead>
+        <tr>
+          <th>形式</th>
+          <th>語順（公式）</th>
+          <th>例文</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>will</td>
+          <td>
+            <code><span class="highlight">Will</span> + 主語 + 動詞の原形 ...?</code>
+            <div class="jp">答え方: Yes, I will. / No, I won't.</div>
+          </td>
+          <td>
+            <span class="highlight">Will</span> you play in the next match?<br>
+            <div class="jp">次の試合に出ますか？</div>
+          </td>
+        </tr>
+        <tr>
+          <td>be going to</td>
+          <td>
+            <code><span class="highlight">Are/Is</span> + 主語 + going to + 動詞 ...?</code>
+            <div class="jp">答え方: Yes, I am. / No, I'm not.</div>
+          </td>
+          <td>
+            <span class="highlight">Are</span> you going to train tomorrow?<br>
+            <div class="jp">明日トレーニングしますか？</div>
+          </td>
+        </tr>
+        <tr>
+          <td>現在進行形</td>
+          <td>
+            <code><span class="highlight">Are/Is</span> + 主語 + 動詞ing ...?</code>
+            <div class="jp">答え方: Yes, I am. / No, I'm not.</div>
+          </td>
+          <td>
+            <span class="highlight">Are</span> you playing on Sunday?<br>
+            <div class="jp">日曜日に試合がありますか？</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Wh- 質問 -->
+  <div class="section">
+    <div class="section-title">Wh- 疑問文（詳しく聞く）</div>
+
+    <div class="wh-grid">
+      <div class="wh-chip"><div class="word">What</div><div class="meaning">何を</div></div>
+      <div class="wh-chip"><div class="word">Where</div><div class="meaning">どこで</div></div>
+      <div class="wh-chip"><div class="word">When</div><div class="meaning">いつ</div></div>
+      <div class="wh-chip"><div class="word">Who</div><div class="meaning">誰と・誰が</div></div>
+      <div class="wh-chip"><div class="word">How</div><div class="meaning">どうやって</div></div>
+      <div class="wh-chip"><div class="word">Why</div><div class="meaning">なぜ</div></div>
+      <div class="wh-chip"><div class="word">How long</div><div class="meaning">どのくらい</div></div>
+      <div class="wh-chip"><div class="word">How many</div><div class="meaning">いくつ</div></div>
+    </div>
+
+    <div class="q-grid">
+      <div class="q-card">
+        <div class="qtype">WILL を使う場合</div>
+        <div class="formula"><span class="hl">Wh-</span> + will + 主語 + 動詞の原形 ...?</div>
+        <div class="example-item">
+          <div class="en"><em>What</em> will you do after the match?</div>
+          <div class="ja">試合の後、何をしますか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>Where</em> will the team stay?</div>
+          <div class="ja">チームはどこに泊まりますか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>Who</em> will score the first goal?</div>
+          <div class="ja">最初にゴールを決めるのは誰ですか？</div>
+        </div>
+      </div>
+
+      <div class="q-card">
+        <div class="qtype">BE GOING TO を使う場合</div>
+        <div class="formula"><span class="hl">Wh-</span> + are/is + 主語 + going to + 動詞 ...?</div>
+        <div class="example-item">
+          <div class="en"><em>What</em> are you going to eat before the game?</div>
+          <div class="ja">試合前に何を食べる予定ですか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>Where</em> are you going to practice?</div>
+          <div class="ja">どこで練習する予定ですか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>How</em> are you going to get to the stadium?</div>
+          <div class="ja">スタジアムにはどうやって行きますか？</div>
+        </div>
+      </div>
+
+      <div class="q-card">
+        <div class="qtype">現在進行形を使う場合</div>
+        <div class="formula"><span class="hl">Wh-</span> + are/is + 主語 + 動詞ing ...?</div>
+        <div class="example-item">
+          <div class="en"><em>What</em> are you doing this weekend?</div>
+          <div class="ja">今週末は何をしますか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>Where</em> are you going after training?</div>
+          <div class="ja">トレーニングの後どこへ行きますか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>Who</em> are you playing against next week?</div>
+          <div class="ja">来週はどこと対戦しますか？</div>
+        </div>
+      </div>
+
+      <div class="q-card">
+        <div class="qtype">How を使ったバリエーション</div>
+        <div class="formula"><span class="hl">How + 形容詞/副詞</span> + will/are ...?</div>
+        <div class="example-item">
+          <div class="en"><em>How long</em> are you going to train today?</div>
+          <div class="ja">今日は何時間トレーニングしますか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>How many</em> goals will you score this season?</div>
+          <div class="ja">今シーズン何点取りますか？</div>
+        </div>
+        <div class="example-item">
+          <div class="en"><em>How often</em> will you practice this week?</div>
+          <div class="ja">今週は何回練習しますか？</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 会話例 -->
+  <div class="section">
+    <div class="section-title">会話例で練習</div>
+
+    <div class="conv-block">
+      <div class="conv-header">CONVERSATION 1 — 試合について</div>
+      <div class="conv-body">
+        <div class="conv-line">
+          <div class="speaker">A</div>
+          <div class="text"><em>Are</em> you going to play in Saturday's match?<div class="ja">土曜日の試合に出る予定ですか？</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">B</div>
+          <div class="text">Yes, I am. I've been training hard this week.<div class="ja">はい。今週ハードに練習しました。</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">A</div>
+          <div class="text"><em>What</em> position are you going to play?<div class="ja">どのポジションでプレーする予定ですか？</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">B</div>
+          <div class="text">I <em>will</em> probably play as a striker.<div class="ja">おそらくストライカーでプレーすると思います。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="conv-block">
+      <div class="conv-header">CONVERSATION 2 — 週末の予定</div>
+      <div class="conv-body">
+        <div class="conv-line">
+          <div class="speaker">A</div>
+          <div class="text"><em>What</em> are you doing this weekend?<div class="ja">今週末は何をしますか？</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">B</div>
+          <div class="text">I'm going to watch the Champions League final.<div class="ja">チャンピオンズリーグの決勝を見る予定です。</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">A</div>
+          <div class="text"><em>Who</em> do you think will win?<div class="ja">どちらが勝つと思いますか？</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">B</div>
+          <div class="text">I think the home team <em>will</em> win. They're in great form.<div class="ja">ホームチームが勝つと思います。好調ですから。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="conv-block">
+      <div class="conv-header">CONVERSATION 3 — 将来の目標</div>
+      <div class="conv-body">
+        <div class="conv-line">
+          <div class="speaker">A</div>
+          <div class="text"><em>Where</em> are you going to play next season?<div class="ja">来シーズンはどこでプレーする予定ですか？</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">B</div>
+          <div class="text">I'm still deciding, but I <em>might</em> move to a club in Europe.<div class="ja">まだ決めていませんが、ヨーロッパのクラブに移籍するかもしれません。</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">A</div>
+          <div class="text"><em>How</em> are you going to prepare for that?<div class="ja">そのためにどんな準備をしますか？</div></div>
+        </div>
+        <div class="conv-line">
+          <div class="speaker">B</div>
+          <div class="text">I <em>will</em> study English every day and train twice a day.<div class="ja">毎日英語を勉強して、1日2回練習します。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- まとめ -->
+  <div class="section">
+    <div class="section-title">まとめ — どれを使う？</div>
+    <table class="pattern-table">
+      <thead>
+        <tr><th>形式</th><th>使うシーン</th><th>例</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>will</td>
+          <td>その場の判断・予測・約束</td>
+          <td>I think it <span class="highlight">will</span> rain tomorrow.</td>
+        </tr>
+        <tr>
+          <td>be going to</td>
+          <td>すでに決まっている計画</td>
+          <td>I<span class="highlight">'m going to</span> train at 6am.</td>
+        </tr>
+        <tr>
+          <td>現在進行形</td>
+          <td>確定した近い未来の予定</td>
+          <td>I<span class="highlight">'m playing</span> on Sunday.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>Football English — Future Tense Questions</span>
+    <span>© 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
