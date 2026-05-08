@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英会話 Interview Practice</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f3; padding: 2rem 1rem 5rem; }
+.page { max-width: 620px; margin: 0 auto; }
+h1 { font-size: 20px; font-weight: 500; color: #111; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: #aaa; margin-bottom: 2rem; }
+
+.card { background: #fff; border: 1px solid #e8e8e6; border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 12px; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.q-num { font-size: 11px; font-weight: 500; color: #bbb; letter-spacing: 0.06em; margin-bottom: 6px; }
+.q-en { font-size: 17px; font-weight: 500; color: #111; line-height: 1.4; margin-bottom: 4px; }
+.q-ja { font-size: 13px; color: #888; }
+.speak-q-btn { background: none; border: 1px solid #e0e0e0; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; transition: background 0.15s; }
+.speak-q-btn:hover { background: #f5f5f3; }
+.speak-q-btn svg { width: 14px; height: 14px; fill: #999; }
+
+.divider { height: 1px; background: #f0f0ee; margin: 10px 0; }
+
+.a-label { font-size: 10px; font-weight: 500; color: #bbb; letter-spacing: 0.07em; margin-bottom: 6px; }
+.a-en { font-size: 14px; color: #111; line-height: 1.7; margin-bottom: 3px; }
+.a-ja { font-size: 12px; color: #888; line-height: 1.6; }
+.a-note { font-size: 12px; color: #e8533a; margin-top: 5px; font-style: italic; }
+
+.speak-a-btn { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; background: none; border: 1px solid #e0e0e0; border-radius: 99px; padding: 4px 10px; font-size: 11px; color: #888; cursor: pointer; transition: background 0.15s; }
+.speak-a-btn:hover { background: #f5f5f3; }
+.speak-a-btn svg { width: 11px; height: 11px; fill: #888; }
+
+.free-label { font-size: 10px; font-weight: 500; color: #bbb; letter-spacing: 0.07em; margin-bottom: 6px; }
+textarea { width: 100%; border: 1px solid #e8e8e6; border-radius: 8px; padding: 10px 12px; font-size: 14px; color: #111; font-family: inherit; line-height: 1.6; resize: vertical; min-height: 70px; background: #faf9f6; outline: none; transition: border-color 0.2s; }
+textarea:focus { border-color: #aaa; background: #fff; }
+textarea::placeholder { color: #ccc; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Interview Practice</h1>
+  <p class="subtitle">全30問 — 答えのない問題は自分の言葉で記入しましょう</p>
+
+  <!-- Q1 -->
+  <div class="card">
+    <div class="q-num">Q1 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What do you do for a living?</div>
+        <div class="q-ja">職業はなんですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What do you do for a living?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I'm a professional soccer player.</div>
+    <div class="a-ja">僕はプロサッカー選手です。</div>
+    <button class="speak-a-btn" onclick="speakText('I\'m a professional soccer player.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card">
+    <div class="q-num">Q2 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Which team do you play for?</div>
+        <div class="q-ja">どのチームでプレーしていますか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Which team do you play for?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I play for Shimizu S-Pulse.</div>
+    <div class="a-ja">僕は清水エスパルスでプレーしています。</div>
+    <button class="speak-a-btn" onclick="speakText('I play for Shimizu S-Pulse.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card">
+    <div class="q-num">Q3 — Press conference</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What influenced your decision to sign this contract with this team?</div>
+        <div class="q-ja">なぜこのチームと契約することに決めたのですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What influenced your decision to sign this contract with this team?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card">
+    <div class="q-num">Q4 — Press conference</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What was your first impression of this club?</div>
+        <div class="q-ja">チームの第一印象はどうですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What was your first impression of this club?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card">
+    <div class="q-num">Q5 — Press conference</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What are your goals and expectations for the upcoming seasons?</div>
+        <div class="q-ja">今後のシーズンに対する目標や期待することは何ですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What are your goals and expectations for the upcoming seasons?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card">
+    <div class="q-num">Q6 — Press conference</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What kind of role do you see yourself playing on the team this season?</div>
+        <div class="q-ja">今シーズンのチームでのあなた自身の役割をどのように考えていますか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What kind of role do you see yourself playing on the team this season?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q7 -->
+  <div class="card">
+    <div class="q-num">Q7 — Press conference</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What can the fans expect to see when you play for the club?</div>
+        <div class="q-ja">ファンにあなたの特徴を教えてください。</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What can the fans expect to see when you play for the club?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q8 -->
+  <div class="card">
+    <div class="q-num">Q8 — Press conference</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">How do you assess your own form this season?</div>
+        <div class="q-ja">今季のコンディションはどうですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('How do you assess your own form this season?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card">
+    <div class="q-num">Q9 — Press conference</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Finally, do you have a message for the supporters?</div>
+        <div class="q-ja">最後に応援しているファンに向けてメッセージをお願いします。</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Finally, do you have a message for the supporters?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card">
+    <div class="q-num">Q10 — Overseas transfer</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Who or what influenced your decision to move overseas?</div>
+        <div class="q-ja">誰が、または何があなたの海外移籍の決断に影響を与えましたか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Who or what influenced your decision to move overseas?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q11 -->
+  <div class="card">
+    <div class="q-num">Q11 — Overseas transfer</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">How are you finding life here?</div>
+        <div class="q-ja">こちらでの生活はどうですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('How are you finding life here?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q12 -->
+  <div class="card">
+    <div class="q-num">Q12 — Overseas transfer</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Did you come alone or with your family?</div>
+        <div class="q-ja">一人で来ましたか？家族と一緒ですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Did you come alone or with your family?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q13 -->
+  <div class="card">
+    <div class="q-num">Q13 — Overseas transfer</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What do you miss most about Japan?</div>
+        <div class="q-ja">日本で一番恋しいものは何ですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What do you miss most about Japan?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q14 -->
+  <div class="card">
+    <div class="q-num">Q14 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What is your role in the team?</div>
+        <div class="q-ja">チームの中でのあなたの役割は何ですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What is your role in the team?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I have two main responsibilities on the team. Technically, winning the ball back and keeping possession. I also help keep the team united.</div>
+    <div class="a-ja">チームで2つの責務があります。技術的にはボールを奪うこと、保持することです。またチームの団結を維持することも担っています。</div>
+    <button class="speak-a-btn" onclick="speakText('I have two main responsibilities on the team. Technically, winning the ball back and keeping possession. I also help keep the team united.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q15 -->
+  <div class="card">
+    <div class="q-num">Q15 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Tell me about your personal strengths.</div>
+        <div class="q-ja">あなたの強みを教えてください。</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Tell me about your personal strengths.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I can play at high intensity with a box-to-box style. I also excel at winning the ball back.</div>
+    <div class="a-ja">高い強度でボックス・トゥ・ボックスのスタイルでプレーできます。ボールを奪い返すことにも自信があります。</div>
+    <button class="speak-a-btn" onclick="speakText('I can play at high intensity with a box-to-box style. I also excel at winning the ball back.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q16 -->
+  <div class="card">
+    <div class="q-num">Q16 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What is your goal in your career?</div>
+        <div class="q-ja">キャリアにおける、あなたの目標はなんですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What is your goal in your career?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I want to score goals for the Japan national team and also win the World Cup.</div>
+    <div class="a-ja">日本代表のためにゴールを決めて、ワールドカップでも優勝したいです。</div>
+    <button class="speak-a-btn" onclick="speakText('I want to score goals for the Japan national team and also win the World Cup.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q17 -->
+  <div class="card">
+    <div class="q-num">Q17 — About your team</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Why did you join the current team?</div>
+        <div class="q-ja">なぜ今のチームに来ましたか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Why did you join the current team?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q18 -->
+  <div class="card">
+    <div class="q-num">Q18 — About your team</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What do you like about your team?</div>
+        <div class="q-ja">チームのどんなところが好きですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What do you like about your team?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q19 -->
+  <div class="card">
+    <div class="q-num">Q19 — About your team</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Who do you think is the most influential player on the team and why?</div>
+        <div class="q-ja">誰が一番影響力のある選手だと思いますか？理由は？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Who do you think is the most influential player on the team and why?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q20 -->
+  <div class="card">
+    <div class="q-num">Q20 — About your team</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">How would you describe the team chemistry and atmosphere in the locker room?</div>
+        <div class="q-ja">ロッカールームでのチームの雰囲気はどんな感じですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('How would you describe the team chemistry and atmosphere in the locker room?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q21 -->
+  <div class="card">
+    <div class="q-num">Q21 — About your team</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What are the team's main strengths and areas you need to improve on this season?</div>
+        <div class="q-ja">チームの強みと今シーズン改善すべき点を教えてください。</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What are the team\'s main strengths and areas you need to improve on this season?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q22 -->
+  <div class="card">
+    <div class="q-num">Q22 — About your team</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What are your team's realistic goals for this season, and do you believe you can achieve them?</div>
+        <div class="q-ja">今季のチームの現実的な目標は？また、達成できると思いますか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What are your team\'s realistic goals for this season, and do you believe you can achieve them?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="free-label">YOUR ANSWER</div>
+    <textarea placeholder="英語で答えを書いてみましょう..."></textarea>
+  </div>
+
+  <!-- Q23 -->
+  <div class="card">
+    <div class="q-num">Q23 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Who's your favorite soccer player?</div>
+        <div class="q-ja">1番好きな選手は誰ですか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Who is your favorite soccer player?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">Chong Tese. He used to be my teammate.</div>
+    <div class="a-ja">鄭大世です。彼は昔、僕のチームメイトでした。</div>
+    <div class="a-note">used to + 動詞の原形：昔よく〜した／だった</div>
+    <button class="speak-a-btn" onclick="speakText('Chong Tese. He used to be my teammate.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q24 -->
+  <div class="card">
+    <div class="q-num">Q24 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Can I ask about your family?</div>
+        <div class="q-ja">家族について教えてください。</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Can I ask about your family?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I have a family of five: my father, my mother, two older brothers and me. My mother is a very loving person. My brothers always cheer me on. I truly love my family from the bottom of my heart.</div>
+    <div class="a-ja">私の家族は父、母、兄2人そして私の5人家族です。母はとても愛のある人です。兄たちはいつも応援してくれています。家族を心から愛しています。</div>
+    <button class="speak-a-btn" onclick="speakText('I have a family of five. My mother is a very loving person. I truly love my family from the bottom of my heart.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q25 -->
+  <div class="card">
+    <div class="q-num">Q25 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">When did you start playing football?</div>
+        <div class="q-ja">いつからサッカーを始めましたか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('When did you start playing football?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I started playing football when I was in the first grade of elementary school.</div>
+    <div class="a-ja">小学校1年生の時に、サッカーを始めました。</div>
+    <button class="speak-a-btn" onclick="speakText('I started playing football when I was in the first grade of elementary school.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q26 -->
+  <div class="card">
+    <div class="q-num">Q26 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">When did you start studying English?</div>
+        <div class="q-ja">英語はいつから勉強し始めましたか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('When did you start studying English?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I started studying English 3 years ago.</div>
+    <div class="a-ja">私は3年前に英語の勉強を始めました。</div>
+    <button class="speak-a-btn" onclick="speakText('I started studying English 3 years ago.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q27 -->
+  <div class="card">
+    <div class="q-num">Q27 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What is your favorite food?</div>
+        <div class="q-ja">1番好きな食べ物は？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What is your favorite food?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">My favorite food is stuffed peppers with meat.</div>
+    <div class="a-ja">僕の好きな食べ物はピーマンの肉詰めです。</div>
+    <button class="speak-a-btn" onclick="speakText('My favorite food is stuffed peppers with meat.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q28 -->
+  <div class="card">
+    <div class="q-num">Q28 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What do you do in your free time?</div>
+        <div class="q-ja">時間があるときは、何をしますか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What do you do in your free time?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">When I have free time, I listen to music and sing along passionately in my room.</div>
+    <div class="a-ja">時間がある時は、音楽を聴いたり、部屋で大声で曲に合わせて歌っています。</div>
+    <button class="speak-a-btn" onclick="speakText('When I have free time, I listen to music and sing along passionately in my room.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q29 -->
+  <div class="card">
+    <div class="q-num">Q29 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">Do you have any siblings?</div>
+        <div class="q-ja">兄弟・姉妹はいますか？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('Do you have any siblings?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">I have 2 older brothers. One is 28 and the other is 24 years old.</div>
+    <div class="a-ja">兄が2人います。1人は28歳で、もう1人は24歳です。</div>
+    <button class="speak-a-btn" onclick="speakText('I have 2 older brothers. One is 28 and the other is 24 years old.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+  <!-- Q30 -->
+  <div class="card">
+    <div class="q-num">Q30 — About yourself</div>
+    <div class="card-top">
+      <div>
+        <div class="q-en">What is your favorite song to listen to prior to the game?</div>
+        <div class="q-ja">試合前に聞くお気に入りの曲は？</div>
+      </div>
+      <button class="speak-q-btn" onclick="speakText('What is your favorite song to listen to prior to the game?')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </div>
+    <div class="divider"></div>
+    <div class="a-label">ANSWER</div>
+    <div class="a-en">It depends, but I like to listen to On and On.</div>
+    <div class="a-ja">気分や状況によりますが、On and Onを聴くことが好きです。</div>
+    <button class="speak-a-btn" onclick="speakText('It depends, but I like to listen to On and On.')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>発音を聞く</button>
+  </div>
+
+</div>
+<script>
+speechSynthesis.getVoices();
+speechSynthesis.onvoiceschanged = function() { speechSynthesis.getVoices(); };
+function speakText(text) {
+  speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US';
+  u.rate = 0.85;
+  var vs = speechSynthesis.getVoices();
+  var v = null;
+  for (var i = 0; i < vs.length; i++) {
+    if (vs[i].lang === 'en-US' && vs[i].name.indexOf('Google') >= 0) { v = vs[i]; break; }
+  }
+  if (!v) for (var i = 0; i < vs.length; i++) {
+    if (vs[i].lang.indexOf('en') === 0) { v = vs[i]; break; }
+  }
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+</script>
+</body>
+</html>
