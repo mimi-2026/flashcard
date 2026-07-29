@@ -106,6 +106,38 @@
     text-align: right;
   }
 
+  /* ---------- Bulletin board ---------- */
+  .board {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 26px;
+  }
+  .board-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+  .board-head h2 { margin: 0; }
+  .board-head .hint { font-size: 11.5px; color: var(--text-faint); }
+  .board-list { display: flex; flex-direction: column; gap: 0; }
+  .board-list .entry {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .board-list .entry:first-child { border-top: none; padding-top: 2px; }
+  .board-list .entry .date {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .board-empty { font-size: 13px; color: var(--text-faint); }
+
   /* ---------- Legend ---------- */
   .legend {
     display: flex;
@@ -260,6 +292,17 @@
   .kv { font-size: 13px; line-height: 1.7; }
   .kv b { color: var(--text-muted); font-weight: 500; }
 
+  .hq-note {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .hq-note.empty { color: var(--text-faint); font-style: italic; background: var(--surface-2); border-left-color: var(--border); }
+
   .log-box {
     max-height: 220px;
     overflow-y: auto;
@@ -308,6 +351,14 @@
 </style>
 
 <div class="wrap">
+  <section class="board">
+    <div class="board-head">
+      <h2>Bulletin Board</h2>
+      <span class="hint">Newest first · tell Claude what to post and it goes here</span>
+    </div>
+    <div class="board-list" id="boardList"></div>
+  </section>
+
   <header class="page">
     <div>
       <p class="eyebrow">Production Coordination · Nouslib Japan</p>
@@ -345,8 +396,9 @@
 
   <div class="list" id="list"></div>
 
-  <section class="cancel-section">
+  <section class="cancel-section" id="cancelSection">
     <h2>Cancellation Policy by Platform</h2>
+    <p class="header-note" style="text-align:left;max-width:none;margin:-4px 0 14px;">Individual creators only — platform escrow/cancellation rules don't apply to agencies.</p>
     <div class="cancel-grid" id="cancelGrid"></div>
   </section>
 
@@ -367,6 +419,7 @@
       "deliverables": "Instagram content, Reels, Beauty, Fitness, Lifestyle",
       "conceptDev": "Likely",
       "nextStep": "Confirm interest / comfort being associated with the app",
+      "hqComment": null,
       "log": "あお様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、オープンマインドな関係性のあり方を提案するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\n\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、\nあお様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、ブランドについてや、動画制作の目的をまとめたシートをもとに、\nクリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。\nまた、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細や参考素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n金額：プロフィールには、時間単価：1000~1500円と記載がありますが、詳細お聞かせください。\n時給換算の場合、1投稿作成あたり、大体どれくらいの時間を要するでしょうか。\n納期：8月中に投稿が出来ればと思っておりますが、納期を伺えますか。\n\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n\n\n松井"
     },
     {
@@ -380,6 +433,7 @@
       "deliverables": "Advertising videos, Reels, TikTok, Motion graphics. Note: planning/composition, script & editing only — does NOT film (needs external footage or AI material).",
       "conceptDev": "Yes",
       "nextStep": "Send creative brief and confirm whether production is possible without filming; confirm number of videos",
+      "hqComment": null,
       "log": "[Jul 28 返信]\n・企画・構成案／台本作成／編集：対応可能\n・撮影：非対応。別途カメラマン／クリエイターに依頼し、その素材をもとに構成・編集で対応。またはAI素材での編集も可能。\n・制作本数：希望本数があればご相談可能\n・納期：8月17日納品でしたら、素材のお渡し時期次第で対応可能\n・ポートフォリオ：https://chillroom.net/sample-video/\n\n――― 初回アウトリーチ ―――\nA.Bear様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、多様な価値観や恋愛・出会いのかたちを尊重するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\n\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、A.Bear様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、クリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。また、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細をまとめたクリエイティブブリーフや素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n制作本数：月に最大何本作成していただくことが可能でしょうか。\n納期：システム上は仮で、8月17日としておりますが、納期目安を伺えますか。\n弊社としては、8月中に投稿が出来ればと思っております。\nポートフォリオ：ストリートインタビュー形式の動画を拝見しました。こういった形式に興味がありますが、他にも同様の動画がありましたら、拝見することは可能でしょうか。\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n"
     },
     {
@@ -393,6 +447,7 @@
       "deliverables": "SNS advertising, Reels, TikTok",
       "conceptDev": "TBC",
       "nextStep": "Confirm whether she develops her own concepts",
+      "hqComment": null,
       "log": "依頼したい動画の本数：2-3本(要相談)\n1本あたり完成動画の分数：15-60秒\nDotto。様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、多様な価値観や恋愛・出会いのかたちを尊重するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\n\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、Dotto。様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、クリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。また、ご制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\n現時点では、制作するUGCの方向性として、例えば以下のようなクリエイティブを想定しております。\n\n・POV・ストーリーテリング形式\n・アプリのデモ・レビュー形式\n・トレンドやユーモアを取り入れた形式\n・ストリートインタビュー形式\n\nもちろん、これらに限定するものではなく、より効果的なクリエイティブのご提案がございましたら、お聞かせください。\n\n動画や音声、テロップ台本がなく、企画からのご依頼になりますが、このような動画制作を、ご対応いただくことは可能でしょうか。\n\n納期に関しては、最短をお知らせいただけますと幸いです。弊社としては、8月中に投稿・運用が開始できればと思っております。\n\nご興味をお持ちいただけるようでしたら、ご連絡いただけますと幸いです。詳細を記載したクリエイティブブリーフや、ロゴ・イラストレーション画像を含む参考素材をお送りいたします。\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n"
     },
     {
@@ -406,6 +461,7 @@
       "deliverables": "Instagram management, Reels, Beauty, Travel, Lifestyle",
       "conceptDev": "Likely",
       "nextStep": "Confirm concepts + branding fit + hours per UGC video",
+      "hqComment": null,
       "log": "yoshino371様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、\nオープンマインドな関係性のあり方を提案するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、\nyoshino371様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、ブランドについてや、動画制作の目的をまとめたシートをもとに、\nクリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。\nまた、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細や参考素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n金額：プロフィールには、時間単価：1000~円と記載がありますが、詳細お聞かせください。\n時給換算の場合、1投稿作成あたり、大体どれくらいの時間を要するでしょうか。\n納期：8月中に投稿が出来ればと思っておりますが、納期目安を伺えますか。\n\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n\n\n松井"
     },
     {
@@ -419,6 +475,7 @@
       "deliverables": "Instagram content, Reels, Canva design",
       "conceptDev": "TBC",
       "nextStep": "Confirm concept ability + hours per video",
+      "hqComment": null,
       "log": "*Rie様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、\nオープンマインドな関係性のあり方を提案するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、\nyoshino371様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、ブランドについてや、動画制作の目的をまとめたシートをもとに、\nクリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。\nまた、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細や参考素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n金額：プロフィールには、時間単価：1000~円と記載がありますが、詳細お聞かせください。\n時給換算の場合、1投稿作成あたり、大体どれくらいの時間を要するでしょうか。\n納期：8月中に投稿が出来ればと思っておりますが、納期目安を伺えますか。\n\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n\n\n松井"
     },
     {
@@ -432,6 +489,7 @@
       "deliverables": "Short-form editing, Reels, Advertising videos",
       "conceptDev": "TBC",
       "nextStep": "Currently on hiatus",
+      "hqComment": null,
       "log": "Inactive (on hiatus)."
     },
     {
@@ -445,6 +503,7 @@
       "deliverables": "Reels, Short-form production, Content planning, SNS marketing",
       "conceptDev": "Yes",
       "nextStep": "Not being pursued",
+      "hqComment": null,
       "log": "Dropped — no portfolio to review."
     },
     {
@@ -458,6 +517,7 @@
       "deliverables": "Short-form, Reels, TikTok, YouTube Shorts, Motion graphics",
       "conceptDev": "Yes",
       "nextStep": "Not being pursued",
+      "hqComment": null,
       "log": "Dropped — style too anime-inspired."
     },
     {
@@ -471,6 +531,7 @@
       "deliverables": "Commercial production, Script, Filming, Casting",
       "conceptDev": "Yes",
       "nextStep": "Not being pursued",
+      "hqComment": null,
       "log": "Dropped — thin portfolio, undetailed pricing."
     },
     {
@@ -484,6 +545,7 @@
       "deliverables": null,
       "conceptDev": "Yes",
       "nextStep": "Confirm whether we can set up a meeting",
+      "hqComment": null,
       "log": "Production schedule: from ~2 weeks when starting from the planning stage. English communication: possible for production; meetings OK if an interpreter is present."
     },
     {
@@ -497,6 +559,7 @@
       "deliverables": null,
       "conceptDev": "TBC",
       "nextStep": "Awaiting reply on cost for 10 / 15 / 20 videos per month",
+      "hqComment": null,
       "log": "Jul 26: asked for pricing at roughly 10 / 15 / 20 videos per month; awaiting reply. English communication possible."
     },
     {
@@ -510,6 +573,7 @@
       "deliverables": null,
       "conceptDev": "TBC",
       "nextStep": "No response — discontinuing",
+      "hqComment": null,
       "log": "Inquiry sent, but no response so far."
     }
   ],
@@ -529,6 +593,12 @@
       "escrow": "Yes",
       "policy": "Requires mutual agreement. The client cannot cancel unilaterally once the creator has accepted the project."
     }
+  ],
+  "board": [
+    {
+      "date": "2026-07-29",
+      "note": "Tracker rebuilt from the latest creator/agency sheet — 9 individual creators and 3 agencies now tracked here."
+    }
   ]
 }
 </script>
@@ -537,6 +607,7 @@
   const DATA = JSON.parse(document.getElementById("tracker-data").textContent);
   const PARTNERS = DATA.partners;
   const CANCELLATION = DATA.cancellation;
+  const BOARD = DATA.board;
 
   const STAGES = ["inquired", "awaiting_reply", "quote_received", "in_discussion"];
   const META = {
@@ -563,13 +634,28 @@
 
   function renderStats() {
     const counts = {};
-    STATUS_ORDER.forEach(s => counts[s] = 0);
-    PARTNERS.forEach(p => counts[p.status] = (counts[p.status] || 0) + 1);
+    STAGES.forEach(s => counts[s] = 0);
+    PARTNERS.forEach(p => { if (counts[p.status] !== undefined) counts[p.status]++; });
     const el = document.getElementById("stats");
-    el.innerHTML = STATUS_ORDER.map(s => `
+    el.innerHTML = STAGES.map(s => `
       <div class="stat" style="--dot:var(${META[s].dot})">
         <div class="n">${counts[s]}</div>
         <div class="l">${META[s].label}</div>
+      </div>
+    `).join("");
+  }
+
+  function renderBoard() {
+    const el = document.getElementById("boardList");
+    if (!BOARD.length) {
+      el.innerHTML = `<p class="board-empty">No updates posted yet.</p>`;
+      return;
+    }
+    const sorted = BOARD.slice().sort((a,b) => new Date(b.date) - new Date(a.date));
+    el.innerHTML = sorted.map(b => `
+      <div class="entry">
+        <span class="date">${esc(b.date)}</span>
+        <span>${esc(b.note)}</span>
       </div>
     `).join("");
   }
@@ -596,7 +682,7 @@
       ? `<span class="concept-badge"><b>Concept Dev:</b> ${esc(p.conceptDev)}</span>`
       : "";
 
-    const deliverablesHtml = p.deliverables
+    const deliverablesHtml = (p.type !== "Individual Creator" && p.deliverables)
       ? fieldGroup("Strengths / Deliverables", `<p class="kv">${esc(p.deliverables)}</p>`)
       : "";
 
@@ -607,6 +693,10 @@
     const nextStepHtml = p.nextStep
       ? fieldGroup("Next Step", `<p class="kv">${esc(p.nextStep)}</p>`)
       : "";
+
+    const hqHtml = p.hqComment
+      ? fieldGroup("HQ Comment", `<div class="hq-note">${esc(p.hqComment)}</div>`)
+      : fieldGroup("HQ Comment", `<div class="hq-note empty">No comments from HQ yet.</div>`);
 
     const logHtml = p.log
       ? fieldGroup("Log / Notes", `<div class="log-box">${esc(p.log)}</div>`)
@@ -630,6 +720,7 @@
           ${pricingHtml}
           ${deliverablesHtml}
           ${nextStepHtml}
+          ${hqHtml}
           ${logHtml}
         </div>
       </details>
@@ -637,6 +728,11 @@
   }
 
   let activeType = "all";
+
+  function updateCancelVisibility() {
+    document.getElementById("cancelSection").style.display =
+      activeType === "Individual Creator" ? "" : "none";
+  }
 
   function applyFilters() {
     const q = document.getElementById("search").value.trim().toLowerCase();
@@ -682,11 +778,14 @@
     if (!btn) return;
     activeType = btn.dataset.type;
     [...document.getElementById("typeFilter").children].forEach(b => b.classList.toggle("active", b === btn));
+    updateCancelVisibility();
     applyFilters();
   });
 
   renderLegend();
   renderStats();
+  renderBoard();
   applyFilters();
   renderCancellation();
+  updateCancelVisibility();
 </script>
