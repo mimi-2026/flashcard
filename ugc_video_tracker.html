@@ -1,0 +1,657 @@
+<title>UGC Video Partner Pipeline</title>
+<style>
+  :root {
+    --bg: #F3F5F6;
+    --surface: #FFFFFF;
+    --surface-2: #EBEFF1;
+    --border: #DCE2E5;
+    --text: #1D262D;
+    --text-muted: #5B6770;
+    --text-faint: #8B969D;
+    --accent: #0E7C86;
+    --accent-strong: #095E66;
+    --accent-soft: #E1F1F1;
+
+    --c-notcontacted: #7C8994;
+    --c-notcontacted-bg: #E9ECEE;
+    --c-outreach: #2E6FA6;
+    --c-outreach-bg: #E4EDF5;
+    --c-discussion: #A67908;
+    --c-discussion-bg: #F5EBD3;
+    --c-negotiating: #B0631A;
+    --c-negotiating-bg: #F5E5D3;
+    --c-contracted: #6A4FA0;
+    --c-contracted-bg: #EBE5F5;
+    --c-production: #0E7C86;
+    --c-production-bg: #E1F1F1;
+    --c-delivered: #27824A;
+    --c-delivered-bg: #DFF0E5;
+    --c-onhold: #8C6D1F;
+    --c-onhold-bg: #F1E9D3;
+    --c-declined: #B03A30;
+    --c-declined-bg: #F5DFDC;
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10151B;
+      --surface: #1A222B;
+      --surface-2: #212B35;
+      --border: #2C3844;
+      --text: #E4EAEE;
+      --text-muted: #97A5B0;
+      --text-faint: #647380;
+      --accent: #35C5BC;
+      --accent-strong: #5CDCD3;
+      --accent-soft: rgba(53, 197, 188, 0.14);
+
+      --c-notcontacted: #97A5B0;
+      --c-notcontacted-bg: #252F38;
+      --c-outreach: #6DAEE8;
+      --c-outreach-bg: #1D2E3D;
+      --c-discussion: #E0B23B;
+      --c-discussion-bg: #362D18;
+      --c-negotiating: #E08A3E;
+      --c-negotiating-bg: #382614;
+      --c-contracted: #A98FE0;
+      --c-contracted-bg: #2A2440;
+      --c-production: #35C5BC;
+      --c-production-bg: #17322F;
+      --c-delivered: #4CC172;
+      --c-delivered-bg: #16321F;
+      --c-onhold: #D3B15C;
+      --c-onhold-bg: #332B14;
+      --c-declined: #E27366;
+      --c-declined-bg: #3A1F1B;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #10151B;
+    --surface: #1A222B;
+    --surface-2: #212B35;
+    --border: #2C3844;
+    --text: #E4EAEE;
+    --text-muted: #97A5B0;
+    --text-faint: #647380;
+    --accent: #35C5BC;
+    --accent-strong: #5CDCD3;
+    --accent-soft: rgba(53, 197, 188, 0.14);
+    --c-notcontacted: #97A5B0; --c-notcontacted-bg: #252F38;
+    --c-outreach: #6DAEE8; --c-outreach-bg: #1D2E3D;
+    --c-discussion: #E0B23B; --c-discussion-bg: #362D18;
+    --c-negotiating: #E08A3E; --c-negotiating-bg: #382614;
+    --c-contracted: #A98FE0; --c-contracted-bg: #2A2440;
+    --c-production: #35C5BC; --c-production-bg: #17322F;
+    --c-delivered: #4CC172; --c-delivered-bg: #16321F;
+    --c-onhold: #D3B15C; --c-onhold-bg: #332B14;
+    --c-declined: #E27366; --c-declined-bg: #3A1F1B;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #F3F5F6;
+    --surface: #FFFFFF;
+    --surface-2: #EBEFF1;
+    --border: #DCE2E5;
+    --text: #1D262D;
+    --text-muted: #5B6770;
+    --text-faint: #8B969D;
+    --accent: #0E7C86;
+    --accent-strong: #095E66;
+    --accent-soft: #E1F1F1;
+    --c-notcontacted: #7C8994; --c-notcontacted-bg: #E9ECEE;
+    --c-outreach: #2E6FA6; --c-outreach-bg: #E4EDF5;
+    --c-discussion: #A67908; --c-discussion-bg: #F5EBD3;
+    --c-negotiating: #B0631A; --c-negotiating-bg: #F5E5D3;
+    --c-contracted: #6A4FA0; --c-contracted-bg: #EBE5F5;
+    --c-production: #0E7C86; --c-production-bg: #E1F1F1;
+    --c-delivered: #27824A; --c-delivered-bg: #DFF0E5;
+    --c-onhold: #8C6D1F; --c-onhold-bg: #F1E9D3;
+    --c-declined: #B03A30; --c-declined-bg: #F5DFDC;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body { padding: 32px 20px 80px; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  /* ---------- Header ---------- */
+  header.page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .header-note {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    max-width: 360px;
+    line-height: 1.5;
+    text-align: right;
+  }
+  .header-note code {
+    font-family: var(--font-mono);
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 11.5px;
+  }
+
+  /* ---------- Stat tiles ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--dot, var(--accent));
+  }
+  .stat .n {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .stat .l {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .search {
+    flex: 1 1 220px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: var(--font-sans);
+  }
+  .search::placeholder { color: var(--text-faint); }
+  .search:focus, select:focus, button:focus-visible, .card summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 10px;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: var(--font-sans);
+  }
+  .pill-toggle {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .pill-toggle button {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .pill-toggle button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ---------- Cards ---------- */
+  .list { display: flex; flex-direction: column; gap: 10px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0;
+  }
+  .card summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .card summary::-webkit-details-marker { display: none; }
+
+  .avatar {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .id-block { min-width: 180px; }
+  .id-block .name { font-weight: 600; font-size: 14.5px; }
+  .id-block .type {
+    font-size: 11.5px;
+    color: var(--text-faint);
+    margin-top: 2px;
+  }
+
+  .stage-track {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1 1 220px;
+    min-width: 160px;
+  }
+  .stage-track .seg {
+    height: 4px;
+    flex: 1;
+    border-radius: 2px;
+    background: var(--surface-2);
+  }
+  .stage-track .seg.done { background: var(--dot); }
+
+  .status-pill {
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: var(--dot);
+    background: var(--dotbg);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .status-pill::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-faint);
+    white-space: nowrap;
+    margin-left: auto;
+  }
+
+  .chev {
+    color: var(--text-faint);
+    transition: transform .15s;
+    flex-shrink: 0;
+  }
+  details[open] .chev { transform: rotate(90deg); }
+
+  .card-body {
+    padding: 4px 16px 18px 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  @media (max-width: 640px) {
+    .card-body { padding-left: 16px; }
+  }
+
+  .field-group h4 {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .kv { font-size: 13px; line-height: 1.7; }
+  .kv b { color: var(--text-muted); font-weight: 500; }
+  .kv a { color: var(--accent); text-decoration: none; }
+  .kv a:hover { text-decoration: underline; }
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  .hq-note {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .hq-note .who {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .history { list-style: none; margin: 0; padding: 0; font-size: 12.5px; }
+  .history li {
+    padding: 6px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+  }
+  .history li:first-child { border-top: none; }
+  .history .date {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .example-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+    border: 1px dashed var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    margin-left: 6px;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-faint);
+    font-size: 13.5px;
+  }
+
+  footer.page {
+    margin-top: 36px;
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--text-faint);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="page">
+    <div>
+      <p class="eyebrow">Production Coordination</p>
+      <h1>UGC Video Partner Pipeline</h1>
+    </div>
+    <p class="header-note">Snapshot as of the last reported update. To log new progress, tell Claude — this page redeploys to the same link, so everyone's view stays current.</p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="toolbar">
+    <input class="search" id="search" type="text" placeholder="Search by name, contact, or note…" />
+    <div class="pill-toggle" id="typeFilter">
+      <button data-type="all" class="active">All</button>
+      <button data-type="Production Company">Production Companies</button>
+      <button data-type="Individual Creator">Individual Creators</button>
+    </div>
+    <select id="statusFilter">
+      <option value="all">All statuses</option>
+      <option value="not_contacted">Not Contacted</option>
+      <option value="outreach">Outreach Sent</option>
+      <option value="discussion">In Discussion</option>
+      <option value="negotiating">Negotiating Terms</option>
+      <option value="contracted">Contract Signed</option>
+      <option value="production">In Production</option>
+      <option value="delivered">Delivered</option>
+      <option value="on_hold">On Hold</option>
+      <option value="declined">Declined</option>
+    </select>
+    <select id="sortBy">
+      <option value="updated">Sort: Last updated</option>
+      <option value="name">Sort: Name</option>
+      <option value="stage">Sort: Pipeline stage</option>
+    </select>
+  </div>
+
+  <div class="list" id="list"></div>
+
+  <footer class="page">UGC Video Partner Pipeline · internal use</footer>
+</div>
+
+<script>
+  const STAGES = ["not_contacted","outreach","discussion","negotiating","contracted","production","delivered"];
+  const META = {
+    not_contacted: { label: "Not Contacted",     dot:"--c-notcontacted", bg:"--c-notcontacted-bg" },
+    outreach:      { label: "Outreach Sent",     dot:"--c-outreach",     bg:"--c-outreach-bg" },
+    discussion:    { label: "In Discussion",     dot:"--c-discussion",   bg:"--c-discussion-bg" },
+    negotiating:   { label: "Negotiating Terms", dot:"--c-negotiating",  bg:"--c-negotiating-bg" },
+    contracted:    { label: "Contract Signed",   dot:"--c-contracted",   bg:"--c-contracted-bg" },
+    production:    { label: "In Production",     dot:"--c-production",  bg:"--c-production-bg" },
+    delivered:     { label: "Delivered",         dot:"--c-delivered",    bg:"--c-delivered-bg" },
+    on_hold:       { label: "On Hold",           dot:"--c-onhold",       bg:"--c-onhold-bg" },
+    declined:      { label: "Declined",          dot:"--c-declined",     bg:"--c-declined-bg" },
+  };
+
+  // Example rows only — replace with your real roster.
+  const PARTNERS = [
+    {
+      id: "ex1",
+      example: true,
+      name: "Northbeam Studios",
+      type: "Production Company",
+      initial: "NB",
+      status: "negotiating",
+      contact: { person: "Aiko Tanaka", email: "aiko@northbeam.example", sns: "@northbeamstudios" },
+      terms: { budget: "$18,000 / 12 videos", videos: 12, deadline: "2026-09-15" },
+      hq: "Legal is reviewing their usage-rights clause — hold off on verbal confirmation until we hear back.",
+      history: [
+        { date: "2026-07-24", note: "Received revised quote, down from $22k." },
+        { date: "2026-07-18", note: "Kickoff call — discussed 3 concept directions." },
+        { date: "2026-07-10", note: "Initial outreach via email." },
+      ],
+      lastUpdated: "2026-07-24",
+    },
+    {
+      id: "ex2",
+      example: true,
+      name: "Mika Sato",
+      type: "Individual Creator",
+      initial: "MS",
+      status: "production",
+      contact: { person: "Mika Sato", email: "mika.sato@example.com", sns: "@mika.creates" },
+      terms: { budget: "$2,400 / 4 videos", videos: 4, deadline: "2026-08-05" },
+      hq: "",
+      history: [
+        { date: "2026-07-27", note: "Filming started on-location; first draft due Aug 1." },
+        { date: "2026-07-15", note: "Contract signed." },
+      ],
+      lastUpdated: "2026-07-27",
+    },
+    {
+      id: "ex3",
+      example: true,
+      name: "Reel Loop Collective",
+      type: "Production Company",
+      initial: "RL",
+      status: "outreach",
+      contact: { person: "Daniel Cho", email: "d.cho@reelloop.example", sns: "@reelloopco" },
+      terms: { budget: "TBD", videos: "TBD", deadline: "TBD" },
+      hq: "",
+      history: [
+        { date: "2026-07-22", note: "Sent intro email + brief deck." },
+      ],
+      lastUpdated: "2026-07-22",
+    },
+  ];
+
+  function stageIndex(status) {
+    const i = STAGES.indexOf(status);
+    return i === -1 ? 0 : i;
+  }
+
+  function renderStats() {
+    const counts = {};
+    STAGES.concat(["on_hold","declined"]).forEach(s => counts[s] = 0);
+    PARTNERS.forEach(p => counts[p.status] = (counts[p.status]||0) + 1);
+    const order = ["not_contacted","outreach","discussion","negotiating","contracted","production","delivered"];
+    const el = document.getElementById("stats");
+    el.innerHTML = order.map(s => `
+      <div class="stat" style="--dot:var(${META[s].dot})">
+        <div class="n">${counts[s]}</div>
+        <div class="l">${META[s].label}</div>
+      </div>
+    `).join("");
+  }
+
+  function fieldGroup(title, html) {
+    return `<div class="field-group"><h4>${title}</h4>${html}</div>`;
+  }
+
+  function renderCard(p) {
+    const idx = stageIndex(p.status);
+    const isBranch = p.status === "on_hold" || p.status === "declined";
+    const segs = STAGES.map((s, i) => {
+      const done = !isBranch && i <= idx;
+      const dotVar = done ? `var(${META[p.status].dot})` : "";
+      return `<div class="seg${done ? " done" : ""}" style="${done ? `--dot:${dotVar}` : ""}"></div>`;
+    }).join("");
+
+    const m = META[p.status];
+
+    const historyHtml = p.history.length
+      ? `<ul class="history">${p.history.map(h => `<li><span class="date">${h.date}</span><span>${h.note}</span></li>`).join("")}</ul>`
+      : `<p class="kv" style="color:var(--text-faint)">No entries yet.</p>`;
+
+    const hqHtml = p.hq
+      ? `<div class="hq-note"><span class="who">HQ Comment</span>${p.hq}</div>`
+      : `<p class="kv" style="color:var(--text-faint)">No comments from HQ yet.</p>`;
+
+    return `
+      <details class="card" data-name="${p.name.toLowerCase()}" data-type="${p.type}" data-status="${p.status}"
+        data-search="${(p.name + ' ' + p.contact.person + ' ' + p.history.map(h=>h.note).join(' ')).toLowerCase()}">
+        <summary>
+          <div class="avatar">${p.initial}</div>
+          <div class="id-block">
+            <div class="name">${p.name}${p.example ? '<span class="example-tag">Example</span>' : ''}</div>
+            <div class="type">${p.type}</div>
+          </div>
+          <div class="stage-track" title="${isBranch ? m.label : m.label + ' — stage ' + (idx+1) + ' of ' + STAGES.length}">${isBranch ? '' : segs}</div>
+          <span class="status-pill" style="--dot:var(${m.dot});--dotbg:var(${m.bg})">${m.label}</span>
+          <span class="updated mono">${p.lastUpdated}</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </summary>
+        <div class="card-body">
+          ${fieldGroup("Contact", `
+            <div class="kv">
+              <div><b>Contact:</b> ${p.contact.person}</div>
+              <div><b>Email:</b> <a href="mailto:${p.contact.email}">${p.contact.email}</a></div>
+              <div><b>SNS:</b> ${p.contact.sns}</div>
+            </div>
+          `)}
+          ${fieldGroup("Negotiation Terms", `
+            <div class="kv mono">
+              <div><b style="font-family:var(--font-sans)">Budget:</b> ${p.terms.budget}</div>
+              <div><b style="font-family:var(--font-sans)">Videos:</b> ${p.terms.videos}</div>
+              <div><b style="font-family:var(--font-sans)">Deadline:</b> ${p.terms.deadline}</div>
+            </div>
+          `)}
+          ${fieldGroup("HQ Comments", hqHtml)}
+          ${fieldGroup("History", historyHtml)}
+        </div>
+      </details>
+    `;
+  }
+
+  let activeType = "all";
+
+  function applyFilters() {
+    const q = document.getElementById("search").value.trim().toLowerCase();
+    const statusF = document.getElementById("statusFilter").value;
+    const sortBy = document.getElementById("sortBy").value;
+
+    let items = PARTNERS.slice();
+
+    if (activeType !== "all") items = items.filter(p => p.type === activeType);
+    if (statusF !== "all") items = items.filter(p => p.status === statusF);
+    if (q) items = items.filter(p =>
+      (p.name + " " + p.contact.person + " " + p.history.map(h=>h.note).join(" ")).toLowerCase().includes(q)
+    );
+
+    if (sortBy === "name") items.sort((a,b) => a.name.localeCompare(b.name));
+    else if (sortBy === "stage") items.sort((a,b) => stageIndex(b.status) - stageIndex(a.status));
+    else items.sort((a,b) => new Date(b.lastUpdated) - new Date(a.lastUpdated));
+
+    const list = document.getElementById("list");
+    list.innerHTML = items.length
+      ? items.map(renderCard).join("")
+      : `<div class="empty">No partners match these filters.</div>`;
+  }
+
+  document.getElementById("search").addEventListener("input", applyFilters);
+  document.getElementById("statusFilter").addEventListener("change", applyFilters);
+  document.getElementById("sortBy").addEventListener("change", applyFilters);
+  document.getElementById("typeFilter").addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+    activeType = btn.dataset.type;
+    [...document.getElementById("typeFilter").children].forEach(b => b.classList.toggle("active", b === btn));
+    applyFilters();
+  });
+
+  renderStats();
+  applyFilters();
+</script>
