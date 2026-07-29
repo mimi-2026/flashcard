@@ -1,4 +1,4 @@
-<title>UGC Video Partner Pipeline</title>
+<title>UGC Creator &amp; Agency Pipeline</title>
 <style>
   :root {
     --bg: #F3F5F6;
@@ -12,24 +12,12 @@
     --accent-strong: #095E66;
     --accent-soft: #E1F1F1;
 
-    --c-notcontacted: #7C8994;
-    --c-notcontacted-bg: #E9ECEE;
-    --c-outreach: #2E6FA6;
-    --c-outreach-bg: #E4EDF5;
-    --c-discussion: #A67908;
-    --c-discussion-bg: #F5EBD3;
-    --c-negotiating: #B0631A;
-    --c-negotiating-bg: #F5E5D3;
-    --c-contracted: #6A4FA0;
-    --c-contracted-bg: #EBE5F5;
-    --c-production: #0E7C86;
-    --c-production-bg: #E1F1F1;
-    --c-delivered: #27824A;
-    --c-delivered-bg: #DFF0E5;
-    --c-onhold: #8C6D1F;
-    --c-onhold-bg: #F1E9D3;
-    --c-declined: #B03A30;
-    --c-declined-bg: #F5DFDC;
+    --c-inquired: #2E6FA6;      --c-inquired-bg: #E4EDF5;
+    --c-awaiting: #A67908;      --c-awaiting-bg: #F5EBD3;
+    --c-quote: #6A4FA0;         --c-quote-bg: #EBE5F5;
+    --c-discussion: #0E7C86;    --c-discussion-bg: #E1F1F1;
+    --c-inactive: #8C6D1F;      --c-inactive-bg: #F1E9D3;
+    --c-passed: #B03A30;        --c-passed-bg: #F5DFDC;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
@@ -48,69 +36,37 @@
       --accent-strong: #5CDCD3;
       --accent-soft: rgba(53, 197, 188, 0.14);
 
-      --c-notcontacted: #97A5B0;
-      --c-notcontacted-bg: #252F38;
-      --c-outreach: #6DAEE8;
-      --c-outreach-bg: #1D2E3D;
-      --c-discussion: #E0B23B;
-      --c-discussion-bg: #362D18;
-      --c-negotiating: #E08A3E;
-      --c-negotiating-bg: #382614;
-      --c-contracted: #A98FE0;
-      --c-contracted-bg: #2A2440;
-      --c-production: #35C5BC;
-      --c-production-bg: #17322F;
-      --c-delivered: #4CC172;
-      --c-delivered-bg: #16321F;
-      --c-onhold: #D3B15C;
-      --c-onhold-bg: #332B14;
-      --c-declined: #E27366;
-      --c-declined-bg: #3A1F1B;
+      --c-inquired: #6DAEE8;    --c-inquired-bg: #1D2E3D;
+      --c-awaiting: #E0B23B;    --c-awaiting-bg: #362D18;
+      --c-quote: #A98FE0;       --c-quote-bg: #2A2440;
+      --c-discussion: #35C5BC;  --c-discussion-bg: #17322F;
+      --c-inactive: #D3B15C;    --c-inactive-bg: #332B14;
+      --c-passed: #E27366;      --c-passed-bg: #3A1F1B;
     }
   }
 
   :root[data-theme="dark"] {
-    --bg: #10151B;
-    --surface: #1A222B;
-    --surface-2: #212B35;
-    --border: #2C3844;
-    --text: #E4EAEE;
-    --text-muted: #97A5B0;
-    --text-faint: #647380;
-    --accent: #35C5BC;
-    --accent-strong: #5CDCD3;
-    --accent-soft: rgba(53, 197, 188, 0.14);
-    --c-notcontacted: #97A5B0; --c-notcontacted-bg: #252F38;
-    --c-outreach: #6DAEE8; --c-outreach-bg: #1D2E3D;
-    --c-discussion: #E0B23B; --c-discussion-bg: #362D18;
-    --c-negotiating: #E08A3E; --c-negotiating-bg: #382614;
-    --c-contracted: #A98FE0; --c-contracted-bg: #2A2440;
-    --c-production: #35C5BC; --c-production-bg: #17322F;
-    --c-delivered: #4CC172; --c-delivered-bg: #16321F;
-    --c-onhold: #D3B15C; --c-onhold-bg: #332B14;
-    --c-declined: #E27366; --c-declined-bg: #3A1F1B;
+    --bg: #10151B; --surface: #1A222B; --surface-2: #212B35; --border: #2C3844;
+    --text: #E4EAEE; --text-muted: #97A5B0; --text-faint: #647380;
+    --accent: #35C5BC; --accent-strong: #5CDCD3; --accent-soft: rgba(53, 197, 188, 0.14);
+    --c-inquired: #6DAEE8; --c-inquired-bg: #1D2E3D;
+    --c-awaiting: #E0B23B; --c-awaiting-bg: #362D18;
+    --c-quote: #A98FE0; --c-quote-bg: #2A2440;
+    --c-discussion: #35C5BC; --c-discussion-bg: #17322F;
+    --c-inactive: #D3B15C; --c-inactive-bg: #332B14;
+    --c-passed: #E27366; --c-passed-bg: #3A1F1B;
   }
 
   :root[data-theme="light"] {
-    --bg: #F3F5F6;
-    --surface: #FFFFFF;
-    --surface-2: #EBEFF1;
-    --border: #DCE2E5;
-    --text: #1D262D;
-    --text-muted: #5B6770;
-    --text-faint: #8B969D;
-    --accent: #0E7C86;
-    --accent-strong: #095E66;
-    --accent-soft: #E1F1F1;
-    --c-notcontacted: #7C8994; --c-notcontacted-bg: #E9ECEE;
-    --c-outreach: #2E6FA6; --c-outreach-bg: #E4EDF5;
-    --c-discussion: #A67908; --c-discussion-bg: #F5EBD3;
-    --c-negotiating: #B0631A; --c-negotiating-bg: #F5E5D3;
-    --c-contracted: #6A4FA0; --c-contracted-bg: #EBE5F5;
-    --c-production: #0E7C86; --c-production-bg: #E1F1F1;
-    --c-delivered: #27824A; --c-delivered-bg: #DFF0E5;
-    --c-onhold: #8C6D1F; --c-onhold-bg: #F1E9D3;
-    --c-declined: #B03A30; --c-declined-bg: #F5DFDC;
+    --bg: #F3F5F6; --surface: #FFFFFF; --surface-2: #EBEFF1; --border: #DCE2E5;
+    --text: #1D262D; --text-muted: #5B6770; --text-faint: #8B969D;
+    --accent: #0E7C86; --accent-strong: #095E66; --accent-soft: #E1F1F1;
+    --c-inquired: #2E6FA6; --c-inquired-bg: #E4EDF5;
+    --c-awaiting: #A67908; --c-awaiting-bg: #F5EBD3;
+    --c-quote: #6A4FA0; --c-quote-bg: #EBE5F5;
+    --c-discussion: #0E7C86; --c-discussion-bg: #E1F1F1;
+    --c-inactive: #8C6D1F; --c-inactive-bg: #F1E9D3;
+    --c-passed: #B03A30; --c-passed-bg: #F5DFDC;
   }
 
   * { box-sizing: border-box; }
@@ -122,17 +78,15 @@
     -webkit-font-smoothing: antialiased;
   }
   body { padding: 32px 20px 80px; }
-
   .wrap { max-width: 1180px; margin: 0 auto; }
 
-  /* ---------- Header ---------- */
   header.page {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
   .eyebrow {
     font-size: 11.5px;
@@ -142,13 +96,8 @@
     color: var(--accent);
     margin: 0 0 6px;
   }
-  h1 {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin: 0;
-    text-wrap: balance;
-  }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 { font-size: 15px; font-weight: 700; margin: 0 0 12px; }
   .header-note {
     font-size: 12.5px;
     color: var(--text-faint);
@@ -156,20 +105,29 @@
     line-height: 1.5;
     text-align: right;
   }
-  .header-note code {
-    font-family: var(--font-mono);
-    background: var(--surface-2);
-    padding: 1px 5px;
-    border-radius: 4px;
-    font-size: 11.5px;
+
+  /* ---------- Legend ---------- */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    color: var(--text-muted);
   }
+  .legend .item { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .legend .swatch { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
   /* ---------- Stat tiles ---------- */
   .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
     gap: 10px;
-    margin-bottom: 26px;
+    margin-bottom: 22px;
   }
   .stat {
     background: var(--surface);
@@ -179,35 +137,12 @@
     position: relative;
     overflow: hidden;
   }
-  .stat::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--dot, var(--accent));
-  }
-  .stat .n {
-    font-family: var(--font-mono);
-    font-variant-numeric: tabular-nums;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1;
-  }
-  .stat .l {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 6px;
-    letter-spacing: 0.02em;
-  }
+  .stat::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--dot, var(--accent)); }
+  .stat .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 600; line-height: 1; }
+  .stat .l { font-size: 11px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.02em; }
 
   /* ---------- Toolbar ---------- */
-  .toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 18px;
-  }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 18px; }
   .search {
     flex: 1 1 220px;
     background: var(--surface);
@@ -232,11 +167,7 @@
     color: var(--text);
     font-family: var(--font-sans);
   }
-  .pill-toggle {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
+  .pill-toggle { display: flex; gap: 6px; flex-wrap: wrap; }
   .pill-toggle button {
     border: 1px solid var(--border);
     background: var(--surface);
@@ -248,21 +179,12 @@
     cursor: pointer;
     transition: background .15s, color .15s, border-color .15s;
   }
-  .pill-toggle button.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
+  .pill-toggle button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
   /* ---------- Cards ---------- */
-  .list { display: flex; flex-direction: column; gap: 10px; }
+  .list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
 
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 0;
-  }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
   .card summary {
     list-style: none;
     cursor: pointer;
@@ -285,27 +207,12 @@
     flex-shrink: 0;
   }
 
-  .id-block { min-width: 180px; }
+  .id-block { min-width: 170px; }
   .id-block .name { font-weight: 600; font-size: 14.5px; }
-  .id-block .type {
-    font-size: 11.5px;
-    color: var(--text-faint);
-    margin-top: 2px;
-  }
+  .id-block .type { font-size: 11.5px; color: var(--text-faint); margin-top: 2px; }
 
-  .stage-track {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    flex: 1 1 220px;
-    min-width: 160px;
-  }
-  .stage-track .seg {
-    height: 4px;
-    flex: 1;
-    border-radius: 2px;
-    background: var(--surface-2);
-  }
+  .stage-track { display: flex; align-items: center; gap: 4px; flex: 1 1 160px; min-width: 120px; max-width: 220px; }
+  .stage-track .seg { height: 4px; flex: 1; border-radius: 2px; background: var(--surface-2); }
   .stage-track .seg.done { background: var(--dot); }
 
   .status-pill {
@@ -320,37 +227,27 @@
     align-items: center;
     gap: 5px;
   }
-  .status-pill::before {
-    content: "";
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--dot);
-  }
+  .status-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--dot); }
 
-  .updated {
-    font-family: var(--font-mono);
-    font-size: 11.5px;
+  .concept-badge {
+    font-size: 11px;
     color: var(--text-faint);
     white-space: nowrap;
-    margin-left: auto;
   }
+  .concept-badge b { color: var(--text-muted); font-weight: 600; }
 
-  .chev {
-    color: var(--text-faint);
-    transition: transform .15s;
-    flex-shrink: 0;
-  }
+  .updated { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-faint); white-space: nowrap; margin-left: auto; }
+
+  .chev { color: var(--text-faint); transition: transform .15s; flex-shrink: 0; }
   details[open] .chev { transform: rotate(90deg); }
 
   .card-body {
     padding: 4px 16px 18px 64px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 18px;
   }
-  @media (max-width: 640px) {
-    .card-body { padding-left: 16px; }
-  }
+  @media (max-width: 640px) { .card-body { padding-left: 16px; } }
 
   .field-group h4 {
     font-size: 10.5px;
@@ -362,199 +259,323 @@
   }
   .kv { font-size: 13px; line-height: 1.7; }
   .kv b { color: var(--text-muted); font-weight: 500; }
-  .kv a { color: var(--accent); text-decoration: none; }
-  .kv a:hover { text-decoration: underline; }
-  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
-  .hq-note {
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    border-radius: 6px;
+  .log-box {
+    max-height: 220px;
+    overflow-y: auto;
+    font-size: 12.5px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    background: var(--surface-2);
+    border-radius: 8px;
     padding: 10px 12px;
-    font-size: 13px;
-    line-height: 1.55;
     color: var(--text);
   }
-  .hq-note .who {
+  .muted-note { font-size: 13px; color: var(--text-faint); }
+
+  .empty { text-align: center; padding: 40px 20px; color: var(--text-faint); font-size: 13.5px; }
+
+  /* ---------- Cancellation policy ---------- */
+  .cancel-section { margin-top: 8px; }
+  .cancel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .cancel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .cancel-card .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .cancel-card .platform { font-weight: 600; font-size: 13.5px; }
+  .escrow-badge {
     font-size: 10.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent);
     font-weight: 700;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .history { list-style: none; margin: 0; padding: 0; font-size: 12.5px; }
-  .history li {
-    padding: 6px 0;
-    border-top: 1px solid var(--border);
-    display: flex;
-    gap: 10px;
-  }
-  .history li:first-child { border-top: none; }
-  .history .date {
-    font-family: var(--font-mono);
-    color: var(--text-faint);
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  .example-tag {
-    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-faint);
-    border: 1px dashed var(--border);
-    border-radius: 5px;
-    padding: 1px 6px;
-    margin-left: 6px;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    color: var(--c-discussion);
+    background: var(--c-discussion-bg);
   }
+  .cancel-card p { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--text-muted); }
 
-  .empty {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-faint);
-    font-size: 13.5px;
-  }
+  footer.page { margin-top: 36px; text-align: center; font-size: 11.5px; color: var(--text-faint); }
 
-  footer.page {
-    margin-top: 36px;
-    text-align: center;
-    font-size: 11.5px;
-    color: var(--text-faint);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <div class="wrap">
   <header class="page">
     <div>
-      <p class="eyebrow">Production Coordination</p>
-      <h1>UGC Video Partner Pipeline</h1>
+      <p class="eyebrow">Production Coordination · Nouslib Japan</p>
+      <h1>UGC Creator &amp; Agency Pipeline</h1>
     </div>
     <p class="header-note">Snapshot as of the last reported update. To log new progress, tell Claude — this page redeploys to the same link, so everyone's view stays current.</p>
   </header>
 
+  <div class="legend" id="legend"></div>
+
   <div class="stats" id="stats"></div>
 
   <div class="toolbar">
-    <input class="search" id="search" type="text" placeholder="Search by name, contact, or note…" />
+    <input class="search" id="search" type="text" placeholder="Search by name, next step, or log…" />
     <div class="pill-toggle" id="typeFilter">
       <button data-type="all" class="active">All</button>
-      <button data-type="Production Company">Production Companies</button>
       <button data-type="Individual Creator">Individual Creators</button>
+      <button data-type="Agency">Agencies</button>
     </div>
     <select id="statusFilter">
       <option value="all">All statuses</option>
-      <option value="not_contacted">Not Contacted</option>
-      <option value="outreach">Outreach Sent</option>
-      <option value="discussion">In Discussion</option>
-      <option value="negotiating">Negotiating Terms</option>
-      <option value="contracted">Contract Signed</option>
-      <option value="production">In Production</option>
-      <option value="delivered">Delivered</option>
-      <option value="on_hold">On Hold</option>
-      <option value="declined">Declined</option>
+      <option value="inquired">Inquired</option>
+      <option value="awaiting_reply">Awaiting Reply</option>
+      <option value="quote_received">Quote Received</option>
+      <option value="in_discussion">In Discussion</option>
+      <option value="inactive">Inactive</option>
+      <option value="passed_dropped">Passed / Dropped</option>
     </select>
     <select id="sortBy">
       <option value="updated">Sort: Last updated</option>
       <option value="name">Sort: Name</option>
-      <option value="stage">Sort: Pipeline stage</option>
+      <option value="status">Sort: Status</option>
     </select>
   </div>
 
   <div class="list" id="list"></div>
 
-  <footer class="page">UGC Video Partner Pipeline · internal use</footer>
+  <section class="cancel-section">
+    <h2>Cancellation Policy by Platform</h2>
+    <div class="cancel-grid" id="cancelGrid"></div>
+  </section>
+
+  <footer class="page">UGC Creator &amp; Agency Pipeline · internal use</footer>
 </div>
 
-<script>
-  const STAGES = ["not_contacted","outreach","discussion","negotiating","contracted","production","delivered"];
-  const META = {
-    not_contacted: { label: "Not Contacted",     dot:"--c-notcontacted", bg:"--c-notcontacted-bg" },
-    outreach:      { label: "Outreach Sent",     dot:"--c-outreach",     bg:"--c-outreach-bg" },
-    discussion:    { label: "In Discussion",     dot:"--c-discussion",   bg:"--c-discussion-bg" },
-    negotiating:   { label: "Negotiating Terms", dot:"--c-negotiating",  bg:"--c-negotiating-bg" },
-    contracted:    { label: "Contract Signed",   dot:"--c-contracted",   bg:"--c-contracted-bg" },
-    production:    { label: "In Production",     dot:"--c-production",  bg:"--c-production-bg" },
-    delivered:     { label: "Delivered",         dot:"--c-delivered",    bg:"--c-delivered-bg" },
-    on_hold:       { label: "On Hold",           dot:"--c-onhold",       bg:"--c-onhold-bg" },
-    declined:      { label: "Declined",          dot:"--c-declined",     bg:"--c-declined-bg" },
-  };
+<script type="application/json" id="tracker-data">
+{
+  "partners": [
+    {
+      "id": "ind-ao",
+      "name": "Ao",
+      "type": "Individual Creator",
+      "status": "inquired",
+      "lastUpdatedRaw": "Jul 28",
+      "lastUpdated": "2026-07-28",
+      "pricing": "¥1,000–1,500 / hour",
+      "deliverables": "Instagram content, Reels, Beauty, Fitness, Lifestyle",
+      "conceptDev": "Likely",
+      "nextStep": "Confirm interest / comfort being associated with the app",
+      "log": "あお様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、オープンマインドな関係性のあり方を提案するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\n\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、\nあお様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、ブランドについてや、動画制作の目的をまとめたシートをもとに、\nクリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。\nまた、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細や参考素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n金額：プロフィールには、時間単価：1000~1500円と記載がありますが、詳細お聞かせください。\n時給換算の場合、1投稿作成あたり、大体どれくらいの時間を要するでしょうか。\n納期：8月中に投稿が出来ればと思っておりますが、納期を伺えますか。\n\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n\n\n松井"
+    },
+    {
+      "id": "ind-a-bear",
+      "name": "A Bear",
+      "type": "Individual Creator",
+      "status": "in_discussion",
+      "lastUpdatedRaw": "Jul 28",
+      "lastUpdated": "2026-07-28",
+      "pricing": "Basic ¥10,000/2; Standard ¥12,000/2; Premium ¥30,000/1 ad video",
+      "deliverables": "Advertising videos, Reels, TikTok, Motion graphics. Note: planning/composition, script & editing only — does NOT film (needs external footage or AI material).",
+      "conceptDev": "Yes",
+      "nextStep": "Send creative brief and confirm whether production is possible without filming; confirm number of videos",
+      "log": "[Jul 28 返信]\n・企画・構成案／台本作成／編集：対応可能\n・撮影：非対応。別途カメラマン／クリエイターに依頼し、その素材をもとに構成・編集で対応。またはAI素材での編集も可能。\n・制作本数：希望本数があればご相談可能\n・納期：8月17日納品でしたら、素材のお渡し時期次第で対応可能\n・ポートフォリオ：https://chillroom.net/sample-video/\n\n――― 初回アウトリーチ ―――\nA.Bear様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、多様な価値観や恋愛・出会いのかたちを尊重するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\n\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、A.Bear様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、クリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。また、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細をまとめたクリエイティブブリーフや素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n制作本数：月に最大何本作成していただくことが可能でしょうか。\n納期：システム上は仮で、8月17日としておりますが、納期目安を伺えますか。\n弊社としては、8月中に投稿が出来ればと思っております。\nポートフォリオ：ストリートインタビュー形式の動画を拝見しました。こういった形式に興味がありますが、他にも同様の動画がありましたら、拝見することは可能でしょうか。\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n"
+    },
+    {
+      "id": "ind-dotto",
+      "name": "Dotto",
+      "type": "Individual Creator",
+      "status": "inquired",
+      "lastUpdatedRaw": "Jul 28",
+      "lastUpdated": "2026-07-28",
+      "pricing": "¥5,000 / video",
+      "deliverables": "SNS advertising, Reels, TikTok",
+      "conceptDev": "TBC",
+      "nextStep": "Confirm whether she develops her own concepts",
+      "log": "依頼したい動画の本数：2-3本(要相談)\n1本あたり完成動画の分数：15-60秒\nDotto。様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、多様な価値観や恋愛・出会いのかたちを尊重するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\n\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、Dotto。様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、クリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。また、ご制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\n現時点では、制作するUGCの方向性として、例えば以下のようなクリエイティブを想定しております。\n\n・POV・ストーリーテリング形式\n・アプリのデモ・レビュー形式\n・トレンドやユーモアを取り入れた形式\n・ストリートインタビュー形式\n\nもちろん、これらに限定するものではなく、より効果的なクリエイティブのご提案がございましたら、お聞かせください。\n\n動画や音声、テロップ台本がなく、企画からのご依頼になりますが、このような動画制作を、ご対応いただくことは可能でしょうか。\n\n納期に関しては、最短をお知らせいただけますと幸いです。弊社としては、8月中に投稿・運用が開始できればと思っております。\n\nご興味をお持ちいただけるようでしたら、ご連絡いただけますと幸いです。詳細を記載したクリエイティブブリーフや、ロゴ・イラストレーション画像を含む参考素材をお送りいたします。\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n"
+    },
+    {
+      "id": "ind-yoshino",
+      "name": "Yoshino",
+      "type": "Individual Creator",
+      "status": "inquired",
+      "lastUpdatedRaw": "Jul 28",
+      "lastUpdated": "2026-07-28",
+      "pricing": "From ¥1,000 / hour (hrs per video TBC)",
+      "deliverables": "Instagram management, Reels, Beauty, Travel, Lifestyle",
+      "conceptDev": "Likely",
+      "nextStep": "Confirm concepts + branding fit + hours per UGC video",
+      "log": "yoshino371様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、\nオープンマインドな関係性のあり方を提案するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、\nyoshino371様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、ブランドについてや、動画制作の目的をまとめたシートをもとに、\nクリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。\nまた、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細や参考素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n金額：プロフィールには、時間単価：1000~円と記載がありますが、詳細お聞かせください。\n時給換算の場合、1投稿作成あたり、大体どれくらいの時間を要するでしょうか。\n納期：8月中に投稿が出来ればと思っておりますが、納期目安を伺えますか。\n\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n\n\n松井"
+    },
+    {
+      "id": "ind-rie",
+      "name": "Rie",
+      "type": "Individual Creator",
+      "status": "inquired",
+      "lastUpdatedRaw": "Jul 28",
+      "lastUpdated": "2026-07-28",
+      "pricing": "From ¥1,000 / hour (hrs per video TBC)",
+      "deliverables": "Instagram content, Reels, Canva design",
+      "conceptDev": "TBC",
+      "nextStep": "Confirm concept ability + hours per video",
+      "log": "*Rie様\n初めまして。\nNouslib Japanの松井みずほと申します。\n\nNouslib（ヌーリブ）は、セクシュアル・ウェルネス先進国フランス発の、\nオープンマインドな関係性のあり方を提案するマッチングアプリで、現在、日本市場でのサービス展開を進めております。\n\nインスタグラム：https://www.instagram.com/nouslib.japan/\nTikTok：https://www.tiktok.com/@nouslib_jp\n\n現在、NouslibのMeta広告向けUGC動画をご制作いただけるクリエイターの方を探しており、\nyoshino371様のプロフィールを拝見し、ご連絡させていただきました。\n\n今回、動画の編集のみではなく、ブランドについてや、動画制作の目的をまとめたシートをもとに、\nクリエイティブの企画・構成や台本の作成から、撮影・編集まで一貫してご担当いただける方を探しております。\n\n動画全体のトーンは、やわらかく、親しみやすく、ポジティブでありながら、テンポ感のある雰囲気を想定しております。\nまた、制作いただく動画には、日本語字幕を入れ、最後にNouslibのロゴを表示していただく予定です。\n\nこのような形での動画制作を、ご対応いただくことは可能でしょうか。\n\nご興味をお持ちいただけるようでしたら、詳細や参考素材をお送りいたします。\n\nまたご対応いただける場合、併せて、下記ご回答いただけますと幸いです。\n\n\n\n金額：プロフィールには、時間単価：1000~円と記載がありますが、詳細お聞かせください。\n時給換算の場合、1投稿作成あたり、大体どれくらいの時間を要するでしょうか。\n納期：8月中に投稿が出来ればと思っておりますが、納期目安を伺えますか。\n\n\nお忙しいところ恐れ入りますが、ご検討いただけますと幸いです。\n\nどうぞよろしくお願いいたします。\n\n\n松井"
+    },
+    {
+      "id": "ind-kana",
+      "name": "Kana",
+      "type": "Individual Creator",
+      "status": "inactive",
+      "lastUpdatedRaw": "Jul 23",
+      "lastUpdated": "2026-07-23",
+      "pricing": "Basic ¥10,000/3; Standard ¥15,000/5; Premium ¥30,000/10",
+      "deliverables": "Short-form editing, Reels, Advertising videos",
+      "conceptDev": "TBC",
+      "nextStep": "Currently on hiatus",
+      "log": "Inactive (on hiatus)."
+    },
+    {
+      "id": "ind-eri",
+      "name": "Eri",
+      "type": "Individual Creator",
+      "status": "passed_dropped",
+      "lastUpdatedRaw": "Jul 23",
+      "lastUpdated": "2026-07-23",
+      "pricing": "Basic ¥20,000/8 (~15s); Standard ¥22,000/8 (~30s); Premium ¥25,000/8 (~60s)",
+      "deliverables": "Reels, Short-form production, Content planning, SNS marketing",
+      "conceptDev": "Yes",
+      "nextStep": "Not being pursued",
+      "log": "Dropped — no portfolio to review."
+    },
+    {
+      "id": "ind-hana",
+      "name": "Hana",
+      "type": "Individual Creator",
+      "status": "passed_dropped",
+      "lastUpdatedRaw": "Jul 20",
+      "lastUpdated": "2026-07-20",
+      "pricing": "Basic ¥10,000/2 (≤30s); Standard ¥15,000/2 (≤60s); Premium ¥20,000/2",
+      "deliverables": "Short-form, Reels, TikTok, YouTube Shorts, Motion graphics",
+      "conceptDev": "Yes",
+      "nextStep": "Not being pursued",
+      "log": "Dropped — style too anime-inspired."
+    },
+    {
+      "id": "ind-umaro",
+      "name": "umaro",
+      "type": "Individual Creator",
+      "status": "passed_dropped",
+      "lastUpdatedRaw": "Jul 20",
+      "lastUpdated": "2026-07-20",
+      "pricing": "Basic ¥150,000; Standard ¥300,000; Premium ¥700,000",
+      "deliverables": "Commercial production, Script, Filming, Casting",
+      "conceptDev": "Yes",
+      "nextStep": "Not being pursued",
+      "log": "Dropped — thin portfolio, undetailed pricing."
+    },
+    {
+      "id": "agy-mism",
+      "name": "MISM",
+      "type": "Agency",
+      "status": "quote_received",
+      "lastUpdatedRaw": "Jul 28",
+      "lastUpdated": "2026-07-28",
+      "pricing": "With planning (scriptwriting) / casting / filming / editing handled end-to-end, roughly ¥300,000+ for 10 videos (2 scenarios × 5 openings). Varies by content and number of models required.",
+      "deliverables": null,
+      "conceptDev": "Yes",
+      "nextStep": "Confirm whether we can set up a meeting",
+      "log": "Production schedule: from ~2 weeks when starting from the planning stage. English communication: possible for production; meetings OK if an interpreter is present."
+    },
+    {
+      "id": "agy-shuttlerock",
+      "name": "ShuttleRock",
+      "type": "Agency",
+      "status": "awaiting_reply",
+      "lastUpdatedRaw": "Jul 26",
+      "lastUpdated": "2026-07-26",
+      "pricing": "To be calculated based on volume (awaiting quote)",
+      "deliverables": null,
+      "conceptDev": "TBC",
+      "nextStep": "Awaiting reply on cost for 10 / 15 / 20 videos per month",
+      "log": "Jul 26: asked for pricing at roughly 10 / 15 / 20 videos per month; awaiting reply. English communication possible."
+    },
+    {
+      "id": "agy-japan-buzz",
+      "name": "Japan Buzz",
+      "type": "Agency",
+      "status": "passed_dropped",
+      "lastUpdatedRaw": null,
+      "lastUpdated": null,
+      "pricing": null,
+      "deliverables": null,
+      "conceptDev": "TBC",
+      "nextStep": "No response — discontinuing",
+      "log": "Inquiry sent, but no response so far."
+    }
+  ],
+  "cancellation": [
+    {
+      "platform": "Coconala",
+      "escrow": "Yes",
+      "policy": "Platform support can intervene in disputes. Refunds may be possible if there is a significant issue with the delivered work."
+    },
+    {
+      "platform": "CrowdWorks",
+      "escrow": "Yes",
+      "policy": "Requires mutual agreement. If the creator ignores the request for one week, the contract is automatically cancelled with a full refund. If the creator rejects it, the contract continues."
+    },
+    {
+      "platform": "Lancers",
+      "escrow": "Yes",
+      "policy": "Requires mutual agreement. The client cannot cancel unilaterally once the creator has accepted the project."
+    }
+  ]
+}
+</script>
 
-  // Example rows only — replace with your real roster.
-  const PARTNERS = [
-    {
-      id: "ex1",
-      example: true,
-      name: "Northbeam Studios",
-      type: "Production Company",
-      initial: "NB",
-      status: "negotiating",
-      contact: { person: "Aiko Tanaka", email: "aiko@northbeam.example", sns: "@northbeamstudios" },
-      terms: { budget: "$18,000 / 12 videos", videos: 12, deadline: "2026-09-15" },
-      hq: "Legal is reviewing their usage-rights clause — hold off on verbal confirmation until we hear back.",
-      history: [
-        { date: "2026-07-24", note: "Received revised quote, down from $22k." },
-        { date: "2026-07-18", note: "Kickoff call — discussed 3 concept directions." },
-        { date: "2026-07-10", note: "Initial outreach via email." },
-      ],
-      lastUpdated: "2026-07-24",
-    },
-    {
-      id: "ex2",
-      example: true,
-      name: "Mika Sato",
-      type: "Individual Creator",
-      initial: "MS",
-      status: "production",
-      contact: { person: "Mika Sato", email: "mika.sato@example.com", sns: "@mika.creates" },
-      terms: { budget: "$2,400 / 4 videos", videos: 4, deadline: "2026-08-05" },
-      hq: "",
-      history: [
-        { date: "2026-07-27", note: "Filming started on-location; first draft due Aug 1." },
-        { date: "2026-07-15", note: "Contract signed." },
-      ],
-      lastUpdated: "2026-07-27",
-    },
-    {
-      id: "ex3",
-      example: true,
-      name: "Reel Loop Collective",
-      type: "Production Company",
-      initial: "RL",
-      status: "outreach",
-      contact: { person: "Daniel Cho", email: "d.cho@reelloop.example", sns: "@reelloopco" },
-      terms: { budget: "TBD", videos: "TBD", deadline: "TBD" },
-      hq: "",
-      history: [
-        { date: "2026-07-22", note: "Sent intro email + brief deck." },
-      ],
-      lastUpdated: "2026-07-22",
-    },
-  ];
+<script>
+  const DATA = JSON.parse(document.getElementById("tracker-data").textContent);
+  const PARTNERS = DATA.partners;
+  const CANCELLATION = DATA.cancellation;
+
+  const STAGES = ["inquired", "awaiting_reply", "quote_received", "in_discussion"];
+  const META = {
+    inquired:        { label: "Inquired",         dot: "--c-inquired",   bg: "--c-inquired-bg",   desc: "Initial contact sent" },
+    awaiting_reply:  { label: "Awaiting Reply",   dot: "--c-awaiting",   bg: "--c-awaiting-bg",   desc: "Waiting on them to respond" },
+    quote_received:  { label: "Quote Received",   dot: "--c-quote",      bg: "--c-quote-bg",      desc: "Pricing / proposal in hand" },
+    in_discussion:   { label: "In Discussion",    dot: "--c-discussion", bg: "--c-discussion-bg", desc: "Active back-and-forth" },
+    inactive:        { label: "Inactive",         dot: "--c-inactive",   bg: "--c-inactive-bg",   desc: "Creator currently on hiatus" },
+    passed_dropped:  { label: "Passed / Dropped", dot: "--c-passed",     bg: "--c-passed-bg",     desc: "Not being pursued" },
+  };
+  const STATUS_ORDER = ["inquired","awaiting_reply","quote_received","in_discussion","inactive","passed_dropped"];
 
   function stageIndex(status) {
     const i = STAGES.indexOf(status);
-    return i === -1 ? 0 : i;
+    return i === -1 ? -1 : i;
+  }
+
+  function renderLegend() {
+    const el = document.getElementById("legend");
+    el.innerHTML = STATUS_ORDER.map(s => `
+      <span class="item"><span class="swatch" style="background:var(${META[s].dot})"></span>${META[s].label} — ${META[s].desc}</span>
+    `).join("");
   }
 
   function renderStats() {
     const counts = {};
-    STAGES.concat(["on_hold","declined"]).forEach(s => counts[s] = 0);
-    PARTNERS.forEach(p => counts[p.status] = (counts[p.status]||0) + 1);
-    const order = ["not_contacted","outreach","discussion","negotiating","contracted","production","delivered"];
+    STATUS_ORDER.forEach(s => counts[s] = 0);
+    PARTNERS.forEach(p => counts[p.status] = (counts[p.status] || 0) + 1);
     const el = document.getElementById("stats");
-    el.innerHTML = order.map(s => `
+    el.innerHTML = STATUS_ORDER.map(s => `
       <div class="stat" style="--dot:var(${META[s].dot})">
         <div class="n">${counts[s]}</div>
         <div class="l">${META[s].label}</div>
       </div>
     `).join("");
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
   }
 
   function fieldGroup(title, html) {
@@ -563,54 +584,53 @@
 
   function renderCard(p) {
     const idx = stageIndex(p.status);
-    const isBranch = p.status === "on_hold" || p.status === "declined";
-    const segs = STAGES.map((s, i) => {
-      const done = !isBranch && i <= idx;
-      const dotVar = done ? `var(${META[p.status].dot})` : "";
-      return `<div class="seg${done ? " done" : ""}" style="${done ? `--dot:${dotVar}` : ""}"></div>`;
-    }).join("");
-
+    const isBranch = idx === -1;
     const m = META[p.status];
 
-    const historyHtml = p.history.length
-      ? `<ul class="history">${p.history.map(h => `<li><span class="date">${h.date}</span><span>${h.note}</span></li>`).join("")}</ul>`
-      : `<p class="kv" style="color:var(--text-faint)">No entries yet.</p>`;
+    const segs = STAGES.map((s, i) => {
+      const done = !isBranch && i <= idx;
+      return `<div class="seg${done ? " done" : ""}" style="${done ? `--dot:var(${m.dot})` : ""}"></div>`;
+    }).join("");
 
-    const hqHtml = p.hq
-      ? `<div class="hq-note"><span class="who">HQ Comment</span>${p.hq}</div>`
-      : `<p class="kv" style="color:var(--text-faint)">No comments from HQ yet.</p>`;
+    const conceptHtml = p.conceptDev
+      ? `<span class="concept-badge"><b>Concept Dev:</b> ${esc(p.conceptDev)}</span>`
+      : "";
+
+    const deliverablesHtml = p.deliverables
+      ? fieldGroup("Strengths / Deliverables", `<p class="kv">${esc(p.deliverables)}</p>`)
+      : "";
+
+    const pricingHtml = p.pricing
+      ? fieldGroup("Pricing", `<p class="kv">${esc(p.pricing)}</p>`)
+      : fieldGroup("Pricing", `<p class="muted-note">Not yet provided.</p>`);
+
+    const nextStepHtml = p.nextStep
+      ? fieldGroup("Next Step", `<p class="kv">${esc(p.nextStep)}</p>`)
+      : "";
+
+    const logHtml = p.log
+      ? fieldGroup("Log / Notes", `<div class="log-box">${esc(p.log)}</div>`)
+      : fieldGroup("Log / Notes", `<p class="muted-note">No entries yet.</p>`);
 
     return `
-      <details class="card" data-name="${p.name.toLowerCase()}" data-type="${p.type}" data-status="${p.status}"
-        data-search="${(p.name + ' ' + p.contact.person + ' ' + p.history.map(h=>h.note).join(' ')).toLowerCase()}">
+      <details class="card" data-name="${esc(p.name.toLowerCase())}">
         <summary>
-          <div class="avatar">${p.initial}</div>
+          <div class="avatar">${esc(p.name.slice(0,2).toUpperCase())}</div>
           <div class="id-block">
-            <div class="name">${p.name}${p.example ? '<span class="example-tag">Example</span>' : ''}</div>
-            <div class="type">${p.type}</div>
+            <div class="name">${esc(p.name)}</div>
+            <div class="type">${esc(p.type)}</div>
           </div>
           <div class="stage-track" title="${isBranch ? m.label : m.label + ' — stage ' + (idx+1) + ' of ' + STAGES.length}">${isBranch ? '' : segs}</div>
           <span class="status-pill" style="--dot:var(${m.dot});--dotbg:var(${m.bg})">${m.label}</span>
-          <span class="updated mono">${p.lastUpdated}</span>
+          ${conceptHtml}
+          <span class="updated mono">${p.lastUpdatedRaw ? esc(p.lastUpdatedRaw) : "—"}</span>
           <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </summary>
         <div class="card-body">
-          ${fieldGroup("Contact", `
-            <div class="kv">
-              <div><b>Contact:</b> ${p.contact.person}</div>
-              <div><b>Email:</b> <a href="mailto:${p.contact.email}">${p.contact.email}</a></div>
-              <div><b>SNS:</b> ${p.contact.sns}</div>
-            </div>
-          `)}
-          ${fieldGroup("Negotiation Terms", `
-            <div class="kv mono">
-              <div><b style="font-family:var(--font-sans)">Budget:</b> ${p.terms.budget}</div>
-              <div><b style="font-family:var(--font-sans)">Videos:</b> ${p.terms.videos}</div>
-              <div><b style="font-family:var(--font-sans)">Deadline:</b> ${p.terms.deadline}</div>
-            </div>
-          `)}
-          ${fieldGroup("HQ Comments", hqHtml)}
-          ${fieldGroup("History", historyHtml)}
+          ${pricingHtml}
+          ${deliverablesHtml}
+          ${nextStepHtml}
+          ${logHtml}
         </div>
       </details>
     `;
@@ -628,17 +648,30 @@
     if (activeType !== "all") items = items.filter(p => p.type === activeType);
     if (statusF !== "all") items = items.filter(p => p.status === statusF);
     if (q) items = items.filter(p =>
-      (p.name + " " + p.contact.person + " " + p.history.map(h=>h.note).join(" ")).toLowerCase().includes(q)
+      (p.name + " " + (p.nextStep || "") + " " + (p.log || "")).toLowerCase().includes(q)
     );
 
     if (sortBy === "name") items.sort((a,b) => a.name.localeCompare(b.name));
-    else if (sortBy === "stage") items.sort((a,b) => stageIndex(b.status) - stageIndex(a.status));
-    else items.sort((a,b) => new Date(b.lastUpdated) - new Date(a.lastUpdated));
+    else if (sortBy === "status") items.sort((a,b) => STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status));
+    else items.sort((a,b) => new Date(b.lastUpdated || 0) - new Date(a.lastUpdated || 0));
 
     const list = document.getElementById("list");
     list.innerHTML = items.length
       ? items.map(renderCard).join("")
       : `<div class="empty">No partners match these filters.</div>`;
+  }
+
+  function renderCancellation() {
+    const el = document.getElementById("cancelGrid");
+    el.innerHTML = CANCELLATION.map(c => `
+      <div class="cancel-card">
+        <div class="head">
+          <span class="platform">${esc(c.platform)}</span>
+          <span class="escrow-badge">Escrow: ${esc(c.escrow)}</span>
+        </div>
+        <p>${esc(c.policy)}</p>
+      </div>
+    `).join("");
   }
 
   document.getElementById("search").addEventListener("input", applyFilters);
@@ -652,6 +685,8 @@
     applyFilters();
   });
 
+  renderLegend();
   renderStats();
   applyFilters();
+  renderCancellation();
 </script>
