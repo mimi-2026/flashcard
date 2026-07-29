@@ -282,6 +282,13 @@
   }
   @media (max-width: 640px) { .card-body { padding-left: 16px; } }
 
+  /* Trial: vertical (stacked) field layout — A Bear only, for comparison */
+  .card[data-id="ind-a-bear"] .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   .field-group h4 {
     font-size: 10.5px;
     text-transform: uppercase;
@@ -713,7 +720,7 @@
       : fieldGroup("Log / Notes", `<p class="muted-note">No entries yet.</p>`);
 
     return `
-      <details class="card" data-name="${esc(p.name.toLowerCase())}">
+      <details class="card" data-name="${esc(p.name.toLowerCase())}" data-id="${esc(p.id)}">
         <summary>
           <div class="avatar">${esc(p.name.slice(0,2).toUpperCase())}</div>
           <div class="id-block">
