@@ -276,18 +276,11 @@
 
   .card-body {
     padding: 4px 16px 18px 64px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-  }
-  @media (max-width: 640px) { .card-body { padding-left: 16px; } }
-
-  /* Trial: vertical (stacked) field layout — A Bear only, for comparison */
-  .card[data-id="ind-a-bear"] .card-body {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
+  @media (max-width: 640px) { .card-body { padding-left: 16px; } }
 
   .field-group h4 {
     font-size: 10.5px;
@@ -299,6 +292,8 @@
   }
   .kv { font-size: 13px; line-height: 1.7; }
   .kv b { color: var(--text-muted); font-weight: 500; }
+  .kv a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  .kv a:hover { text-decoration: underline; }
 
   .hq-note {
     background: var(--accent-soft);
@@ -425,6 +420,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "¥1,000–1,500 / hour",
+      "portfolio": null,
       "deliverables": "Instagram content, Reels, Beauty, Fitness, Lifestyle",
       "conceptDev": "Likely",
       "nextStep": "Confirm interest / comfort being associated with the app",
@@ -439,6 +435,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "Basic ¥10,000/2; Standard ¥12,000/2; Premium ¥30,000/1 ad video",
+      "portfolio": "https://chillroom.net/sample-video/",
       "deliverables": "Advertising videos, Reels, TikTok, Motion graphics. Note: planning/composition, script & editing only — does NOT film (needs external footage or AI material).",
       "conceptDev": "Yes",
       "nextStep": "HQ split on this profile — pending a decision before any brief goes out. Pricing is already on file (see Pricing field).",
@@ -453,6 +450,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "¥5,000 / video",
+      "portfolio": null,
       "deliverables": "SNS advertising, Reels, TikTok",
       "conceptDev": "TBC",
       "nextStep": "Send the creative brief she requested; still need to confirm whether she develops her own concepts or needs one provided",
@@ -467,6 +465,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "From ¥1,000 / hour (hrs per video TBC)",
+      "portfolio": null,
       "deliverables": "Instagram management, Reels, Beauty, Travel, Lifestyle",
       "conceptDev": "Likely",
       "nextStep": "Confirm concepts + branding fit + hours per UGC video",
@@ -481,6 +480,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "From ¥1,000 / hour (hrs per video TBC)",
+      "portfolio": null,
       "deliverables": "Instagram content, Reels, Canva design",
       "conceptDev": "TBC",
       "nextStep": "Confirm concept ability + hours per video",
@@ -495,6 +495,7 @@
       "lastUpdatedRaw": "Jul 23",
       "lastUpdated": "2026-07-23",
       "pricing": "Basic ¥10,000/3; Standard ¥15,000/5; Premium ¥30,000/10",
+      "portfolio": null,
       "deliverables": "Short-form editing, Reels, Advertising videos",
       "conceptDev": "TBC",
       "nextStep": "Currently on hiatus",
@@ -509,6 +510,7 @@
       "lastUpdatedRaw": "Jul 23",
       "lastUpdated": "2026-07-23",
       "pricing": "Basic ¥20,000/8 (~15s); Standard ¥22,000/8 (~30s); Premium ¥25,000/8 (~60s)",
+      "portfolio": null,
       "deliverables": "Reels, Short-form production, Content planning, SNS marketing",
       "conceptDev": "Yes",
       "nextStep": "Not being pursued",
@@ -523,6 +525,7 @@
       "lastUpdatedRaw": "Jul 20",
       "lastUpdated": "2026-07-20",
       "pricing": "Basic ¥10,000/2 (≤30s); Standard ¥15,000/2 (≤60s); Premium ¥20,000/2",
+      "portfolio": null,
       "deliverables": "Short-form, Reels, TikTok, YouTube Shorts, Motion graphics",
       "conceptDev": "Yes",
       "nextStep": "Not being pursued",
@@ -537,6 +540,7 @@
       "lastUpdatedRaw": "Jul 20",
       "lastUpdated": "2026-07-20",
       "pricing": "Basic ¥150,000; Standard ¥300,000; Premium ¥700,000",
+      "portfolio": null,
       "deliverables": "Commercial production, Script, Filming, Casting",
       "conceptDev": "Yes",
       "nextStep": "Not being pursued",
@@ -551,6 +555,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "With planning (scriptwriting) / casting / filming / editing handled end-to-end, roughly ¥300,000+ for 10 videos (2 scenarios × 5 openings). Varies by content and number of models required.",
+      "portfolio": null,
       "deliverables": null,
       "conceptDev": "Yes",
       "nextStep": "Schedule an intro call to confirm: number of creators they'd use, their script/creator-validation process, and English communication level",
@@ -565,6 +570,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "New-shoot UGC: ¥300,000/video (10 videos ¥3.0M / 15 ¥4.5M / 20 ¥6.0M); variation packs from ¥1.2M (10), ¥1.6M (15), ¥2.0M (20), ~6–8 wk production. Existing-asset subscription (no new filming): 3 concurrent ¥400,000 (~6–10 deliverables/mo), 5 concurrent ¥500,000 (~9–15/mo), 10 concurrent ¥700,000 (~12–20/mo).",
+      "portfolio": null,
       "deliverables": null,
       "conceptDev": "TBC",
       "nextStep": "Schedule a call to go over the quote — ShuttleRock recommends pairing new-shoot UGC (variation packs) with their existing-asset subscription plan to hit 10–20 videos/month affordably",
@@ -579,6 +585,7 @@
       "lastUpdatedRaw": null,
       "lastUpdated": null,
       "pricing": null,
+      "portfolio": null,
       "deliverables": null,
       "conceptDev": "TBC",
       "nextStep": "No response — discontinuing",
@@ -707,6 +714,10 @@
       ? fieldGroup("Pricing", `<p class="kv">${esc(p.pricing)}</p>`)
       : fieldGroup("Pricing", `<p class="muted-note">Not yet provided.</p>`);
 
+    const portfolioHtml = p.portfolio
+      ? fieldGroup("Portfolio", `<p class="kv"><a href="${esc(p.portfolio)}" target="_blank" rel="noopener">${esc(p.portfolio)}</a></p>`)
+      : fieldGroup("Portfolio", `<p class="muted-note">No link found yet.</p>`);
+
     const nextStepHtml = p.nextStep
       ? fieldGroup("Next Step", `<p class="kv">${esc(p.nextStep)}</p>`)
       : "";
@@ -735,6 +746,7 @@
         </summary>
         <div class="card-body">
           ${pricingHtml}
+          ${portfolioHtml}
           ${deliverablesHtml}
           ${nextStepHtml}
           ${hqHtml}
