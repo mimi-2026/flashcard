@@ -332,12 +332,13 @@
   }
   .action-badge::before { content: "▸"; font-size: 10px; }
 
-  .concept-badge {
-    font-size: 11px;
-    color: var(--text-faint);
-    white-space: nowrap;
+  .next-step-preview {
+    flex: 1 1 240px;
+    min-width: 160px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--text-muted);
   }
-  .concept-badge b { color: var(--text-muted); font-weight: 600; }
 
   .updated { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-faint); white-space: nowrap; margin-left: auto; }
 
@@ -500,7 +501,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "¥1,000–1,500 / hour",
-      "actionOwner": null,
+      "actionOwner": "creator",
       "portfolio": null,
       "deliverables": "Instagram content, Reels, Beauty, Fitness, Lifestyle",
       "conceptDev": "Likely",
@@ -516,7 +517,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "Basic ¥10,000/2; Standard ¥12,000/2; Premium ¥30,000/1 ad video",
-      "actionOwner": null,
+      "actionOwner": "hq",
       "portfolio": "https://chillroom.net/sample-video/",
       "deliverables": "Advertising videos, Reels, TikTok, Motion graphics. Note: planning/composition, script & editing only — does NOT film (needs external footage or AI material).",
       "conceptDev": "Yes",
@@ -532,7 +533,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "¥5,000 / video",
-      "actionOwner": null,
+      "actionOwner": "mizuho",
       "portfolio": null,
       "deliverables": "SNS advertising, Reels, TikTok",
       "conceptDev": "TBC",
@@ -548,7 +549,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "From ¥1,000 / hour (hrs per video TBC)",
-      "actionOwner": null,
+      "actionOwner": "creator",
       "portfolio": null,
       "deliverables": "Instagram management, Reels, Beauty, Travel, Lifestyle",
       "conceptDev": "Likely",
@@ -564,7 +565,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "From ¥1,000 / hour (hrs per video TBC)",
-      "actionOwner": null,
+      "actionOwner": "creator",
       "portfolio": null,
       "deliverables": "Instagram content, Reels, Canva design",
       "conceptDev": "TBC",
@@ -644,7 +645,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "With planning (scriptwriting) / casting / filming / editing handled end-to-end, roughly ¥300,000+ for 10 videos (2 scenarios × 5 openings). Varies by content and number of models required.",
-      "actionOwner": null,
+      "actionOwner": "mizuho",
       "portfolio": null,
       "deliverables": null,
       "conceptDev": "Yes",
@@ -660,7 +661,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "New-shoot UGC: ¥300,000/video (10 videos ¥3.0M / 15 ¥4.5M / 20 ¥6.0M); variation packs from ¥1.2M (10), ¥1.6M (15), ¥2.0M (20), ~6–8 wk production. Existing-asset subscription (no new filming): 3 concurrent ¥400,000 (~6–10 deliverables/mo), 5 concurrent ¥500,000 (~9–15/mo), 10 concurrent ¥700,000 (~12–20/mo).",
-      "actionOwner": null,
+      "actionOwner": "mizuho",
       "portfolio": null,
       "deliverables": null,
       "conceptDev": "TBC",
@@ -819,9 +820,9 @@
       return `<div class="seg${done ? " done" : ""}" style="${done ? `--dot:var(${m.dot})` : ""}"></div>`;
     }).join("");
 
-    const conceptHtml = p.conceptDev
-      ? `<span class="concept-badge"><b>Concept Dev:</b> ${esc(p.conceptDev)}</span>`
-      : "";
+    const nextStepPreviewHtml = `<span class="next-step-preview">${p.nextStep ? esc(p.nextStep) : "No next step set."}</span>`;
+
+    const conceptFieldHtml = fieldGroup("Concept Dev", `<p class="kv">${p.conceptDev ? esc(p.conceptDev) : '<span class="muted-note">Not yet confirmed.</span>'}</p>`);
 
     const deliverablesHtml = (p.type !== "Individual Creator" && p.deliverables)
       ? fieldGroup("Strengths / Deliverables", `<p class="kv">${esc(p.deliverables)}</p>`)
@@ -834,10 +835,6 @@
     const portfolioHtml = p.portfolio
       ? fieldGroup("Portfolio", `<p class="kv"><a href="${esc(p.portfolio)}" target="_blank" rel="noopener">${esc(p.portfolio)}</a></p>`)
       : fieldGroup("Portfolio", `<p class="muted-note">No link found yet.</p>`);
-
-    const nextStepHtml = p.nextStep
-      ? fieldGroup("Next Step", `<p class="kv">${esc(p.nextStep)}</p>`)
-      : "";
 
     const hqHtml = p.hqComment
       ? fieldGroup("HQ Comment", `<div class="hq-note">${esc(p.hqComment)}</div>`)
@@ -864,7 +861,7 @@
           <div class="stage-track" title="${isBranch ? m.label : m.label + ' — stage ' + (idx+1) + ' of ' + STAGES.length}">${isBranch ? '' : segs}</div>
           <span class="status-pill" style="--dot:var(${m.dot});--dotbg:var(${m.bg})">${m.label}</span>
           ${actionBadgeHtml}
-          ${conceptHtml}
+          ${nextStepPreviewHtml}
           <span class="updated mono">${p.lastUpdatedRaw ? esc(p.lastUpdatedRaw) : "—"}</span>
           <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </summary>
@@ -872,7 +869,7 @@
           ${pricingHtml}
           ${portfolioHtml}
           ${deliverablesHtml}
-          ${nextStepHtml}
+          ${conceptFieldHtml}
           ${hqHtml}
           ${logHtml}
         </div>
