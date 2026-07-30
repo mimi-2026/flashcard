@@ -526,6 +526,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "¥1,000–1,500 / hour",
+      "delivery": null,
       "actionOwner": "creator",
       "portfolio": null,
       "deliverables": "Instagram content, Reels, Beauty, Fitness, Lifestyle",
@@ -542,6 +543,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "Basic ¥10,000/2; Standard ¥12,000/2; Premium ¥30,000/1 ad video",
+      "delivery": "By Aug 17, depending on when we hand over materials (per her Jul 28 reply).",
       "actionOwner": "hq",
       "portfolio": "https://chillroom.net/sample-video/",
       "deliverables": "Advertising videos, Reels, TikTok, Motion graphics. Note: planning/composition, script & editing only — does NOT film (needs external footage or AI material).",
@@ -558,6 +560,7 @@
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
       "pricing": "¥5,000 / video",
+      "delivery": null,
       "actionOwner": "mizuho",
       "portfolio": null,
       "deliverables": "SNS advertising, Reels, TikTok",
@@ -573,9 +576,10 @@
       "status": "in_discussion",
       "lastUpdatedRaw": "Jul 29",
       "lastUpdated": "2026-07-29",
-      "pricing": "~¥1,000+/hour profile rate × ~5–8 hrs/video (planning through editing) — exact quote pending project details; delivery ~5–7 days after details are confirmed.",
+      "pricing": "~¥1,000+/hour profile rate × ~5–8 hrs/video (planning through editing) — exact quote pending project details.",
+      "delivery": "~5–7 days after project details are confirmed; an August publish is workable depending on content.",
       "actionOwner": "mizuho",
-      "portfolio": null,
+      "portfolio": "https://canva.link/f7pxbt1sfxcqsr1",
       "deliverables": "Instagram management, Reels, Beauty, Travel, Lifestyle",
       "conceptDev": "Likely",
       "nextStep": "Reply to Yoshino: confirm whether hands-only / screen-recording / narration format (no face on camera) works for us, and answer her questions — fee per video, video length, revision rounds, smartphone filming OK, reference videos, and whether ongoing monthly work is likely. Not yet shared with HQ — may need their input on the no-face question.",
@@ -590,6 +594,7 @@
       "lastUpdatedRaw": "Jul 28",
       "lastUpdated": "2026-07-28",
       "pricing": "From ¥1,000 / hour (hrs per video TBC)",
+      "delivery": null,
       "actionOwner": "creator",
       "portfolio": null,
       "deliverables": "Instagram content, Reels, Canva design",
@@ -606,6 +611,7 @@
       "lastUpdatedRaw": "Jul 23",
       "lastUpdated": "2026-07-23",
       "pricing": "Basic ¥10,000/3; Standard ¥15,000/5; Premium ¥30,000/10",
+      "delivery": null,
       "actionOwner": "creator",
       "portfolio": null,
       "deliverables": "Short-form editing, Reels, Advertising videos",
@@ -622,6 +628,7 @@
       "lastUpdatedRaw": "Jul 23",
       "lastUpdated": "2026-07-23",
       "pricing": "Basic ¥20,000/8 (~15s); Standard ¥22,000/8 (~30s); Premium ¥25,000/8 (~60s)",
+      "delivery": null,
       "actionOwner": null,
       "portfolio": null,
       "deliverables": "Reels, Short-form production, Content planning, SNS marketing",
@@ -638,6 +645,7 @@
       "lastUpdatedRaw": "Jul 20",
       "lastUpdated": "2026-07-20",
       "pricing": "Basic ¥10,000/2 (≤30s); Standard ¥15,000/2 (≤60s); Premium ¥20,000/2",
+      "delivery": null,
       "actionOwner": null,
       "portfolio": null,
       "deliverables": "Short-form, Reels, TikTok, YouTube Shorts, Motion graphics",
@@ -654,6 +662,7 @@
       "lastUpdatedRaw": "Jul 20",
       "lastUpdated": "2026-07-20",
       "pricing": "Basic ¥150,000; Standard ¥300,000; Premium ¥700,000",
+      "delivery": null,
       "actionOwner": null,
       "portfolio": null,
       "deliverables": "Commercial production, Script, Filming, Casting",
@@ -670,6 +679,7 @@
       "lastUpdatedRaw": "Jul 30",
       "lastUpdated": "2026-07-30",
       "pricing": "With planning (scriptwriting) / casting / filming / editing handled end-to-end, roughly ¥300,000+ for 10 videos (2 scenarios × 5 openings). Varies by content and number of models required.",
+      "delivery": "~2 weeks from kickoff when starting at the planning stage.",
       "actionOwner": "creator",
       "portfolio": "https://mism.co.jp/buzzorder",
       "deliverables": null,
@@ -686,6 +696,7 @@
       "lastUpdatedRaw": "Jul 30",
       "lastUpdated": "2026-07-30",
       "pricing": "New-shoot UGC: ¥300,000/video (10 videos ¥3.0M / 15 ¥4.5M / 20 ¥6.0M); variation packs from ¥1.2M (10), ¥1.6M (15), ¥2.0M (20), ~6–8 wk production. Existing-asset subscription (no new filming): 3 concurrent ¥400,000 (~6–10 deliverables/mo), 5 concurrent ¥500,000 (~9–15/mo), 10 concurrent ¥700,000 (~12–20/mo).",
+      "delivery": "New-shoot UGC: ~6–8 weeks production. Existing-asset subscription: ongoing monthly deliverables (see Pricing).",
       "actionOwner": "hq",
       "portfolio": null,
       "deliverables": null,
@@ -702,6 +713,7 @@
       "lastUpdatedRaw": null,
       "lastUpdated": null,
       "pricing": null,
+      "delivery": null,
       "actionOwner": null,
       "portfolio": null,
       "deliverables": null,
@@ -872,6 +884,10 @@
       ? fieldGroup("Pricing", `<p class="kv">${esc(p.pricing)}</p>`)
       : fieldGroup("Pricing", `<p class="muted-note">Not yet provided.</p>`);
 
+    const deliveryHtml = p.delivery
+      ? fieldGroup("Delivery", `<p class="kv">${esc(p.delivery)}</p>`)
+      : fieldGroup("Delivery", `<p class="muted-note">Not yet confirmed.</p>`);
+
     const portfolioHtml = p.portfolio
       ? fieldGroup("Portfolio", `<p class="kv"><a href="${esc(p.portfolio)}" target="_blank" rel="noopener">${esc(p.portfolio)}</a></p>`)
       : fieldGroup("Portfolio", `<p class="muted-note">No link found yet.</p>`);
@@ -907,6 +923,7 @@
         </summary>
         <div class="card-body">
           ${pricingHtml}
+          ${deliveryHtml}
           ${portfolioHtml}
           ${deliverablesHtml}
           ${conceptFieldHtml}
