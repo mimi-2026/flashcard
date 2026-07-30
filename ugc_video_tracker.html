@@ -737,6 +737,34 @@
       "log": "Dropped — thin portfolio, undetailed pricing."
     },
     {
+      "id": "ind-naoki",
+      "name": "Naoki Seisakushitsu",
+      "type": "Individual Creator",
+      "status": "quote_received",
+      "lastUpdatedRaw": "Jul 30",
+      "lastUpdated": "2026-07-30",
+      "pricing": "15s: from ¥20,000. 60s: from ¥60,000. 2 min: ¥100,000. Up to 2 revisions included, additional revisions charged separately.",
+      "delivery": "15s: ~7 days. 60s / 2 min: ~14 days.",
+      "actionOwner": "mizuho",
+      "portfolio": [
+        "https://youtu.be/eWZF7dB7F7I",
+        "https://youtu.be/uO3vfzMnx6w",
+        "https://youtube.com/shorts/zGDRA4_f3EM",
+        "https://youtube.com/shorts/T13l-tmCi_4",
+        "https://youtube.com/shorts/9y72P-z-Ouo",
+        "https://youtu.be/1FiNqoJnTSs",
+        "https://youtu.be/8SAFF5ZUw0Q",
+        "https://youtu.be/Ks6dJPFTe2o",
+        "https://youtu.be/l7eSok671L4",
+        "https://youtu.be/UevKXPW38dw"
+      ],
+      "deliverables": "High-retention ad-style videos, strong hooks in the first 3 seconds; works from concept if no script provided; uses AI tools (ElevenLabs voice, Suno music) plus After Effects/Premiere.",
+      "conceptDev": "Yes",
+      "nextStep": "Reply — share our project brief/durations so he can confirm a final quote against his listed per-video rates.",
+      "hqComment": null,
+      "log": "[Jul 30] Reached out to us directly via Lancers with his rates, delivery times, and portfolio. Not yet replied."
+    },
+    {
       "id": "agy-mism",
       "name": "MISM",
       "type": "Agency",
@@ -786,6 +814,48 @@
       "nextStep": "No response — discontinuing",
       "hqComment": null,
       "log": "Inquiry sent, but no response so far."
+    },
+    {
+      "id": "agy-hashtag",
+      "name": "Hashtag Inc. (Yamashita Nobuhiro)",
+      "type": "Agency",
+      "status": "inquired",
+      "lastUpdatedRaw": "Jul 30",
+      "lastUpdated": "2026-07-30",
+      "pricing": "Not disclosed — quotation required.",
+      "delivery": null,
+      "actionOwner": "mizuho",
+      "portfolio": "https://www.lancers.jp/menu/detail/1259439",
+      "deliverables": "SNS marketing, short-form video & Meta ad production — full concept-to-edit service (strategy, script, casting, filming, editing), hook strategy, multiple messaging angles, ongoing creative optimization from ad performance data. 10+ yrs experience; claims managing accounts with 4M+ combined followers.",
+      "conceptDev": "Yes",
+      "nextStep": "Reply and request a quote scoped to our project.",
+      "hqComment": null,
+      "log": "[Jul 30] Reached out to us directly via Lancers with a company pitch. Not yet replied."
+    },
+    {
+      "id": "agy-moveon",
+      "name": "MOVE-ON Inc. (Shuhei Ito)",
+      "type": "Agency",
+      "status": "inquired",
+      "lastUpdatedRaw": "Jul 30",
+      "lastUpdated": "2026-07-30",
+      "pricing": "Hourly rate: ¥7,000/hour. No package quote for UGC production yet.",
+      "delivery": null,
+      "actionOwner": "mizuho",
+      "portfolio": [
+        "https://youtu.be/7CmLS22CXQg",
+        "https://youtu.be/UNha_fjQIzE",
+        "https://www.youtube.com/watch?v=sXd9a7RCO2c",
+        "https://www.youtube.com/watch?v=K3yJuOKj5Og",
+        "https://youtu.be/O4WETKVEcfE",
+        "https://youtu.be/2EouK0xgkMk",
+        "https://www.lancers.jp/profile/shuhei-d"
+      ],
+      "deliverables": "Full production (concept, script, filming, editing) focused on retention/hooks/CTAs; team of 30+ creators covering live-action, animation and CGI. Founded 2021; past clients include CyberAgent, Rakuten, Amazon Japan, L'Oréal Japan, Nestlé Japan.",
+      "conceptDev": "Yes",
+      "nextStep": "Reply and request a package quote scoped to our UGC video needs — only an hourly rate has been given so far.",
+      "hqComment": null,
+      "log": "[Jul 30] Reached out to us directly via Lancers with company background and portfolio. Not yet replied."
     }
   ],
   "cancellation": [
@@ -806,6 +876,10 @@
     }
   ],
   "board": [
+    {
+      "date": "2026-07-30",
+      "note": "3 new inbound leads via Lancers: Hashtag Inc. (SNS/Meta ad agency, quote pending), Naoki Seisakushitsu (individual editor, already quoted ¥20k–¥100k/video), MOVE-ON Inc. (production company, only hourly rate so far). None replied to yet."
+    },
     {
       "date": "2026-07-30",
       "note": "HQ sent standing directives (video lengths 15/25/45s, shortlist independent creators before contacting, target 6+ creators, cap each at 3–4 videos/month) — see the HQ Directives section below. Full Creative Brief also added as a separate linked page."
@@ -996,9 +1070,12 @@
       ? fieldGroup("Delivery", `<p class="kv">${esc(p.delivery)}</p>`)
       : fieldGroup("Delivery", `<p class="muted-note">Not yet confirmed.</p>`);
 
-    const portfolioHtml = p.portfolio
-      ? fieldGroup("Portfolio", `<p class="kv"><a href="${esc(p.portfolio)}" target="_blank" rel="noopener">${esc(p.portfolio)}</a></p>`)
-      : fieldGroup("Portfolio", `<p class="muted-note">No link found yet.</p>`);
+    const portfolioHtml = (() => {
+      if (!p.portfolio) return fieldGroup("Portfolio", `<p class="muted-note">No link found yet.</p>`);
+      const links = Array.isArray(p.portfolio) ? p.portfolio : [p.portfolio];
+      const rows = links.map(u => `<div><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></div>`).join("");
+      return fieldGroup("Portfolio", `<div class="kv">${rows}</div>`);
+    })();
 
     const hqHtml = p.hqComment
       ? fieldGroup("HQ Comment", `<div class="hq-note">${esc(p.hqComment)}</div>`)
