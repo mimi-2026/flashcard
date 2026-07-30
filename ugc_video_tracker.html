@@ -581,7 +581,7 @@
       "lastUpdatedRaw": "Jul 23",
       "lastUpdated": "2026-07-23",
       "pricing": "Basic ¥10,000/3; Standard ¥15,000/5; Premium ¥30,000/10",
-      "actionOwner": null,
+      "actionOwner": "creator",
       "portfolio": null,
       "deliverables": "Short-form editing, Reels, Advertising videos",
       "conceptDev": "TBC",
@@ -711,10 +711,6 @@
     {
       "date": "2026-07-29",
       "note": "HQ weighed in: MISM's pricing is approved, moving to a scheduling call (need creator count + validation process + English check). A.Bear is now a split decision — Bianca flags the no-filming issue, Renzo recommends dropping her. Also: switch screen-recording assets to vertical phone format and add a rounded-corner PNG app icon for creators."
-    },
-    {
-      "date": "2026-07-29",
-      "note": "Tracker rebuilt from the latest creator/agency sheet — 9 individual creators and 3 agencies now tracked here."
     }
   ]
 }
@@ -761,12 +757,14 @@
     `).join("");
   }
 
+  const STATS_DISPLAY = [...STAGES, "passed_dropped"];
+
   function renderStats() {
     const counts = {};
-    STAGES.forEach(s => counts[s] = 0);
+    STATS_DISPLAY.forEach(s => counts[s] = 0);
     PARTNERS.forEach(p => { if (counts[p.status] !== undefined) counts[p.status]++; });
     const el = document.getElementById("stats");
-    el.innerHTML = STAGES.map(s => `
+    el.innerHTML = STATS_DISPLAY.map(s => `
       <div class="stat" style="--dot:var(${META[s].dot})">
         <div class="n">${counts[s]}</div>
         <div class="l">${META[s].label}</div>
