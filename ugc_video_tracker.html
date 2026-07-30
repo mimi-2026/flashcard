@@ -117,16 +117,27 @@
   h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
   h2 { font-size: 15px; font-weight: 700; margin: 0 0 12px; }
   .section-sub { font-size: 12px; font-weight: 400; color: var(--text-faint); text-transform: none; letter-spacing: 0; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .section-head h2 { margin-bottom: 0; }
   .total-badge {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: var(--surface-2);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 999px;
-    padding: 2px 9px;
+    padding: 4px 14px;
     text-transform: none;
     letter-spacing: 0;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .header-note {
     font-size: 12.5px;
@@ -456,7 +467,10 @@
   <div class="action-stats" id="actionStats"></div>
   <p class="action-hint">Left-edge color on each card below matches who's up next. Click a card's badge or a tile above to filter.</p>
 
-  <h2>Status Overview <span class="section-sub">— number of partners at each stage, color key below</span> <span class="total-badge" id="totalBadge"></span></h2>
+  <div class="section-head">
+    <h2>Status Overview <span class="section-sub">— number of partners at each stage, color key below</span></h2>
+    <span class="total-badge" id="totalBadge"></span>
+  </div>
   <div class="stats" id="stats"></div>
 
   <div class="legend" id="legend"></div>
