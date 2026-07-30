@@ -158,7 +158,22 @@
   }
   .board-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
   .board-head h2 { margin: 0; }
-  .board-head .hint { font-size: 11.5px; color: var(--text-faint); }
+  .board-head .hint, .directives-head .hint { font-size: 11.5px; color: var(--text-faint); }
+
+  .brief-link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--c-action-hq-bg);
+    border: 1px solid var(--c-action-hq);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    text-decoration: none;
+  }
+  .brief-link:hover { filter: brightness(0.97); }
+  .brief-link .brief-link-title { font-size: 13px; font-weight: 700; color: var(--c-action-hq); }
+  .brief-link .brief-link-sub { font-size: 11.5px; color: var(--text-muted); }
   .board-list { display: flex; flex-direction: column; gap: 0; }
   .board-list .entry {
     display: flex;
@@ -178,6 +193,44 @@
     flex-shrink: 0;
   }
   .board-empty { font-size: 13px; color: var(--text-faint); }
+
+  /* ---------- HQ Directives ---------- */
+  .directives {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--c-action-hq);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 26px;
+  }
+  .directives-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .directives-head h2 { margin: 0; }
+  .directive-list { display: flex; flex-direction: column; gap: 0; }
+  .directive {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+  }
+  .directive:first-child { border-top: none; padding-top: 2px; }
+  .directive .num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--c-action-hq-bg);
+    color: var(--c-action-hq);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .directive h4 { margin: 0 0 4px; font-size: 13.5px; font-weight: 700; }
+  .directive p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
+  .directive a { color: var(--accent); }
+  .directive .link-note { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--c-action-hq); text-decoration: none; }
+  .directive .link-note:hover { text-decoration: underline; }
+  .directive .link-note::before { content: "↗ "; }
 
   /* ---------- Legend ---------- */
   .legend {
@@ -453,6 +506,18 @@
       <span class="hint">Newest first · tell Claude what to post and it goes here</span>
     </div>
     <div class="board-list" id="boardList"></div>
+  </section>
+
+  <section class="directives">
+    <div class="directives-head">
+      <h2>HQ Directives</h2>
+      <span class="hint">Standing guidance from France HQ — applies across the whole pipeline</span>
+    </div>
+    <a class="brief-link" href="https://claude.ai/code/artifact/ceca5469-a88d-4df7-821c-cdcac1f2ac4a" target="_blank" rel="noopener">
+      <span class="brief-link-title">Full Creative Brief ↗</span>
+      <span class="brief-link-sub">Brand context, audiences, platform rules, video formats, script structure &amp; deliverables — separate page</span>
+    </a>
+    <div class="directive-list" id="directiveList"></div>
   </section>
 
   <header class="page">
@@ -742,6 +807,10 @@
   ],
   "board": [
     {
+      "date": "2026-07-30",
+      "note": "HQ sent standing directives (video lengths 15/25/45s, shortlist independent creators before contacting, target 6+ creators, cap each at 3–4 videos/month) — see the HQ Directives section below. Full Creative Brief also added as a separate linked page."
+    },
+    {
       "date": "2026-07-29",
       "note": "Yoshino replied — very interested, but can't show her face on camera (hands-only/screen-recording/narration only). Asked several questions back; shared her hours (5–8/video) and delivery (5–7 days). Not yet shared with HQ."
     },
@@ -765,6 +834,30 @@
       "date": "2026-07-29",
       "note": "HQ weighed in: MISM's pricing is approved, moving to a scheduling call (need creator count + validation process + English check). A.Bear is now a split decision — Bianca flags the no-filming issue, Renzo recommends dropping her. Also: switch screen-recording assets to vertical phone format and add a rounded-corner PNG app icon for creators."
     }
+  ],
+  "directives": [
+    {
+      "title": "Video Length",
+      "body": "Test different formats and durations rather than a single standard length — the ideal range is around 15 seconds, 25 seconds, and 45 seconds. Goal: test different formats and identify what performs best."
+    },
+    {
+      "title": "Independent Creators — Shortlist First",
+      "body": "Prepare a shortlist of candidate creators for HQ to review before reaching out, so we're aligned on the kind of creators we want before contacting them. Applies going forward to new creators."
+    },
+    {
+      "title": "Number of Creators",
+      "body": "Target at least 6 independent creators — enough to get a good read on average market pricing and compare the independent-creator route against agencies."
+    },
+    {
+      "title": "Monthly Production Capacity",
+      "body": "Ask each creator their realistic monthly capacity, but cap any single creator at 3–4 videos/month to keep a diversity of faces and styles across content. Overall target: at least ~12 videos/month across creators (more if quality stays consistently high). Strong performers could move to an ongoing monthly collaboration."
+    },
+    {
+      "title": "Brand Assets",
+      "body": "Don't send creators a link to the Brand Drive folder directly — download the assets ourselves and share with creators via WeTransfer instead. Make sure the package includes the full Nouslib logo (not just the app icon) and a rounded-corner version of the app icon, exactly as it appears on a phone.",
+      "link": "https://drive.google.com/drive/folders/1itKneHi4wuDAO9TTFFMWinSBuE6QV2jN?usp=drive_link",
+      "linkLabel": "Brand assets folder (internal only — do not send this link to creators)"
+    }
   ]
 }
 </script>
@@ -774,6 +867,7 @@
   const PARTNERS = DATA.partners;
   const CANCELLATION = DATA.cancellation;
   const BOARD = DATA.board;
+  const DIRECTIVES = DATA.directives || [];
 
   const STAGES = ["inquired", "awaiting_reply", "quote_received", "in_discussion"];
   const META = {
@@ -850,6 +944,20 @@
       <div class="entry">
         <span class="date">${esc(b.date)}</span>
         <span>${esc(b.note)}</span>
+      </div>
+    `).join("");
+  }
+
+  function renderDirectives() {
+    const el = document.getElementById("directiveList");
+    el.innerHTML = DIRECTIVES.map((d, i) => `
+      <div class="directive">
+        <span class="num">${i + 1}</span>
+        <div>
+          <h4>${esc(d.title)}</h4>
+          <p>${esc(d.body)}</p>
+          ${d.link ? `<a class="link-note" href="${esc(d.link)}" target="_blank" rel="noopener">${esc(d.linkLabel || d.link)}</a>` : ""}
+        </div>
       </div>
     `).join("");
   }
@@ -1026,6 +1134,7 @@
   renderStats();
   renderActionStats();
   renderBoard();
+  renderDirectives();
   applyFilters();
   renderCancellation();
   updateCancelVisibility();
