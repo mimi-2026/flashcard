@@ -739,10 +739,10 @@
 
   const ACTION_ORDER = ["hq", "mizuho", "creator", "none"];
   const ACTION_META = {
-    hq:      { label: "HQ",              dot: "--c-action-hq",      bg: "--c-action-hq-bg" },
-    mizuho:  { label: "Mizuho",          dot: "--c-action-mizuho",  bg: "--c-action-mizuho-bg" },
-    creator: { label: "Creator/Agency",  dot: "--c-action-creator", bg: "--c-action-creator-bg" },
-    none:    { label: "Not yet flagged", dot: "--c-action-none",    bg: "--c-action-none-bg" },
+    hq:      { label: "Bianca & Renzo",  shortLabel: "HQ",             dot: "--c-action-hq",      bg: "--c-action-hq-bg" },
+    mizuho:  { label: "Mizuho",          shortLabel: "Mizuho",         dot: "--c-action-mizuho",  bg: "--c-action-mizuho-bg" },
+    creator: { label: "Creator/Agency",  shortLabel: "Creator/Agency", dot: "--c-action-creator", bg: "--c-action-creator-bg" },
+    none:    { label: "Not yet flagged", shortLabel: "Not yet flagged", dot: "--c-action-none",   bg: "--c-action-none-bg" },
   };
 
   function actionKey(p) {
@@ -848,7 +848,7 @@
     const am = ACTION_META[ak];
     const actionBadgeHtml = ak === "none"
       ? ""
-      : `<button type="button" class="action-badge" data-action="${ak}" style="--dot:var(${am.dot});--dotbg:var(${am.bg})">Waiting on ${am.label}</button>`;
+      : `<button type="button" class="action-badge" data-action="${ak}" style="--dot:var(${am.dot});--dotbg:var(${am.bg})">Waiting on ${am.shortLabel}</button>`;
 
     return `
       <details class="card" data-name="${esc(p.name.toLowerCase())}" data-id="${esc(p.id)}" style="--action-color:var(${am.dot})">
