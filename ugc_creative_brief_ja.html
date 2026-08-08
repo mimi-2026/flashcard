@@ -1,4 +1,4 @@
-<title>Nouslib &mdash; UGC Creative Brief</title>
+<title>Nouslib &mdash; UGC クリエイティブブリーフ</title>
 <style>
   @font-face {
     font-family: 'DM Serif Display';
@@ -53,8 +53,8 @@
     --warn-border: #E8A876;
     --warn-text: #7A4A1F;
 
-    --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
-    --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    --font-display: "DM Serif Display", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    --font-sans: "Poppins", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
   }
 
@@ -96,7 +96,7 @@
   html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   body { padding: 0 0 90px; }
 
-  .shell { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 48px; }
+  .shell { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 240px minmax(0,1fr); gap: 48px; }
   @media (max-width: 860px) { .shell { grid-template-columns: 1fr; } }
 
   header.hero {
@@ -105,9 +105,9 @@
     max-width: 1180px;
     margin: 0 auto;
   }
-  .eyebrow { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
-  h1.title { font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 5vw, 52px); line-height: 1.08; margin: 0 0 14px; text-wrap: balance; color: var(--text); }
-  .lede { font-size: 15.5px; line-height: 1.7; color: var(--text-muted); max-width: 640px; margin: 0; }
+  .eyebrow { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); margin: 0 0 10px; }
+  h1.title { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.25; margin: 0 0 14px; text-wrap: balance; color: var(--text); }
+  .lede { font-size: 15.5px; line-height: 1.9; color: var(--text-muted); max-width: 640px; margin: 0; }
 
   /* ---------- TOC ---------- */
   nav.toc {
@@ -119,14 +119,14 @@
     gap: 2px;
     font-size: 13px;
   }
-  nav.toc .toc-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 10px; }
+  nav.toc .toc-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 10px; }
   nav.toc a {
     color: var(--text-muted);
     text-decoration: none;
     padding: 7px 10px;
     border-radius: 7px;
     border-left: 2px solid transparent;
-    line-height: 1.4;
+    line-height: 1.6;
   }
   nav.toc a:hover { background: var(--surface-2); color: var(--text); }
   nav.toc a b { display: block; font-family: var(--font-mono); font-size: 10.5px; color: var(--accent); font-weight: 600; }
@@ -136,14 +136,14 @@
   section.brief-section { padding: 36px 0; border-top: 1px solid var(--border); scroll-margin-top: 20px; }
   section.brief-section:first-of-type { border-top: none; padding-top: 0; }
   .section-num { font-family: var(--font-mono); color: var(--accent); font-size: 13px; font-weight: 700; margin: 0 0 6px; letter-spacing: 0.04em; }
-  h2.section-title { font-family: var(--font-display); font-weight: 400; font-size: 30px; margin: 0 0 18px; text-wrap: balance; }
-  h3.sub-title { font-family: var(--font-sans); font-weight: 700; font-size: 14px; letter-spacing: 0.02em; margin: 26px 0 10px; color: var(--text); }
+  h2.section-title { font-family: var(--font-display); font-weight: 400; font-size: 28px; margin: 0 0 18px; text-wrap: balance; line-height: 1.4; }
+  h3.sub-title { font-family: var(--font-sans); font-weight: 700; font-size: 14.5px; letter-spacing: 0.01em; margin: 26px 0 10px; color: var(--text); }
   h3.sub-title:first-child { margin-top: 0; }
 
-  .prose { font-size: 14.5px; line-height: 1.75; color: var(--text-muted); max-width: 680px; }
+  .prose { font-size: 14.5px; line-height: 1.95; color: var(--text-muted); max-width: 680px; }
   .prose p { margin: 0 0 14px; }
   .prose ul { margin: 0 0 14px; padding-left: 20px; }
-  .prose li { margin-bottom: 6px; }
+  .prose li { margin-bottom: 8px; }
   .prose strong { color: var(--text); font-weight: 600; }
 
   .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 4px; }
@@ -173,13 +173,13 @@
     background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
     padding: 18px 20px; margin: 10px 0;
   }
-  .font-preview .fp-name { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); margin-bottom: 6px; }
+  .font-preview .fp-name { font-size: 11.5px; font-weight: 700; color: var(--text-faint); margin-bottom: 6px; }
   .font-preview .fp-sample { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--text); margin-bottom: 4px; }
   .font-preview a { font-size: 12.5px; color: var(--accent); text-decoration: none; }
   .font-preview a:hover { text-decoration: underline; }
 
   .obj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 6px 0; }
-  .obj-card h4 { margin: 0 0 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+  .obj-card h4 { margin: 0 0 8px; font-size: 12.5px; font-weight: 700; color: var(--accent); }
 
   /* Personas */
   .persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 8px; }
@@ -193,7 +193,7 @@
     font-family: var(--font-mono); font-weight: 700; font-size: 13px; margin-bottom: 12px;
   }
   .persona-card h4 { margin: 0 0 8px; font-size: 15.5px; font-family: var(--font-display); font-weight: 400; }
-  .persona-card p { margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
+  .persona-card p { margin: 0 0 12px; font-size: 13px; line-height: 1.8; color: var(--text-muted); }
   .persona-card .chip-row { margin: 0; }
 
   /* Platform guidelines callout */
@@ -204,21 +204,21 @@
     border-radius: 10px;
     padding: 20px 22px;
   }
-  .callout .callout-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--warn-text); margin: 0 0 14px; }
+  .callout .callout-title { font-size: 13px; font-weight: 700; color: var(--warn-text); margin: 0 0 14px; }
   .avoid-focus { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
   .avoid-focus h5 { margin: 0 0 8px; font-size: 12.5px; font-weight: 700; color: var(--text); }
-  .avoid-focus ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: var(--text-muted); }
+  .avoid-focus ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.9; color: var(--text-muted); }
   .avoid-focus .avoid li::marker { color: var(--warn-border); }
   .avoid-focus .focus li::marker { color: var(--accent); }
-  .callout .closing { margin: 16px 0 0; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .callout .closing { margin: 16px 0 0; font-size: 13px; color: var(--text-muted); line-height: 1.8; }
 
   /* Format types */
   .format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 8px; }
   .format-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
   .format-card .type-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 8px; }
   .format-card h4 { margin: 0 0 8px; font-size: 15.5px; font-family: var(--font-display); font-weight: 400; }
-  .format-card p { margin: 0 0 10px; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
-  .format-card ul { margin: 0; padding-left: 18px; font-size: 12.5px; line-height: 1.7; color: var(--text-muted); }
+  .format-card p { margin: 0 0 10px; font-size: 13px; line-height: 1.8; color: var(--text-muted); }
+  .format-card ul { margin: 0; padding-left: 18px; font-size: 12.5px; line-height: 1.9; color: var(--text-muted); }
 
   /* Script structure timeline */
   .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 10px; }
@@ -231,7 +231,7 @@
   }
   .tl-step h4 { margin: 0 0 6px; font-size: 15px; font-family: var(--font-display); font-weight: 400; }
   .tl-step .goal { font-size: 13px; color: var(--text-muted); margin: 0 0 10px; }
-  .tl-step ul, .tl-step .examples { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: var(--text-muted); }
+  .tl-step ul, .tl-step .examples { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.9; color: var(--text-muted); }
   .tl-step .examples { list-style: none; padding-left: 0; }
   .tl-step .examples li { padding: 4px 10px; margin-bottom: 5px; background: var(--surface-2); border-radius: 6px; display: inline-block; margin-right: 6px; font-style: italic; }
 
@@ -240,7 +240,7 @@
   .checklist li {
     display: flex; gap: 10px; align-items: flex-start;
     padding: 10px 0; border-top: 1px solid var(--border);
-    font-size: 14px; line-height: 1.6; color: var(--text-muted);
+    font-size: 14px; line-height: 1.8; color: var(--text-muted);
   }
   .checklist li:first-child { border-top: none; }
   .checklist li::before {
@@ -256,67 +256,67 @@
 </style>
 
 <header class="hero">
-  <p class="eyebrow">Creative Direction &middot; From France HQ</p>
-  <h1 class="title">Nouslib UGC Creative Brief</h1>
-  <p class="lede">The full brief creators should follow when producing UGC ad content for Nouslib's Japan launch &mdash; brand context, audiences, platform rules, formats, script structure, and deliverables.</p>
-  <p class="lede" style="margin-top:10px;"><a href="https://claude.ai/code/artifact/71fd11fe-220c-40bb-8f3c-a6bb1961defe" style="color:var(--accent);">日本語版はこちら →</a></p>
+  <p class="eyebrow">クリエイティブディレクション ・ フランス本社より</p>
+  <h1 class="title">Nouslib UGC クリエイティブブリーフ</h1>
+  <p class="lede">Nouslibの日本市場ローンチに向けたUGC広告動画を制作いただくにあたってのブリーフです。ブランドの背景、ターゲット層、プラットフォームのルール、動画フォーマット、台本構成、納品物についてまとめています。</p>
+  <p class="lede" style="margin-top:10px;"><a href="https://claude.ai/code/artifact/ceca5469-a88d-4df7-821c-cdcac1f2ac4a" style="color:var(--accent);">English version →</a></p>
 </header>
 
 <div class="shell">
-  <nav class="toc" aria-label="Table of contents">
-    <span class="toc-label">On this page</span>
-    <a href="#brand-context"><b>01</b>Brand Context &amp; Objectives</a>
-    <a href="#audiences"><b>02</b>Target Audiences</a>
-    <a href="#platform-guidelines"><b>03</b>Platform Guidelines</a>
-    <a href="#video-formats"><b>04</b>Video Formats</a>
-    <a href="#script-structure"><b>05</b>Script Structure</a>
-    <a href="#deliverables"><b>06</b>Deliverables</a>
+  <nav class="toc" aria-label="目次">
+    <span class="toc-label">目次</span>
+    <a href="#brand-context"><b>01</b>ブランドの背景と目的</a>
+    <a href="#audiences"><b>02</b>ターゲット層</a>
+    <a href="#platform-guidelines"><b>03</b>プラットフォームガイドライン</a>
+    <a href="#video-formats"><b>04</b>動画フォーマット</a>
+    <a href="#script-structure"><b>05</b>台本構成</a>
+    <a href="#deliverables"><b>06</b>納品物</a>
   </nav>
 
   <main>
     <section class="brief-section" id="brand-context">
       <p class="section-num">01</p>
-      <h2 class="section-title">Brand Context &amp; Objectives</h2>
+      <h2 class="section-title">ブランドの背景と目的</h2>
 
-      <h3 class="sub-title">About Nouslib</h3>
+      <h3 class="sub-title">Nouslibについて</h3>
       <div class="prose">
-        <p>Nouslib is an open-minded and welcoming dating app designed to help people meet without judgment, based on their own desires, preferences and expectations. The app is inclusive, private and built with user safety at its core.</p>
-        <p>Nouslib is new to the Japanese market and brings a touch of French dating culture and the French approach to relationships. This &ldquo;French touch&rdquo; can be explored creatively, but it should not necessarily become the sole focus of the video.</p>
-        <p>Users can register alone or as a pair and connect with people in the way that feels right for them.</p>
+        <p>Nouslibは、ジャッジのない出会いを大切にする、オープンマインドなマッチングアプリです。ご自身の願望や好み、期待に沿った出会い方を選んでいただける、インクルーシブでプライベート、そしてユーザーの安全性を第一に設計されたサービスです。</p>
+        <p>Nouslibは日本市場に新規参入するブランドで、フランス発の出会い文化やアプローチを取り入れています。この「フレンチテイスト」はクリエイティブの中で表現していただいて構いませんが、動画の主題にする必要は必ずしもありません。</p>
+        <p>ユーザーはお一人でも、お二人（カップル）でも登録可能で、それぞれに合った形で出会うことができます。</p>
       </div>
 
-      <h3 class="sub-title">Nouslib Features &amp; Terminology</h3>
+      <h3 class="sub-title">Nouslibの機能・用語</h3>
       <div class="prose">
         <ul>
-          <li>Send a <strong>&ldquo;Kiss&rdquo;</strong> to show someone you&rsquo;re interested in them.</li>
-          <li>Send a <strong>&ldquo;French Kiss&rdquo;</strong>, similar to a Super Like.</li>
-          <li>Make video or audio calls directly through the app or website.</li>
-          <li>Leave comments and recommendations on the profiles of people you&rsquo;ve met or previously spoken with.</li>
-          <li>Share personal stories publicly or exclusively with close friends.</li>
-          <li>Create private photo albums and choose exactly who can access them.</li>
+          <li><strong>「Kiss」</strong>を送って、相手に興味があることを伝える。</li>
+          <li><strong>「French Kiss（フレンチキス）」</strong>を送る（スーパーライクのようなもの）。</li>
+          <li>アプリ・ウェブサイト上でビデオ通話・音声通話が可能。</li>
+          <li>出会った相手や過去にやり取りした相手のプロフィールに、コメントやおすすめを残せる。</li>
+          <li>自分のストーリーを公開、または親しい友人限定で共有できる。</li>
+          <li>非公開のフォトアルバムを作成し、閲覧できる相手を選べる。</li>
         </ul>
       </div>
 
-      <h3 class="sub-title">Content Instructions</h3>
+      <h3 class="sub-title">制作にあたってのご案内</h3>
       <div class="prose">
         <ul>
-          <li>Use the in-app content we provide in the video. These videos and screenshots use fictional profiles, so the content can safely be used.</li>
-          <li>At the end of each video, include the Nouslib logo / app icon with a Japanese equivalent of &ldquo;Download Nouslib.&rdquo;</li>
-          <li>Content should respect Nouslib&rsquo;s visual identity, particularly through subtitles using our typography and brand colors.</li>
-          <li>PNG illustrations are available to make content more dynamic &mdash; provided separately.</li>
-          <li>Overall tone: warm, welcoming and dynamic. Safety and privacy are core to the Nouslib experience and should come through clearly.</li>
+          <li>動画には弊社よりご提供するアプリ内コンテンツをご使用ください。使用されている画像・動画内のプロフィールはすべて架空のものですので、動画内で問題なくご使用いただけます。</li>
+          <li>各動画の最後に、Nouslibのロゴ／アプリアイコンと、日本語で「Nouslibをダウンロード」に相当する文言を入れてください。</li>
+          <li>コンテンツは弊社のビジュアルアイデンティティを尊重したものにしてください。特に字幕は、弊社のタイポグラフィとブランドカラーをご使用ください。</li>
+          <li>動画をより生き生きとしたものにするためのPNGイラスト素材もございます。別途お渡しいたします。</li>
+          <li>動画全体のトーンは、温かみがあり、親しみやすく、活気のあるものを想定しています。安全性・プライバシーはNouslibの体験において特に大切な要素ですので、動画内でもその点が伝わるようにしてください。</li>
         </ul>
       </div>
 
-      <h3 class="sub-title">Typography</h3>
+      <h3 class="sub-title">タイポグラフィ</h3>
       <div class="font-preview">
-        <div class="fp-name">Display typeface</div>
+        <div class="fp-name">Display Typeface</div>
         <div class="fp-sample">DM Serif Display</div>
-        <a href="https://fonts.google.com/specimen/DM+Serif+Display?preview.script=Latn" target="_blank" rel="noopener">View on Google Fonts &rarr;</a>
+        <a href="https://fonts.google.com/specimen/DM+Serif+Display?preview.script=Latn" target="_blank" rel="noopener">Google Fontsで見る &rarr;</a>
       </div>
-      <p class="prose" style="margin-top:8px;">Poppins is the alternate/body option alongside DM Serif Display.</p>
+      <p class="prose" style="margin-top:8px;">本文・代替書体としてPoppinsも使用しています。</p>
 
-      <h3 class="sub-title">Brand Colors</h3>
+      <h3 class="sub-title">ブランドカラー</h3>
       <div class="swatches">
         <div class="swatch-card">
           <div class="swatch-chip" style="background:#E30613"></div>
@@ -330,28 +330,28 @@
 
       <div class="obj-grid" style="margin-top:28px;">
         <div class="obj-card">
-          <h4>Business Objective</h4>
+          <h4>ビジネス目標</h4>
           <div class="prose">
             <ul>
-              <li>App downloads</li>
-              <li>New registrations</li>
-              <li>Premium subscriptions</li>
+              <li>アプリダウンロード数の増加</li>
+              <li>新規登録者数の増加</li>
+              <li>プレミアム会員登録数の増加</li>
             </ul>
           </div>
         </div>
         <div class="obj-card">
-          <h4>Creative Objective</h4>
+          <h4>クリエイティブ目標</h4>
           <div class="prose">
             <ul>
-              <li>Introduce Nouslib to the Japanese market.</li>
-              <li>Build curiosity and trust around a new dating platform &mdash; modern experience, premium design, commitment to safety.</li>
-              <li>Help normalize a more open and respectful way of meeting people.</li>
+              <li>日本市場にNouslibを紹介する。</li>
+              <li>新しいマッチングアプリへの興味・信頼を構築する — モダンな体験、洗練されたデザイン、安全性への取り組みを伝える。</li>
+              <li>より自由でお互いを尊重する出会い方を、当たり前のものとして広める。</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <h3 class="sub-title">Distribution Channels</h3>
+      <h3 class="sub-title">配信チャネル</h3>
       <div class="chip-row">
         <span class="chip">TikTok</span>
         <span class="chip">Instagram Reels</span>
@@ -359,43 +359,43 @@
         <span class="chip">YouTube Shorts</span>
       </div>
 
-      <h3 class="sub-title">Video Format &amp; Durations</h3>
+      <h3 class="sub-title">動画フォーマット・尺</h3>
       <div class="chip-row">
-        <span class="chip">Vertical (9:16)</span>
-        <span class="chip mono">~15 sec</span>
-        <span class="chip mono">~25 sec</span>
-        <span class="chip mono">~45 sec</span>
+        <span class="chip">縦型 (9:16)</span>
+        <span class="chip mono">約15秒</span>
+        <span class="chip mono">約25秒</span>
+        <span class="chip mono">約45秒</span>
       </div>
-      <p class="prose" style="margin-top:10px;">Produce different durations to maximize testing opportunities &mdash; the goal is to test formats and identify what performs best.</p>
+      <p class="prose" style="margin-top:10px;">テストの機会を最大化するため、複数の尺で制作をお願いいたします。目的は、様々なフォーマットを試し、どれが最も効果的かを見極めることです。</p>
     </section>
 
     <section class="brief-section" id="audiences">
       <p class="section-num">02</p>
-      <h2 class="section-title">Target Audiences &amp; Editorial Angles</h2>
-      <p class="prose">We want to test several creative approaches to reach different audiences. Creators should adapt their tone according to the audience they are addressing.</p>
+      <h2 class="section-title">ターゲット層と切り口</h2>
+      <p class="prose">複数の異なるターゲット層に向けて、様々なクリエイティブの切り口を試したいと考えています。想定する層に合わせて、トーンを調整していただければと思います。</p>
       <div class="persona-grid">
         <div class="persona-card">
           <div class="letter">A</div>
-          <h4>The Curious Couple</h4>
-          <p>People in happy relationships who are looking to bring something new into their relationship together.</p>
+          <h4>好奇心旺盛なカップル</h4>
+          <p>幸せな関係の中にいながら、二人の関係に新しい刺激を取り入れたいと考えているカップル。</p>
           <div class="chip-row">
-            <span class="chip">Warm</span><span class="chip">Honest</span><span class="chip">Playful</span><span class="chip">Trust &amp; communication</span>
+            <span class="chip">温かい</span><span class="chip">誠実</span><span class="chip">遊び心がある</span><span class="chip">信頼とコミュニケーション</span>
           </div>
         </div>
         <div class="persona-card">
           <div class="letter">B</div>
-          <h4>The Curious Single</h4>
-          <p>Singles looking for meaningful encounters beyond traditional dating apps.</p>
+          <h4>好奇心旺盛なシングル</h4>
+          <p>従来のマッチングアプリを超えた、意味のある出会いを求めている独身者。</p>
           <div class="chip-row">
-            <span class="chip">Authentic</span><span class="chip">Safe</span><span class="chip">Empowering</span><span class="chip">Open-minded</span>
+            <span class="chip">本物らしさ</span><span class="chip">安心感</span><span class="chip">エンパワーメント</span><span class="chip">オープンマインド</span>
           </div>
         </div>
         <div class="persona-card">
           <div class="letter">C</div>
-          <h4>Lifestyle &amp; Discovery</h4>
-          <p>People interested in discovering a new dating experience.</p>
+          <h4>新しい出会いの発見</h4>
+          <p>新しい出会いの形に興味を持っている層。</p>
           <div class="chip-row">
-            <span class="chip">Relaxed</span><span class="chip">Modern</span><span class="chip">Genuine</span><span class="chip">Positive</span>
+            <span class="chip">リラックス</span><span class="chip">モダン</span><span class="chip">誠実</span><span class="chip">ポジティブ</span>
           </div>
         </div>
       </div>
@@ -403,81 +403,81 @@
 
     <section class="brief-section" id="platform-guidelines">
       <p class="section-num">03</p>
-      <h2 class="section-title">Platform Guidelines</h2>
+      <h2 class="section-title">プラットフォームガイドライン</h2>
       <div class="callout">
-        <p class="callout-title">Very important</p>
-        <p class="prose" style="margin:0 0 16px;">TikTok, Meta and YouTube Shorts heavily moderate explicit sexual content.</p>
+        <p class="callout-title">非常に重要</p>
+        <p class="prose" style="margin:0 0 16px;">TikTok、Meta、YouTube Shortsは、性的に露骨なコンテンツを厳しく規制しています。</p>
         <div class="avoid-focus">
           <div>
-            <h5>Please avoid</h5>
+            <h5>避けていただきたいこと</h5>
             <ul class="avoid">
-              <li>Nudity</li>
-              <li>Explicit sexual vocabulary</li>
-              <li>Overly suggestive visuals</li>
-              <li>Adult-oriented messaging</li>
+              <li>ヌード</li>
+              <li>性的に露骨な言葉づかい</li>
+              <li>過度に扇情的なビジュアル</li>
+              <li>アダルト向けのメッセージング</li>
             </ul>
           </div>
           <div>
-            <h5>Focus on</h5>
+            <h5>意識していただきたいこと</h5>
             <ul class="focus">
-              <li>Genuine connections</li>
-              <li>Privacy</li>
-              <li>Safety</li>
-              <li>Community</li>
-              <li>Freedom to meet people your own way</li>
-              <li>Trust</li>
+              <li>本物のつながり</li>
+              <li>プライバシー</li>
+              <li>安全性</li>
+              <li>コミュニティ</li>
+              <li>自分らしい出会い方の自由</li>
+              <li>信頼</li>
             </ul>
           </div>
         </div>
-        <p class="closing">The objective is content that feels authentic and native to social media while remaining fully compliant with platform guidelines.</p>
+        <p class="closing">目的は、プラットフォームのガイドラインを完全に遵守しながら、SNSにネイティブに馴染む、本物らしいコンテンツを制作することです。</p>
       </div>
     </section>
 
     <section class="brief-section" id="video-formats">
       <p class="section-num">04</p>
-      <h2 class="section-title">Video Formats to Produce</h2>
-      <p class="prose">We would like to test four main creative formats.</p>
+      <h2 class="section-title">制作いただきたい動画フォーマット</h2>
+      <p class="prose">主に4つのクリエイティブフォーマットを試したいと考えています。</p>
       <div class="format-grid">
         <div class="format-card">
           <div class="type-tag">TYPE 1</div>
-          <h4>POV / Storytelling</h4>
-          <p>Native UGC &mdash; the creator shares a personal story (real or scripted) directly to camera, speaking naturally as if talking to a friend.</p>
+          <h4>POV・ストーリーテリング</h4>
+          <p>ネイティブUGC形式 — クリエイターご自身が、友人に話しかけるように、カメラに向かって自然に自身のストーリー（実話・脚本どちらも可）を語る形式。</p>
         </div>
         <div class="format-card">
           <div class="type-tag">TYPE 2</div>
-          <h4>App Demonstration / Review</h4>
-          <p>A mix of face-to-camera footage and screen recordings demonstrating the app&rsquo;s interface and features. Goal: show Nouslib is modern, premium and trustworthy.</p>
+          <h4>アプリデモ・レビュー</h4>
+          <p>カメラに向かって話す映像と画面収録を組み合わせ、アプリのインターフェースや機能を紹介する形式。目的：Nouslibがモダンで洗練されていて、信頼できるサービスであることを伝えること。</p>
           <ul>
-            <li>Beautiful interface</li>
-            <li>Verified profiles</li>
-            <li>Audio &amp; video calls</li>
-            <li>Stories</li>
-            <li>Private photo albums</li>
-            <li>Profile recommendations</li>
-            <li>Comments &amp; recommendations</li>
-            <li>Join as a single or as a couple</li>
+            <li>美しいインターフェース</li>
+            <li>認証済みプロフィール</li>
+            <li>音声・ビデオ通話</li>
+            <li>ストーリー機能</li>
+            <li>非公開フォトアルバム</li>
+            <li>プロフィールのおすすめ機能</li>
+            <li>コメント・おすすめ機能</li>
+            <li>一人・カップルどちらでも参加可能な点</li>
           </ul>
         </div>
         <div class="format-card">
           <div class="type-tag">TYPE 3</div>
-          <h4>Trends / Humour</h4>
-          <p>Use current TikTok language and editing styles, while staying aligned with Nouslib&rsquo;s premium and welcoming brand identity.</p>
+          <h4>トレンド・ユーモア</h4>
+          <p>今流行しているTikTokの言い回しや編集スタイルを活用する形式。Nouslibの上質で温かみのあるブランドイメージとの一貫性は保ってください。</p>
           <ul>
-            <li>Trending audio</li>
-            <li>Text-to-speech</li>
-            <li>Funny situations</li>
-            <li>Fast editing</li>
-            <li>Relatable moments</li>
+            <li>トレンド音源</li>
+            <li>テキスト読み上げ（text-to-speech）</li>
+            <li>面白いシチュエーション</li>
+            <li>テンポの速い編集</li>
+            <li>共感できる瞬間</li>
           </ul>
         </div>
         <div class="format-card">
           <div class="type-tag">TYPE 4</div>
-          <h4>Street Interview</h4>
-          <p>Dynamic social interviews asking simple relationship questions, e.g.:</p>
+          <h4>街頭インタビュー</h4>
+          <p>恋愛・出会いに関するシンプルな質問を投げかける、テンポの良いインタビュー形式。例：</p>
           <ul>
-            <li>&ldquo;What&rsquo;s the biggest green flag on a dating app?&rdquo;</li>
-            <li>&ldquo;Would you ever join a dating app as a couple?&rdquo;</li>
-            <li>&ldquo;What&rsquo;s the first thing you look for on someone&rsquo;s profile?&rdquo;</li>
+            <li>「マッチングアプリで見つけた最大の『これはアリ』ポイントは？」</li>
+            <li>「カップルでマッチングアプリに登録するのはアリだと思いますか？」</li>
+            <li>「相手のプロフィールで最初に見るところは？」</li>
           </ul>
         </div>
       </div>
@@ -485,48 +485,48 @@
 
     <section class="brief-section" id="script-structure">
       <p class="section-num">05</p>
-      <h2 class="section-title">Script Structure</h2>
-      <p class="prose">Every video should follow this Hook &middot; Body &middot; CTA structure.</p>
+      <h2 class="section-title">台本構成</h2>
+      <p class="prose">すべての動画は、フック・本編・CTAの構成に沿って制作してください。</p>
       <div class="timeline">
         <div class="tl-step">
-          <div class="tl-time">0&ndash;3 sec</div>
+          <div class="tl-time">0&ndash;3秒</div>
           <div>
-            <h4>Hook</h4>
-            <p class="goal"><strong>Objective:</strong> stop users from scrolling immediately.</p>
+            <h4>フック</h4>
+            <p class="goal"><strong>目的：</strong>ユーザーがスクロールする手を止めること。</p>
             <ul>
-              <li>Strong opening sentence</li>
-              <li>Dynamic visual</li>
-              <li>On-screen text</li>
+              <li>力強い書き出しの一言</li>
+              <li>動きのあるビジュアル</li>
+              <li>画面上のテキスト</li>
             </ul>
             <div class="examples" style="margin-top:10px;">
-              <li>&ldquo;I thought every dating app was exactly the same&hellip;&rdquo;</li>
-              <li>&ldquo;Looking for something different?&rdquo;</li>
-              <li>&ldquo;This dating app surprised me&hellip;&rdquo;</li>
+              <li>「どのマッチングアプリも同じだと思ってた…」</li>
+              <li>「何か違うものを探してる？」</li>
+              <li>「このマッチングアプリには驚かされた…」</li>
             </div>
           </div>
         </div>
         <div class="tl-step">
-          <div class="tl-time">3&ndash;25 sec</div>
+          <div class="tl-time">3&ndash;25秒</div>
           <div>
-            <h4>Body</h4>
-            <p class="goal"><strong>Objective:</strong> present the problem and explain why Nouslib is the solution.</p>
+            <h4>本編</h4>
+            <p class="goal"><strong>目的：</strong>課題を提示し、Nouslibがその解決策であることを伝える。</p>
             <ul>
-              <li>Fast pacing</li>
-              <li>Cut every 2&ndash;3 seconds</li>
-              <li>Dynamic subtitles</li>
-              <li>Native TikTok editing style</li>
+              <li>テンポよく</li>
+              <li>2〜3秒ごとにカットを切り替える</li>
+              <li>動きのある字幕</li>
+              <li>ネイティブなTikTok編集スタイル</li>
             </ul>
           </div>
         </div>
         <div class="tl-step">
-          <div class="tl-time">Final sec</div>
+          <div class="tl-time">ラスト数秒</div>
           <div>
             <h4>CTA</h4>
-            <p class="goal"><strong>Objective:</strong> encourage users to download the app.</p>
+            <p class="goal"><strong>目的：</strong>アプリのダウンロードを促す。</p>
             <div class="examples">
-              <li>&ldquo;Download Nouslib today.&rdquo;</li>
-              <li>&ldquo;Discover a new way to meet people.&rdquo;</li>
-              <li>&ldquo;Join the Nouslib community.&rdquo;</li>
+              <li>「今すぐNouslibをダウンロード」</li>
+              <li>「新しい出会い方を見つけよう」</li>
+              <li>「Nouslibコミュニティに参加しよう」</li>
             </div>
           </div>
         </div>
@@ -535,18 +535,18 @@
 
     <section class="brief-section" id="deliverables">
       <p class="section-num">06</p>
-      <h2 class="section-title">Deliverables</h2>
-      <p class="prose">For every approved concept, we would like to receive:</p>
+      <h2 class="section-title">納品物</h2>
+      <p class="prose">承認いただいた各コンセプトにつき、以下をご納品ください。</p>
       <ul class="checklist">
-        <li>One final edited video</li>
-        <li>If possible, three different hook variations for A/B testing</li>
-        <li>Consistent use of Nouslib illustrations and brand colors</li>
-        <li>Brand subtitles matching our visual identity</li>
-        <li>Respect for platform safe areas for captions and text placement</li>
+        <li>完パケ動画 1本</li>
+        <li>可能であれば、A/Bテスト用にフック違いのバリエーションを3パターン</li>
+        <li>Nouslibのイラスト素材・ブランドカラーの一貫した使用</li>
+        <li>弊社ブランドの世界観に沿った字幕</li>
+        <li>字幕・テキストの配置はプラットフォームのセーフエリアを遵守</li>
       </ul>
-      <p class="prose" style="margin-top:14px;">Integrate our visual assets (logo, illustrations and graphic elements) whenever appropriate to reinforce brand recognition.</p>
+      <p class="prose" style="margin-top:14px;">適切な箇所で、弊社のビジュアル素材（ロゴ・イラスト・グラフィック要素）を活用いただき、ブランド認知の向上にご協力いただけますと幸いです。</p>
     </section>
   </main>
 </div>
 
-<footer class="brief-footer">Nouslib &middot; UGC Creative Brief &mdash; internal reference, sourced from France HQ</footer>
+<footer class="brief-footer">Nouslib &middot; UGC クリエイティブブリーフ &mdash; フランス本社提供の資料</footer>

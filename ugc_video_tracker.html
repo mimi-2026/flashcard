@@ -160,7 +160,9 @@
   .board-head h2 { margin: 0; }
   .board-head .hint, .directives-head .hint { font-size: 11.5px; color: var(--text-faint); }
 
+  .brief-link-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
   .brief-link {
+    flex: 1 1 240px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -168,7 +170,6 @@
     border: 1px solid var(--c-action-hq);
     border-radius: 8px;
     padding: 10px 14px;
-    margin-bottom: 14px;
     text-decoration: none;
   }
   .brief-link:hover { filter: brightness(0.97); }
@@ -591,10 +592,16 @@
       <h2>HQ Directives</h2>
       <span class="hint">Standing guidance from France HQ — applies across the whole pipeline</span>
     </div>
-    <a class="brief-link" href="https://claude.ai/code/artifact/ceca5469-a88d-4df7-821c-cdcac1f2ac4a" target="_blank" rel="noopener">
-      <span class="brief-link-title">Full Creative Brief ↗</span>
-      <span class="brief-link-sub">Brand context, audiences, platform rules, video formats, script structure &amp; deliverables — separate page</span>
-    </a>
+    <div class="brief-link-row">
+      <a class="brief-link" href="https://claude.ai/code/artifact/ceca5469-a88d-4df7-821c-cdcac1f2ac4a" target="_blank" rel="noopener">
+        <span class="brief-link-title">Full Creative Brief (EN) ↗</span>
+        <span class="brief-link-sub">Brand context, audiences, platform rules, video formats, script structure &amp; deliverables</span>
+      </a>
+      <a class="brief-link" href="https://claude.ai/code/artifact/71fd11fe-220c-40bb-8f3c-a6bb1961defe" target="_blank" rel="noopener">
+        <span class="brief-link-title">クリエイティブブリーフ（日本語）↗</span>
+        <span class="brief-link-sub">日本人クリエイター共有用 — 同内容の日本語版</span>
+      </a>
+    </div>
     <div class="directive-list" id="directiveList"></div>
   </section>
 
