@@ -13,8 +13,6 @@
     --accent-soft: #E1F1F1;
     --c-hq: #5B57C4;
     --c-hq-bg: #ECEBFA;
-    --c-post: #B23A6B;
-    --c-post-bg: #F8E7EE;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
   }
@@ -24,7 +22,6 @@
       --text: #E4EAEE; --text-muted: #97A5B0; --text-faint: #647380;
       --accent: #35C5BC; --accent-strong: #5CDCD3; --accent-soft: rgba(53,197,188,0.14);
       --c-hq: #9691E6; --c-hq-bg: #2A2850;
-      --c-post: #E896B8; --c-post-bg: #3A2230;
     }
   }
   :root[data-theme="dark"] {
@@ -32,21 +29,19 @@
     --text: #E4EAEE; --text-muted: #97A5B0; --text-faint: #647380;
     --accent: #35C5BC; --accent-strong: #5CDCD3; --accent-soft: rgba(53,197,188,0.14);
     --c-hq: #9691E6; --c-hq-bg: #2A2850;
-    --c-post: #E896B8; --c-post-bg: #3A2230;
   }
   :root[data-theme="light"] {
     --bg: #F3F5F6; --surface: #FFFFFF; --surface-2: #EBEFF1; --border: #DCE2E5;
     --text: #1D262D; --text-muted: #5B6770; --text-faint: #8B969D;
     --accent: #0E7C86; --accent-strong: #095E66; --accent-soft: #E1F1F1;
     --c-hq: #5B57C4; --c-hq-bg: #ECEBFA;
-    --c-post: #B23A6B; --c-post-bg: #F8E7EE;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   body { padding: 32px 20px 90px; }
   .wrap { max-width: 760px; margin: 0 auto; }
 
-  header.page { margin-bottom: 28px; }
+  header.page { margin-bottom: 22px; }
   .eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
   h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 10px; text-wrap: balance; }
   .meta-row { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -55,14 +50,28 @@
     background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
   }
   .meta-chip b { color: var(--text); font-weight: 700; }
+  .meta-chip .sub { color: var(--text-faint); font-weight: 500; }
+
+  .save-bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 14px; margin: 18px 0 24px; font-size: 12px; color: var(--text-muted);
+  }
+  .save-bar .note { flex: 1 1 260px; line-height: 1.5; }
+  .save-bar .actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .save-bar button, .save-bar label.file-btn {
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    background: var(--accent-soft); color: var(--accent-strong);
+    border: 1px solid var(--accent); border-radius: 7px; padding: 6px 12px;
+  }
+  .save-bar input[type="file"] { display: none; }
+  .save-status { font-size: 11px; color: var(--accent-strong); min-width: 90px; }
 
   .phase-head {
     display: flex; align-items: center; gap: 10px;
-    margin: 40px 0 18px;
+    margin: 32px 0 18px;
   }
-  .phase-head .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .phase-head.pre .dot { background: var(--accent); }
-  .phase-head.post .dot { background: var(--c-post); }
+  .phase-head .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: var(--accent); }
   .phase-head h2 { margin: 0; font-size: 19px; font-weight: 700; }
   .phase-head .sub { font-size: 12.5px; color: var(--text-faint); margin-left: 4px; }
 
@@ -84,36 +93,33 @@
 
   .qgroup { margin-bottom: 4px; }
   .qgroup h3 { display: flex; align-items: baseline; gap: 8px; }
-  .qgroup .tag {
-    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--accent-strong); background: var(--accent-soft); padding: 2px 8px; border-radius: 999px;
-  }
+
   .qlist { list-style: none; margin: 0; padding: 0; }
   .qlist li {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 9px 0; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.55;
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 11px 0; border-top: 1px solid var(--border);
   }
   .qlist li:first-child { border-top: none; }
+  .qhead { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.55; }
   .qlist input[type="checkbox"] { margin-top: 3px; width: 15px; height: 15px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
   .qlist label { cursor: pointer; }
   .qlist .why { display: block; font-size: 11.5px; color: var(--text-faint); margin-top: 2px; }
-
-  .tips-box {
-    background: var(--c-post-bg); border: 1px solid var(--c-post);
-    border-left: 4px solid var(--c-post); border-radius: 10px;
-    padding: 18px 20px; margin-bottom: 20px;
+  .answer {
+    margin-left: 25px;
+    width: calc(100% - 25px);
+    font-family: inherit;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 7px 10px;
+    resize: vertical;
+    min-height: 36px;
   }
-  .tips-box h3 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--c-post); text-transform: uppercase; letter-spacing: 0.04em; }
-  .tips-box ol { margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--text); }
-  .tips-box ol li { margin-bottom: 6px; }
-  .tips-box b { color: var(--text); }
-
-  .template-block {
-    background: var(--surface-2); border-radius: 8px; padding: 4px 14px;
-    font-family: var(--font-mono); font-size: 12.5px; line-height: 1.9; color: var(--text-muted);
-    white-space: pre-wrap; margin-top: 10px;
-  }
-  .template-block .field { color: var(--accent-strong); font-weight: 600; }
+  .answer::placeholder { color: var(--text-faint); }
+  .answer:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 
   footer.page { margin-top: 36px; text-align: center; font-size: 11.5px; color: var(--text-faint); }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -124,24 +130,34 @@
     <p class="eyebrow">Meeting Prep · MISM</p>
     <h1>MISM Meeting — Monday, Aug 10</h1>
     <div class="meta-row">
-      <span class="meta-chip"><b>16:00–18:00</b> JST</span>
+      <span class="meta-chip"><b>17:00–18:00</b> JST <span class="sub">(Paris 10:00–11:00)</span></span>
       <span class="meta-chip">Interpreter joining</span>
-      <span class="meta-chip">Bianca &amp; Renzo (France HQ)</span>
-      <span class="meta-chip">Mizuho + Kazuma Noguchi (MISM)</span>
+      <span class="meta-chip">Bianca &amp; Renzo + Mizuho (us)</span>
+      <span class="meta-chip">Mr. Kazuma Noguchi (MISM)</span>
     </div>
   </header>
 
-  <div class="phase-head pre">
+  <div class="save-bar">
+    <span class="note">Answers auto-save in this browser on this device. If you switch devices, or just want a backup, use "Save to file."</span>
+    <span class="save-status" id="saveStatus"></span>
+    <div class="actions">
+      <button type="button" id="exportBtn">Save to file</button>
+      <label class="file-btn" for="importInput">Restore from file</label>
+      <input type="file" id="importInput" accept="application/json,.json">
+    </div>
+  </div>
+
+  <div class="phase-head">
     <span class="dot"></span>
-    <h2>1 · Before the Meeting</h2>
+    <h2>Before the Meeting</h2>
     <span class="sub">brief for Bianca &amp; Renzo + question list</span>
   </div>
 
   <div class="card">
     <h3>What we know about MISM</h3>
     <dl class="facts">
-      <dt>Contact</dt><dd>Kazuma Noguchi (野口), 株式会社MISM — in contact since Jul 27</dd>
-      <dt>Pricing</dt><dd>End-to-end (planning/script, casting, filming, editing) — roughly ¥300,000+ for 10 videos (2 scenarios × 5 openings). Varies with content and number of models.</dd>
+      <dt>Contact</dt><dd>Mr. Kazuma Noguchi (野口), 株式会社MISM — in contact since Jul 27</dd>
+      <dt>Pricing</dt><dd>End-to-end (planning/script, casting, filming, editing) — roughly ¥300,000+ (about &euro;1,600+) for 10 videos (2 scenarios × 5 openings). Varies with content and number of models.</dd>
       <dt>Timeline</dt><dd>~2 weeks from kickoff, if starting at the planning stage.</dd>
       <dt>English</dt><dd>Production side can work in English; interpreter confirmed for meetings.</dd>
       <dt>Concept dev</dt><dd>Yes — they can handle creative concept &amp; script development in-house.</dd>
@@ -161,98 +177,204 @@
     <div class="card">
       <h3><span class="n">A</span>Team, Process &amp; Casting</h3>
       <ul class="qlist">
-        <li><input type="checkbox" id="q1"><label for="q1">How many creators/models would you typically assign to a project like ours?</label></li>
-        <li><input type="checkbox" id="q2"><label for="q2">What's your casting/creator-selection process — an in-house roster, or sourced per project?<span class="why">Answers Bianca's validation question</span></label></li>
-        <li><input type="checkbox" id="q3"><label for="q3">How do you vet or validate creators before assigning them to a brand?</label></li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q1"><label for="q1">How many creators/models would you typically assign to a project like ours?</label></div>
+          <textarea class="answer" data-key="q1" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q2"><label for="q2">What's your casting/creator-selection process — an in-house roster, or sourced per project?<span class="why">Answers Bianca's validation question</span></label></div>
+          <textarea class="answer" data-key="q2" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q3"><label for="q3">How do you vet or validate creators before assigning them to a brand?</label></div>
+          <textarea class="answer" data-key="q3" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
       </ul>
     </div>
     <div class="card">
       <h3><span class="n">B</span>Creative &amp; Script</h3>
       <ul class="qlist">
-        <li><input type="checkbox" id="q4"><label for="q4">Walk us through your concept/script process — how much comes from our brief vs. your own proposals?</label></li>
-        <li><input type="checkbox" id="q5"><label for="q5">Can you produce multiple durations (15s / 25s / 45s) from the same shoot, for A/B testing?<span class="why">HQ directive: test different lengths</span></label></li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q4"><label for="q4">Walk us through your concept/script process — how much comes from our brief vs. your own proposals?</label></div>
+          <textarea class="answer" data-key="q4" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q5"><label for="q5">Can you produce multiple durations (15s / 25s / 45s) from the same shoot, for A/B testing?<span class="why">HQ directive: test different lengths</span></label></div>
+          <textarea class="answer" data-key="q5" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
       </ul>
     </div>
     <div class="card">
-      <h3><span class="n">C</span>Production &amp; Filming</h3>
+      <h3><span class="n">C</span>Production &amp; Delivery</h3>
       <ul class="qlist">
-        <li><input type="checkbox" id="q6"><label for="q6">What's your filming setup — a full crew, or can it be shot more casually (e.g. smartphone) if that suits the UGC feel better?<span class="why">HQ directive: smartphone OK if good quality</span></label></li>
-        <li><input type="checkbox" id="q7"><label for="q7">Is 2 weeks kickoff-to-delivery realistic including revisions?</label></li>
-        <li><input type="checkbox" id="q8"><label for="q8">How do revisions work — how many rounds are included, and what happens beyond that?<span class="why">HQ directive: want 2+ rounds included</span></label></li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q6"><label for="q6">Is 2 weeks kickoff-to-delivery realistic including revisions?</label></div>
+          <textarea class="answer" data-key="q6" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q7"><label for="q7">How do revisions work — how many rounds are included, and what happens beyond that?<span class="why">HQ directive: want 2+ rounds included</span></label></div>
+          <textarea class="answer" data-key="q7" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q8"><label for="q8">Can you share completed videos with us as each one is finished, rather than delivering the whole batch at once?<span class="why">We want to start testing as early as possible</span></label></div>
+          <textarea class="answer" data-key="q8" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
       </ul>
     </div>
     <div class="card">
       <h3><span class="n">D</span>Talent Diversity</h3>
       <ul class="qlist">
-        <li><input type="checkbox" id="q9"><label for="q9">Can you rotate different creators across videos/months, rather than reusing the same faces?<span class="why">Same concern that ruled out ShuttleRock</span></label></li>
-        <li><input type="checkbox" id="q10"><label for="q10">We're aiming to work mostly with female creators for now — can you accommodate that?<span class="why">HQ directive: creator gender</span></label></li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q9"><label for="q9">Can you rotate different creators across videos/months, rather than reusing the same faces?<span class="why">Same concern that ruled out ShuttleRock</span></label></div>
+          <textarea class="answer" data-key="q9" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q10"><label for="q10">We're aiming to work mostly with female creators for now — can you accommodate that?<span class="why">HQ directive: creator gender</span></label></div>
+          <textarea class="answer" data-key="q10" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
       </ul>
     </div>
     <div class="card">
       <h3><span class="n">E</span>Commercial &amp; Rights</h3>
       <ul class="qlist">
-        <li><input type="checkbox" id="q11"><label for="q11">Does the ¥300,000+/10-video quote cover everything above, or are there likely add-on costs (extra models, faster turnaround, more revisions)?</label></li>
-        <li><input type="checkbox" id="q12"><label for="q12">Do creators sign usage-rights agreements that specifically cover Meta ad placement?</label></li>
-        <li><input type="checkbox" id="q13"><label for="q13">What would ongoing monthly collaboration look like — cost and process — if this goes well?</label></li>
-        <li><input type="checkbox" id="q14"><label for="q14">Payment / invoicing terms?</label></li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q11"><label for="q11">Does the ¥300,000+ (&euro;1,600+) /10-video quote cover everything above, or are there likely add-on costs (extra models, faster turnaround, more revisions)?</label></div>
+          <textarea class="answer" data-key="q11" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q12"><label for="q12">Do creators sign usage-rights agreements that specifically cover Meta ad placement?</label></div>
+          <textarea class="answer" data-key="q12" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q13"><label for="q13">What would ongoing monthly collaboration look like — cost and process — if this goes well?</label></div>
+          <textarea class="answer" data-key="q13" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li>
+          <div class="qhead"><input type="checkbox" id="q14"><label for="q14">Payment / invoicing terms?</label></div>
+          <textarea class="answer" data-key="q14" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
       </ul>
     </div>
   </div>
 
-  <div class="phase-head post">
-    <span class="dot"></span>
-    <h2>2 · After the Meeting</h2>
-    <span class="sub">what's useful to hand back to Claude</span>
-  </div>
-
-  <div class="tips-box">
-    <h3>What helps most</h3>
-    <ol>
-      <li><b>Follow the question groups (A–E) above</b> — even "not asked" or "need to follow up" is useful, since it maps straight onto the tracker fields.</li>
-      <li><b>Call out concrete numbers on their own line</b> — headcount, ¥ amounts, day/week counts. These are what update Pricing/Delivery directly; buried in a paragraph they're easy to miss.</li>
-      <li><b>Separate decisions from open items</b> — what got agreed on the call vs. what's still pending a follow-up either side.</li>
-      <li><b>Note next steps with an owner</b> — "MISM to send X by Friday" / "we send the brief by Y" — this becomes the new Next Step.</li>
-      <li><b>Flag who said what</b> when it matters (MISM/Noguchi vs. something Bianca or Renzo raised live) — the tracker keeps per-speaker attribution.</li>
-      <li><b>Any new links or files</b> shared during the call (decks, sample scripts, contracts).</li>
-      <li><b>Your gut read</b> on moving forward — this becomes the status/action-owner call.</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h3>Copyable notes template</h3>
-    <div class="template-block">Date/time: <span class="field">Aug 10, 16:00–18:00</span>
-Attendees: <span class="field">Bianca, Renzo, Mizuho, [interpreter], Noguchi</span>
-
-A. Team / Process / Casting
-  - Headcount they'd assign: <span class="field"></span>
-  - Casting process: <span class="field"></span>
-  - Validation process: <span class="field"></span>
-
-B. Creative / Script
-  - Concept process: <span class="field"></span>
-  - Multiple durations possible: <span class="field"></span>
-
-C. Production / Filming
-  - Filming setup: <span class="field"></span>
-  - Realistic timeline: <span class="field"></span>
-  - Revisions included / process: <span class="field"></span>
-
-D. Talent Diversity
-  - Creator rotation: <span class="field"></span>
-  - Female-creator availability: <span class="field"></span>
-
-E. Commercial / Rights
-  - What's included in ¥300k+ / add-ons: <span class="field"></span>
-  - Usage rights for Meta ads: <span class="field"></span>
-  - Ongoing monthly collaboration: <span class="field"></span>
-  - Payment terms: <span class="field"></span>
-
-Decisions made: <span class="field"></span>
-Open items / follow-ups: <span class="field"></span>
-Next steps (who / by when): <span class="field"></span>
-New links/files shared: <span class="field"></span>
-Overall read: <span class="field"></span></div>
-  </div>
-
   <footer class="page">MISM Meeting Prep · internal use — pairs with the UGC Creator &amp; Agency Pipeline tracker</footer>
 </div>
+
+<script>
+(function () {
+  var STORE_KEY = 'mism-meeting-prep-v1';
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
+    catch (e) { return {}; }
+  }
+  function saveState(state) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+    catch (e) { /* storage unavailable — export/import still works */ }
+  }
+
+  var state = loadState();
+
+  function applyState() {
+    document.querySelectorAll('.qlist input[type="checkbox"]').forEach(function (cb) {
+      if (state[cb.id] && typeof state[cb.id].checked === 'boolean') cb.checked = state[cb.id].checked;
+    });
+    document.querySelectorAll('.answer').forEach(function (ta) {
+      var key = ta.dataset.key;
+      if (state[key] && typeof state[key].answer === 'string') ta.value = state[key].answer;
+    });
+  }
+
+  var statusTimer;
+  function flashStatus(msg) {
+    var el = document.getElementById('saveStatus');
+    if (!el) return;
+    el.textContent = msg;
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(function () { el.textContent = ''; }, 2200);
+  }
+
+  function bind() {
+    document.querySelectorAll('.qlist input[type="checkbox"]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        state[cb.id] = state[cb.id] || {};
+        state[cb.id].checked = cb.checked;
+        saveState(state);
+        flashStatus('Saved');
+      });
+    });
+    document.querySelectorAll('.answer').forEach(function (ta) {
+      var key = ta.dataset.key;
+      ta.addEventListener('input', function () {
+        state[key] = state[key] || {};
+        state[key].answer = ta.value;
+        saveState(state);
+        flashStatus('Saved');
+      });
+    });
+  }
+
+  function refreshStateFromDom() {
+    document.querySelectorAll('.qlist input[type="checkbox"]').forEach(function (cb) {
+      state[cb.id] = state[cb.id] || {};
+      state[cb.id].checked = cb.checked;
+    });
+    document.querySelectorAll('.answer').forEach(function (ta) {
+      var key = ta.dataset.key;
+      state[key] = state[key] || {};
+      state[key].answer = ta.value;
+    });
+  }
+
+  async function exportNotes() {
+    refreshStateFromDom();
+    var payload = JSON.stringify(state, null, 2);
+    if (window.claude && window.claude.downloads) {
+      try {
+        await window.claude.downloads.save({ filename: 'mism-meeting-notes.json', data: payload });
+        flashStatus('Saved to file');
+        return;
+      } catch (e) {
+        // fall through to clipboard fallback
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(payload).then(function () {
+        alert('File download wasn\'t available, so the notes were copied to your clipboard instead.');
+      }).catch(function () {
+        alert('Save failed.');
+      });
+    } else {
+      alert('Save failed.');
+    }
+  }
+
+  function importNotes(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var data = JSON.parse(reader.result);
+        state = data;
+        saveState(state);
+        applyState();
+        flashStatus('Restored');
+      } catch (e) {
+        alert('Couldn\'t read that file. Please select a JSON backup file.');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  applyState();
+  bind();
+
+  var exportBtn = document.getElementById('exportBtn');
+  if (exportBtn) exportBtn.addEventListener('click', exportNotes);
+
+  var importInput = document.getElementById('importInput');
+  if (importInput) importInput.addEventListener('change', function (e) {
+    if (e.target.files && e.target.files[0]) importNotes(e.target.files[0]);
+    importInput.value = '';
+  });
+})();
+</script>
