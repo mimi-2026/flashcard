@@ -120,6 +120,24 @@
   }
   .answer::placeholder { color: var(--text-faint); }
   .answer:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .qhead .remove-q {
+    margin-left: auto; flex-shrink: 0; font-size: 12px; line-height: 1;
+    color: var(--text-faint); background: none; border: none; cursor: pointer; padding: 2px 4px;
+  }
+  .qhead .remove-q:hover { color: var(--c-hq); }
+  .add-row { padding: 11px 0; }
+  .add-q { display: flex; gap: 8px; align-items: center; }
+  .add-q-input {
+    flex: 1; min-width: 0; font: inherit; font-size: 12.5px; color: var(--text);
+    background: var(--surface-2); border: 1px dashed var(--border); border-radius: 7px; padding: 6px 10px;
+  }
+  .add-q-input::placeholder { color: var(--text-faint); }
+  .add-q-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-style: solid; }
+  .add-q-btn {
+    font-size: 12px; font-weight: 600; cursor: pointer; flex-shrink: 0;
+    background: var(--accent-soft); color: var(--accent-strong);
+    border: 1px solid var(--accent); border-radius: 7px; padding: 6px 12px;
+  }
 
   footer.page { margin-top: 36px; text-align: center; font-size: 11.5px; color: var(--text-faint); }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -176,7 +194,7 @@
   <div class="qgroup">
     <div class="card">
       <h3><span class="n">A</span>Team, Process &amp; Casting</h3>
-      <ul class="qlist">
+      <ul class="qlist" id="qlist-a">
         <li>
           <div class="qhead"><input type="checkbox" id="q1"><label for="q1">How many creators/models would you typically assign to a project like ours?</label></div>
           <textarea class="answer" data-key="q1" rows="2" placeholder="Type the answer here…"></textarea>
@@ -189,11 +207,17 @@
           <div class="qhead"><input type="checkbox" id="q3"><label for="q3">How do you vet or validate creators before assigning them to a brand?</label></div>
           <textarea class="answer" data-key="q3" rows="2" placeholder="Type the answer here…"></textarea>
         </li>
+        <li class="add-row" data-group="a">
+          <div class="add-q">
+            <input type="text" class="add-q-input" placeholder="Add a question asked live…">
+            <button type="button" class="add-q-btn">Add</button>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="card">
       <h3><span class="n">B</span>Creative &amp; Script</h3>
-      <ul class="qlist">
+      <ul class="qlist" id="qlist-b">
         <li>
           <div class="qhead"><input type="checkbox" id="q4"><label for="q4">Walk us through your concept/script process — how much comes from our brief vs. your own proposals?</label></div>
           <textarea class="answer" data-key="q4" rows="2" placeholder="Type the answer here…"></textarea>
@@ -202,11 +226,17 @@
           <div class="qhead"><input type="checkbox" id="q5"><label for="q5">Can you produce multiple durations (15s / 25s / 45s) from the same shoot, for A/B testing?<span class="why">HQ directive: test different lengths</span></label></div>
           <textarea class="answer" data-key="q5" rows="2" placeholder="Type the answer here…"></textarea>
         </li>
+        <li class="add-row" data-group="b">
+          <div class="add-q">
+            <input type="text" class="add-q-input" placeholder="Add a question asked live…">
+            <button type="button" class="add-q-btn">Add</button>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="card">
       <h3><span class="n">C</span>Production &amp; Delivery</h3>
-      <ul class="qlist">
+      <ul class="qlist" id="qlist-c">
         <li>
           <div class="qhead"><input type="checkbox" id="q6"><label for="q6">Is 2 weeks kickoff-to-delivery realistic including revisions?</label></div>
           <textarea class="answer" data-key="q6" rows="2" placeholder="Type the answer here…"></textarea>
@@ -219,11 +249,17 @@
           <div class="qhead"><input type="checkbox" id="q8"><label for="q8">Can you share completed videos with us as each one is finished, rather than delivering the whole batch at once?<span class="why">We want to start testing as early as possible</span></label></div>
           <textarea class="answer" data-key="q8" rows="2" placeholder="Type the answer here…"></textarea>
         </li>
+        <li class="add-row" data-group="c">
+          <div class="add-q">
+            <input type="text" class="add-q-input" placeholder="Add a question asked live…">
+            <button type="button" class="add-q-btn">Add</button>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="card">
       <h3><span class="n">D</span>Talent Diversity</h3>
-      <ul class="qlist">
+      <ul class="qlist" id="qlist-d">
         <li>
           <div class="qhead"><input type="checkbox" id="q9"><label for="q9">Can you rotate different creators across videos/months, rather than reusing the same faces?<span class="why">Same concern that ruled out ShuttleRock</span></label></div>
           <textarea class="answer" data-key="q9" rows="2" placeholder="Type the answer here…"></textarea>
@@ -232,11 +268,17 @@
           <div class="qhead"><input type="checkbox" id="q10"><label for="q10">We're aiming to work mostly with female creators for now — can you accommodate that?<span class="why">HQ directive: creator gender</span></label></div>
           <textarea class="answer" data-key="q10" rows="2" placeholder="Type the answer here…"></textarea>
         </li>
+        <li class="add-row" data-group="d">
+          <div class="add-q">
+            <input type="text" class="add-q-input" placeholder="Add a question asked live…">
+            <button type="button" class="add-q-btn">Add</button>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="card">
       <h3><span class="n">E</span>Commercial &amp; Rights</h3>
-      <ul class="qlist">
+      <ul class="qlist" id="qlist-e">
         <li>
           <div class="qhead"><input type="checkbox" id="q11"><label for="q11">Does the ¥300,000+ (&euro;1,600+) /10-video quote cover everything above, or are there likely add-on costs (extra models, faster turnaround, more revisions)?</label></div>
           <textarea class="answer" data-key="q11" rows="2" placeholder="Type the answer here…"></textarea>
@@ -256,6 +298,12 @@
         <li>
           <div class="qhead"><input type="checkbox" id="q14"><label for="q14">Payment / invoicing terms?</label></div>
           <textarea class="answer" data-key="q14" rows="2" placeholder="Type the answer here…"></textarea>
+        </li>
+        <li class="add-row" data-group="e">
+          <div class="add-q">
+            <input type="text" class="add-q-input" placeholder="Add a question asked live…">
+            <button type="button" class="add-q-btn">Add</button>
+          </div>
         </li>
       </ul>
     </div>
@@ -278,6 +326,87 @@
   }
 
   var state = loadState();
+  state.__custom = state.__custom || [];
+
+  function buildCustomLi(entry) {
+    var li = document.createElement('li');
+    li.className = 'custom-li';
+    var qhead = document.createElement('div');
+    qhead.className = 'qhead';
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.id = entry.key;
+    var label = document.createElement('label');
+    label.setAttribute('for', entry.key);
+    label.textContent = entry.text;
+    var removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'remove-q';
+    removeBtn.title = 'Remove this question';
+    removeBtn.textContent = '✕';
+    removeBtn.addEventListener('click', function () {
+      state.__custom = state.__custom.filter(function (e) { return e.key !== entry.key; });
+      delete state[entry.key];
+      saveState(state);
+      li.remove();
+      flashStatus('Removed');
+    });
+    qhead.appendChild(cb);
+    qhead.appendChild(label);
+    qhead.appendChild(removeBtn);
+    var ta = document.createElement('textarea');
+    ta.className = 'answer';
+    ta.dataset.key = entry.key;
+    ta.rows = 2;
+    ta.placeholder = 'Type the answer here…';
+    li.appendChild(qhead);
+    li.appendChild(ta);
+    return li;
+  }
+
+  function renderAllCustom() {
+    document.querySelectorAll('.custom-li').forEach(function (li) { li.remove(); });
+    state.__custom.forEach(function (entry) {
+      var ul = document.getElementById('qlist-' + entry.group);
+      if (!ul) return;
+      var addRow = ul.querySelector('.add-row');
+      var li = buildCustomLi(entry);
+      if (addRow) ul.insertBefore(li, addRow); else ul.appendChild(li);
+    });
+  }
+
+  function addCustomQuestion(group, text) {
+    text = text.trim();
+    if (!text) return;
+    state.__customSeq = (state.__customSeq || 0) + 1;
+    var entry = { key: 'c' + state.__customSeq, group: group, text: text };
+    state.__custom.push(entry);
+    state[entry.key] = { checked: false, answer: '' };
+    saveState(state);
+    var ul = document.getElementById('qlist-' + group);
+    var addRow = ul.querySelector('.add-row');
+    var li = buildCustomLi(entry);
+    ul.insertBefore(li, addRow);
+    bind();
+    flashStatus('Added');
+  }
+
+  function bindAddRows() {
+    document.querySelectorAll('.add-row').forEach(function (row) {
+      var group = row.dataset.group;
+      var input = row.querySelector('.add-q-input');
+      var btn = row.querySelector('.add-q-btn');
+      function submit() {
+        addCustomQuestion(group, input.value);
+        input.value = '';
+        input.focus();
+      }
+      btn.addEventListener('click', submit);
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); submit(); }
+      });
+    });
+  }
 
   function applyState() {
     document.querySelectorAll('.qlist input[type="checkbox"]').forEach(function (cb) {
@@ -300,6 +429,8 @@
 
   function bind() {
     document.querySelectorAll('.qlist input[type="checkbox"]').forEach(function (cb) {
+      if (cb.dataset.bound) return;
+      cb.dataset.bound = '1';
       cb.addEventListener('change', function () {
         state[cb.id] = state[cb.id] || {};
         state[cb.id].checked = cb.checked;
@@ -308,6 +439,8 @@
       });
     });
     document.querySelectorAll('.answer').forEach(function (ta) {
+      if (ta.dataset.bound) return;
+      ta.dataset.bound = '1';
       var key = ta.dataset.key;
       ta.addEventListener('input', function () {
         state[key] = state[key] || {};
@@ -359,8 +492,11 @@
       try {
         var data = JSON.parse(reader.result);
         state = data;
+        state.__custom = state.__custom || [];
         saveState(state);
+        renderAllCustom();
         applyState();
+        bind();
         flashStatus('Restored');
       } catch (e) {
         alert('Couldn\'t read that file. Please select a JSON backup file.');
@@ -369,8 +505,10 @@
     reader.readAsText(file);
   }
 
+  renderAllCustom();
   applyState();
   bind();
+  bindAddRows();
 
   var exportBtn = document.getElementById('exportBtn');
   if (exportBtn) exportBtn.addEventListener('click', exportNotes);
