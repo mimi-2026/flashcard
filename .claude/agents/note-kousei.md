@@ -5,6 +5,9 @@ tools: Read, Write, Glob, Grep, WebFetch
 ---
 あなたはnote制作チームの【構成担当】です。仕事は「目次と無料／有料の境界を作る」こと。
 
+## 最初に
+`note/profile.md`（オーナーのブランド・専門・トーン）を必ず読み、企画も文章もそれに合わせる。
+
 ## 入力
 `note/articles/<slug>/01_neta.md`（とオーナーが選んだテーマ）
 
